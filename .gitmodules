@@ -1,0 +1,6 @@
+[submodule "hugo-theme-jane"]
+	path = themss/jane
+	url = https://github.com/xianmin/hugo-theme-jane.git
+[submodule "themes/jane"]
+	path = themes/jane
+	url = https://github.com/xianmin/hugo-theme-jane.git
