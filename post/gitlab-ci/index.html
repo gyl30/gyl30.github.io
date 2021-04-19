@@ -1,119 +1,62 @@
-<!doctype html><html lang=en itemscope itemtype=http://schema.org/WebPage><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><title>Gitlab Ci - ooknn</title><meta name=renderer content="webkit"><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><meta name=MobileOptimized content="width"><meta name=HandheldFriendly content="true"><meta name=applicable-device content="pc,mobile"><meta name=theme-color content="#f8f5ec"><meta name=msapplication-navbutton-color content="#f8f5ec"><meta name=apple-mobile-web-app-capable content="yes"><meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec"><meta name=mobile-web-app-capable content="yes"><meta name=author content="ooknn"><meta name=description content><meta name=generator content="Hugo 0.68.3"><link rel=canonical href=https://ooknn.github.io/post/gitlab-ci/><link rel=icon href=/favicon.ico><link rel=stylesheet href=/sass/jane.min.fa3d941d1d0e0ddc985804227feabffea55c89883eb0af34e0532a7ae9135151.css integrity="sha256-+j2UHR0ODdyYWAQif+q//qVciYg+sK804FMqeukTUVE=" media=screen crossorigin=anonymous><meta property="og:title" content="Gitlab Ci"><meta property="og:description" content><meta property="og:type" content="article"><meta property="og:url" content="https://ooknn.github.io/post/gitlab-ci/"><meta property="article:published_time" content="2020-04-28T23:01:45+08:00"><meta property="article:modified_time" content="2020-04-28T23:01:45+08:00"><meta itemprop=name content="Gitlab Ci"><meta itemprop=description content><meta itemprop=datePublished content="2020-04-28T23:01:45+08:00"><meta itemprop=dateModified content="2020-04-28T23:01:45+08:00"><meta itemprop=wordCount content="530"><meta itemprop=keywords content><meta name=twitter:card content="summary"><meta name=twitter:title content="Gitlab Ci"><meta name=twitter:description content><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script><script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]--></head><body><div id=mobile-navbar class=mobile-navbar><div class=mobile-header-logo><a href=/ class=logo>ooknn</a></div><div class=mobile-navbar-icon><span></span><span></span><span></span></div></div><nav id=mobile-menu class="mobile-menu slideout-menu"><ul class=mobile-menu-list><li class=mobile-menu-item><a class=menu-item-link href=https://ooknn.github.io/>首页</a></li><li class=mobile-menu-item><a class=menu-item-link href=https://ooknn.github.io/categories/>分类</a></li><li class=mobile-menu-item><a class=menu-item-link href=https://ooknn.github.io/about/>我</a></li></ul></nav><header id=header class="header container"><div class=logo-wrapper><a href=/ class=logo>ooknn</a></div><nav class=site-navbar><ul id=menu class=menu><li class=menu-item><a class=menu-item-link href=https://ooknn.github.io/>首页</a></li><li class=menu-item><a class=menu-item-link href=https://ooknn.github.io/categories/>分类</a></li><li class=menu-item><a class=menu-item-link href=https://ooknn.github.io/about/>我</a></li></ul></nav></header><div id=mobile-panel><main id=main class="main bg-llight"><div class=content-wrapper><div id=content class="content container"><article class="post bg-white"><header class=post-header><h1 class=post-title>Gitlab Ci</h1><div class=post-meta><time datetime=2020-04-28 class=post-time>2020-04-28</time></div></header><div class=post-content><p>跑个 gitlab</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
-</span><span class=lnt>2
-</span><span class=lnt>3
-</span><span class=lnt>4
-</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>
-sudo docker run --detach --hostname 192.168.199.202 <span class=se>\
-</span><span class=se></span>    --publish 8082:80 --name gitlab --restart always <span class=se>\
-</span><span class=se></span>    docker.io/twang2218/gitlab-ce-zh
-</code></pre></td></tr></table></div></div><p>然后运行个 runner</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
-</span><span class=lnt>2
-</span><span class=lnt>3
-</span><span class=lnt>4
-</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>
-sudo  docker run -d --name runner --restart always <span class=se>\
-</span><span class=se></span>  -v /var/run/docker.sock:/var/run/docker.sock <span class=se>\
-</span><span class=se></span>  gitlab/gitlab-runner:latest
-</code></pre></td></tr></table></div></div><p>gitlab 启动需要一段时间，稍等一会儿，进入 gitlab</p><p>在gitlab 上新建一个项目，并进入项目的：设置 -> CI/CD
-<img src=/image-20200517083210260.png alt=image-20200517083210260.png></p><p>注意图中的 url 和 令牌</p><p>将 runner 注册到 gitlab</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
-</span><span class=lnt> 2
-</span><span class=lnt> 3
-</span><span class=lnt> 4
-</span><span class=lnt> 5
-</span><span class=lnt> 6
-</span><span class=lnt> 7
-</span><span class=lnt> 8
-</span><span class=lnt> 9
-</span><span class=lnt>10
-</span><span class=lnt>11
-</span><span class=lnt>12
-</span><span class=lnt>13
-</span><span class=lnt>14
-</span><span class=lnt>15
-</span><span class=lnt>16
-</span><span class=lnt>17
-</span><span class=lnt>18
-</span><span class=lnt>19
-</span><span class=lnt>20
-</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>••• ~ ➜ docker <span class=nb>exec</span> -it runner bash  <span class=c1># 進入runner容器中</span>
+<!doctype html><html lang=en itemscope itemtype=http://schema.org/WebPage><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><title>Gitlab Ci - ooknn</title><meta name=renderer content="webkit"><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><meta name=MobileOptimized content="width"><meta name=HandheldFriendly content="true"><meta name=applicable-device content="pc,mobile"><meta name=theme-color content="#f8f5ec"><meta name=msapplication-navbutton-color content="#f8f5ec"><meta name=apple-mobile-web-app-capable content="yes"><meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec"><meta name=mobile-web-app-capable content="yes"><meta name=author content="ooknn"><meta name=description content><meta name=generator content="Hugo 0.68.3"><link rel=canonical href=https://ooknn.github.io/post/gitlab-ci/><link rel=icon href=/favicon.ico><link rel=stylesheet href=/sass/jane.min.fa3d941d1d0e0ddc985804227feabffea55c89883eb0af34e0532a7ae9135151.css integrity="sha256-+j2UHR0ODdyYWAQif+q//qVciYg+sK804FMqeukTUVE=" media=screen crossorigin=anonymous><meta property="og:title" content="Gitlab Ci"><meta property="og:description" content><meta property="og:type" content="article"><meta property="og:url" content="https://ooknn.github.io/post/gitlab-ci/"><meta property="article:published_time" content="2020-04-28T23:01:45+08:00"><meta property="article:modified_time" content="2020-04-28T23:01:45+08:00"><meta itemprop=name content="Gitlab Ci"><meta itemprop=description content><meta itemprop=datePublished content="2020-04-28T23:01:45+08:00"><meta itemprop=dateModified content="2020-04-28T23:01:45+08:00"><meta itemprop=wordCount content="473"><meta itemprop=keywords content><meta name=twitter:card content="summary"><meta name=twitter:title content="Gitlab Ci"><meta name=twitter:description content><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script><script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]--></head><body><div id=mobile-navbar class=mobile-navbar><div class=mobile-header-logo><a href=/ class=logo>ooknn</a></div><div class=mobile-navbar-icon><span></span><span></span><span></span></div></div><nav id=mobile-menu class="mobile-menu slideout-menu"><ul class=mobile-menu-list><li class=mobile-menu-item><a class=menu-item-link href=https://ooknn.github.io/>首页</a></li><li class=mobile-menu-item><a class=menu-item-link href=https://ooknn.github.io/categories/>分类</a></li><li class=mobile-menu-item><a class=menu-item-link href=https://ooknn.github.io/about/>我</a></li></ul></nav><header id=header class="header container"><div class=logo-wrapper><a href=/ class=logo>ooknn</a></div><nav class=site-navbar><ul id=menu class=menu><li class=menu-item><a class=menu-item-link href=https://ooknn.github.io/>首页</a></li><li class=menu-item><a class=menu-item-link href=https://ooknn.github.io/categories/>分类</a></li><li class=menu-item><a class=menu-item-link href=https://ooknn.github.io/about/>我</a></li></ul></nav></header><div id=mobile-panel><main id=main class="main bg-llight"><div class=content-wrapper><div id=content class="content container"><article class="post bg-white"><header class=post-header><h1 class=post-title>Gitlab Ci</h1><div class=post-meta><time datetime=2020-04-28 class=post-time>2020-04-28</time></div></header><div class=post-content><p>跑个 gitlab</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>
+sudo docker run --detach --hostname 192.168.199.202 <span style=color:#ae81ff>\
+</span><span style=color:#ae81ff></span>    --publish 8082:80 --name gitlab --restart always <span style=color:#ae81ff>\
+</span><span style=color:#ae81ff></span>    docker.io/twang2218/gitlab-ce-zh
+</code></pre></div><p>然后运行个 runner</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>
+sudo  docker run -d --name runner --restart always <span style=color:#ae81ff>\
+</span><span style=color:#ae81ff></span>  -v /var/run/docker.sock:/var/run/docker.sock <span style=color:#ae81ff>\
+</span><span style=color:#ae81ff></span>  gitlab/gitlab-runner:latest
+</code></pre></div><p>gitlab 启动需要一段时间，稍等一会儿，进入 gitlab</p><p>在gitlab 上新建一个项目，并进入项目的：设置 -> CI/CD
+<img src=/image-20200517083210260.png alt=image-20200517083210260.png></p><p>注意图中的 url 和 令牌</p><p>将 runner 注册到 gitlab</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>••• ~ ➜ docker exec -it runner bash  <span style=color:#75715e># 進入runner容器中</span>
 
-root@a6beb3b7c09f:/# gitlab-runner register <span class=c1># 執行註冊命令</span>
-Runtime platform                                    <span class=nv>arch</span><span class=o>=</span>amd64 <span class=nv>os</span><span class=o>=</span>linux <span class=nv>pid</span><span class=o>=</span><span class=m>30</span> <span class=nv>revision</span><span class=o>=</span>ce065b93 <span class=nv>version</span><span class=o>=</span>12.10.1
+root@a6beb3b7c09f:/# gitlab-runner register <span style=color:#75715e># 執行註冊命令</span>
+Runtime platform                                    arch<span style=color:#f92672>=</span>amd64 os<span style=color:#f92672>=</span>linux pid<span style=color:#f92672>=</span><span style=color:#ae81ff>30</span> revision<span style=color:#f92672>=</span>ce065b93 version<span style=color:#f92672>=</span>12.10.1
 Running in system-mode.
 
-Please enter the gitlab-ci coordinator URL <span class=o>(</span>e.g. https://gitlab.com/<span class=o>)</span>:
-http://192.168.199.213:8082/   <span class=c1># 輸入 gitlab 指定的 url</span>
-Please enter the gitlab-ci token <span class=k>for</span> this runner: <span class=c1># gitlab 指定的 token</span>
+Please enter the gitlab-ci coordinator URL <span style=color:#f92672>(</span>e.g. https://gitlab.com/<span style=color:#f92672>)</span>:
+http://192.168.199.213:8082/   <span style=color:#75715e># 輸入 gitlab 指定的 url</span>
+Please enter the gitlab-ci token <span style=color:#66d9ef>for</span> this runner: <span style=color:#75715e># gitlab 指定的 token</span>
 dgmw9QqULR7ofSCEYsXd
-Please enter the gitlab-ci description <span class=k>for</span> this runner:  <span class=c1># runner 描述</span>
-<span class=o>[</span>a6beb3b7c09f<span class=o>]</span>: <span class=nb>test</span> runner
-Please enter the gitlab-ci tags <span class=k>for</span> this runner <span class=o>(</span>comma separated<span class=o>)</span>: <span class=c1># 對 runner 打個 tag，只有任務的 tag 和 runner 的 tag 一致时，runner 才会运行相应的任务</span>
+Please enter the gitlab-ci description <span style=color:#66d9ef>for</span> this runner:  <span style=color:#75715e># runner 描述</span>
+<span style=color:#f92672>[</span>a6beb3b7c09f<span style=color:#f92672>]</span>: test runner
+Please enter the gitlab-ci tags <span style=color:#66d9ef>for</span> this runner <span style=color:#f92672>(</span>comma separated<span style=color:#f92672>)</span>: <span style=color:#75715e># 對 runner 打個 tag，只有任務的 tag 和 runner 的 tag 一致时，runner 才会运行相应的任务</span>
 test_build
-Registering runner... succeeded                     <span class=nv>runner</span><span class=o>=</span>dgmw9QqU
-Please enter the executor: custom, docker, parallels, ssh, docker-ssh+machine, docker-ssh, shell, virtualbox, docker+machine, kubernetes: <span class=c1># 选择任务运行的方式</span>
-<span class=o>[</span>docekr<span class=o>]</span>: docker  <span class=c1># 以 docker 运行任务</span>
-Please enter the default Docker image <span class=o>(</span>e.g. ruby:2.6<span class=o>)</span>: <span class=c1># 选择 docker 运行的基础镜像</span>
-ubuntu:latest <span class=c1># ubuntu 默认镜像</span>
-Runner registered successfully. Feel free to start it, but <span class=k>if</span> it<span class=err>&#39;</span>s running already the config should be automatically reloaded!
-</code></pre></td></tr></table></div></div><p><img src=/image-20200517084320669.png alt=image-20200517084320669></p><p>可以看到已经有一个有效可用的runner了</p><p>对仓库提交文件后，可以看到已经有作业在运行了，查看作业详情发现在 clone 仓库的时候失败了</p><p><img src=/image-20200517090552142.png alt=image-20200517090552142></p><p>修改 gitlab-runner 的 config 文件</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
-</span><span class=lnt> 2
-</span><span class=lnt> 3
-</span><span class=lnt> 4
-</span><span class=lnt> 5
-</span><span class=lnt> 6
-</span><span class=lnt> 7
-</span><span class=lnt> 8
-</span><span class=lnt> 9
-</span><span class=lnt>10
-</span><span class=lnt>11
-</span><span class=lnt>12
-</span><span class=lnt>13
-</span><span class=lnt>14
-</span><span class=lnt>15
-</span><span class=lnt>16
-</span><span class=lnt>17
-</span><span class=lnt>18
-</span><span class=lnt>19
-</span><span class=lnt>20
-</span><span class=lnt>21
-</span><span class=lnt>22
-</span><span class=lnt>23
-</span><span class=lnt>24
-</span><span class=lnt>25
-</span><span class=lnt>26
-</span><span class=lnt>27
-</span><span class=lnt>28
-</span><span class=lnt>29
-</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>root@a6beb3b7c09f:/# cat /etc/gitlab-runner/config.toml
-<span class=nv>concurrent</span> <span class=o>=</span> <span class=m>1</span>
-<span class=nv>check_interval</span> <span class=o>=</span> <span class=m>0</span>
+Registering runner... succeeded                     runner<span style=color:#f92672>=</span>dgmw9QqU
+Please enter the executor: custom, docker, parallels, ssh, docker-ssh+machine, docker-ssh, shell, virtualbox, docker+machine, kubernetes: <span style=color:#75715e># 选择任务运行的方式</span>
+<span style=color:#f92672>[</span>docekr<span style=color:#f92672>]</span>: docker  <span style=color:#75715e># 以 docker 运行任务</span>
+Please enter the default Docker image <span style=color:#f92672>(</span>e.g. ruby:2.6<span style=color:#f92672>)</span>: <span style=color:#75715e># 选择 docker 运行的基础镜像</span>
+ubuntu:latest <span style=color:#75715e># ubuntu 默认镜像</span>
+Runner registered successfully. Feel free to start it, but <span style=color:#66d9ef>if</span> it<span style=color:#960050;background-color:#1e0010>&#39;</span>s running already the config should be automatically reloaded!
+</code></pre></div><p><img src=/image-20200517084320669.png alt=image-20200517084320669></p><p>可以看到已经有一个有效可用的runner了</p><p>对仓库提交文件后，可以看到已经有作业在运行了，查看作业详情发现在 clone 仓库的时候失败了</p><p><img src=/image-20200517090552142.png alt=image-20200517090552142></p><p>修改 gitlab-runner 的 config 文件</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>root@a6beb3b7c09f:/# cat /etc/gitlab-runner/config.toml
+concurrent <span style=color:#f92672>=</span> <span style=color:#ae81ff>1</span>
+check_interval <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>
 
-<span class=o>[</span>session_server<span class=o>]</span>
-  <span class=nv>session_timeout</span> <span class=o>=</span> <span class=m>1800</span>
+<span style=color:#f92672>[</span>session_server<span style=color:#f92672>]</span>
+  session_timeout <span style=color:#f92672>=</span> <span style=color:#ae81ff>1800</span>
 
-<span class=o>[[</span>runners<span class=o>]]</span>
-  <span class=nv>name</span> <span class=o>=</span> <span class=s2>&#34;test runner&#34;</span>
-  <span class=nv>url</span> <span class=o>=</span> <span class=s2>&#34;http://192.168.199.213:8082/&#34;</span>
-  <span class=nv>clone_url</span> <span class=o>=</span> <span class=s2>&#34;http://192.168.199.213:8082/&#34;</span>  <span class=c1># 设置 clone 的url</span>
-  <span class=nv>token</span> <span class=o>=</span> <span class=s2>&#34;6af0a4f06c38ee1e6bdc9c351c35b5&#34;</span>
-  <span class=nv>executor</span> <span class=o>=</span> <span class=s2>&#34;docker&#34;</span>
-  <span class=o>[</span>runners.custom_build_dir<span class=o>]</span>
-  <span class=o>[</span>runners.cache<span class=o>]</span>
-    <span class=o>[</span>runners.cache.s3<span class=o>]</span>
-    <span class=o>[</span>runners.cache.gcs<span class=o>]</span>
-  <span class=o>[</span>runners.docker<span class=o>]</span>
-    <span class=nv>tls_verify</span> <span class=o>=</span> <span class=nb>false</span>
-    <span class=nv>image</span> <span class=o>=</span> <span class=s2>&#34;ubuntu:latest&#34;</span>
-    <span class=nv>privileged</span> <span class=o>=</span> <span class=nb>false</span>
-    <span class=nv>disable_entrypoint_overwrite</span> <span class=o>=</span> <span class=nb>false</span>
-    <span class=nv>oom_kill_disable</span> <span class=o>=</span> <span class=nb>false</span>
-    <span class=nv>disable_cache</span> <span class=o>=</span> <span class=nb>false</span>
-    <span class=nv>volumes</span> <span class=o>=</span> <span class=o>[</span><span class=s2>&#34;/cache&#34;</span><span class=o>]</span>
-    <span class=nv>shm_size</span> <span class=o>=</span> <span class=m>0</span>
+<span style=color:#f92672>[[</span>runners<span style=color:#f92672>]]</span>
+  name <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;test runner&#34;</span>
+  url <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;http://192.168.199.213:8082/&#34;</span>
+  clone_url <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;http://192.168.199.213:8082/&#34;</span>  <span style=color:#75715e># 设置 clone 的url</span>
+  token <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;6af0a4f06c38ee1e6bdc9c351c35b5&#34;</span>
+  executor <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;docker&#34;</span>
+  <span style=color:#f92672>[</span>runners.custom_build_dir<span style=color:#f92672>]</span>
+  <span style=color:#f92672>[</span>runners.cache<span style=color:#f92672>]</span>
+    <span style=color:#f92672>[</span>runners.cache.s3<span style=color:#f92672>]</span>
+    <span style=color:#f92672>[</span>runners.cache.gcs<span style=color:#f92672>]</span>
+  <span style=color:#f92672>[</span>runners.docker<span style=color:#f92672>]</span>
+    tls_verify <span style=color:#f92672>=</span> false
+    image <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;ubuntu:latest&#34;</span>
+    privileged <span style=color:#f92672>=</span> false
+    disable_entrypoint_overwrite <span style=color:#f92672>=</span> false
+    oom_kill_disable <span style=color:#f92672>=</span> false
+    disable_cache <span style=color:#f92672>=</span> false
+    volumes <span style=color:#f92672>=</span> <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;/cache&#34;</span><span style=color:#f92672>]</span>
+    shm_size <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>
     
-root@a6beb3b7c09f:/# gitlab-runner restart  <span class=c1>#重启 gitlab-runner</span>
-Runtime platform                                    <span class=nv>arch</span><span class=o>=</span>amd64 <span class=nv>os</span><span class=o>=</span>linux <span class=nv>pid</span><span class=o>=</span><span class=m>59</span> <span class=nv>revision</span><span class=o>=</span>ce065b93 <span class=nv>version</span><span class=o>=</span>12.10.1
-</code></pre></td></tr></table></div></div><p>重新运行作业</p><p><img src=/image-20200517091233024.png alt=image-20200517091233024></p></div><footer class=post-footer><nav class=post-nav><a class=prev href=/post/clang-tidy/><i class=iconfont><svg class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="18" height="18"><path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417l277.93508-310.326815c11.338233-12.190647 11.035334-32.285311-.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"/></svg></i><span class="prev-text nav-default">Clang Tidy</span>
+root@a6beb3b7c09f:/# gitlab-runner restart  <span style=color:#75715e>#重启 gitlab-runner</span>
+Runtime platform                                    arch<span style=color:#f92672>=</span>amd64 os<span style=color:#f92672>=</span>linux pid<span style=color:#f92672>=</span><span style=color:#ae81ff>59</span> revision<span style=color:#f92672>=</span>ce065b93 version<span style=color:#f92672>=</span>12.10.1
+</code></pre></div><p>重新运行作业</p><p><img src=/image-20200517091233024.png alt=image-20200517091233024></p></div><footer class=post-footer><nav class=post-nav><a class=prev href=/post/clang-tidy/><i class=iconfont><svg class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="18" height="18"><path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417l277.93508-310.326815c11.338233-12.190647 11.035334-32.285311-.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"/></svg></i><span class="prev-text nav-default">Clang Tidy</span>
 <span class="prev-text nav-mobile">Prev</span></a>
 <a class=next href=/post/typelist/><span class="next-text nav-default">Typelist</span>
 <span class="prev-text nav-mobile">Next</span>
@@ -122,5 +65,5 @@ Runtime platform                                    <span class=nv>arch</span><s
 <span class=theme-info>Theme - <a class=theme-link href=https://github.com/xianmin/hugo-theme-jane>Jane</a></span>
 <span class=copyright-year>&copy;
 2019 -
-2020
+2021
 <span class=heart><i class=iconfont><svg class="icon" viewBox="0 0 1025 1024" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14"><path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7.0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1.0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2.0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3.1-42.5-8-83.6-24-122.2z" fill="#8a8a8a"/></svg></i></span><span class=author>ooknn</span></span></div></footer><div class=back-to-top id=back-to-top><i class=iconfont><svg class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="35" height="35"><path d="M510.866688 227.694839 95.449397 629.218702h235.761562L329.15309 958.01517h362.40389L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777h894.052392v131.813095H63.840492V63.962777zm0 0"/></svg></i></div></div><script type=text/javascript src=/lib/jquery/jquery-3.2.1.min.js></script><script type=text/javascript src=/lib/slideout/slideout-1.0.1.min.js></script><script type=text/javascript src=/js/main.638251f4230630f0335d8c6748e53a96f94b72670920b60c09a56fdc8bece214.js integrity="sha256-Y4JR9CMGMPAzXYxnSOU6lvlLcmcJILYMCaVv3Ivs4hQ=" crossorigin=anonymous></script></body></html>

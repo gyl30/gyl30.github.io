@@ -1,204 +1,104 @@
-<!doctype html><html lang=en itemscope itemtype=http://schema.org/WebPage><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><title>Scoped - ooknn</title><meta name=renderer content="webkit"><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><meta name=MobileOptimized content="width"><meta name=HandheldFriendly content="true"><meta name=applicable-device content="pc,mobile"><meta name=theme-color content="#f8f5ec"><meta name=msapplication-navbutton-color content="#f8f5ec"><meta name=apple-mobile-web-app-capable content="yes"><meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec"><meta name=mobile-web-app-capable content="yes"><meta name=author content="ooknn"><meta name=description content><meta name=generator content="Hugo 0.68.3"><link rel=canonical href=https://ooknn.github.io/post/scoped/><link rel=icon href=/favicon.ico><link rel=stylesheet href=/sass/jane.min.fa3d941d1d0e0ddc985804227feabffea55c89883eb0af34e0532a7ae9135151.css integrity="sha256-+j2UHR0ODdyYWAQif+q//qVciYg+sK804FMqeukTUVE=" media=screen crossorigin=anonymous><meta property="og:title" content="Scoped"><meta property="og:description" content><meta property="og:type" content="article"><meta property="og:url" content="https://ooknn.github.io/post/scoped/"><meta property="article:published_time" content="2020-04-06T20:12:56+08:00"><meta property="article:modified_time" content="2020-04-06T20:12:56+08:00"><meta itemprop=name content="Scoped"><meta itemprop=description content><meta itemprop=datePublished content="2020-04-06T20:12:56+08:00"><meta itemprop=dateModified content="2020-04-06T20:12:56+08:00"><meta itemprop=wordCount content="451"><meta itemprop=keywords content><meta name=twitter:card content="summary"><meta name=twitter:title content="Scoped"><meta name=twitter:description content><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script><script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]--></head><body><div id=mobile-navbar class=mobile-navbar><div class=mobile-header-logo><a href=/ class=logo>ooknn</a></div><div class=mobile-navbar-icon><span></span><span></span><span></span></div></div><nav id=mobile-menu class="mobile-menu slideout-menu"><ul class=mobile-menu-list><li class=mobile-menu-item><a class=menu-item-link href=https://ooknn.github.io/>首页</a></li><li class=mobile-menu-item><a class=menu-item-link href=https://ooknn.github.io/categories/>分类</a></li><li class=mobile-menu-item><a class=menu-item-link href=https://ooknn.github.io/about/>我</a></li></ul></nav><header id=header class="header container"><div class=logo-wrapper><a href=/ class=logo>ooknn</a></div><nav class=site-navbar><ul id=menu class=menu><li class=menu-item><a class=menu-item-link href=https://ooknn.github.io/>首页</a></li><li class=menu-item><a class=menu-item-link href=https://ooknn.github.io/categories/>分类</a></li><li class=menu-item><a class=menu-item-link href=https://ooknn.github.io/about/>我</a></li></ul></nav></header><div id=mobile-panel><main id=main class="main bg-llight"><div class=content-wrapper><div id=content class="content container"><article class="post bg-white"><header class=post-header><h1 class=post-title>Scoped</h1><div class=post-meta><time datetime=2020-04-06 class=post-time>2020-04-06</time></div></header><div class=post-content><p>一段有趣的代码</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
-</span><span class=lnt> 2
-</span><span class=lnt> 3
-</span><span class=lnt> 4
-</span><span class=lnt> 5
-</span><span class=lnt> 6
-</span><span class=lnt> 7
-</span><span class=lnt> 8
-</span><span class=lnt> 9
-</span><span class=lnt>10
-</span><span class=lnt>11
-</span><span class=lnt>12
-</span><span class=lnt>13
-</span><span class=lnt>14
-</span><span class=lnt>15
-</span><span class=lnt>16
-</span><span class=lnt>17
-</span><span class=lnt>18
-</span><span class=lnt>19
-</span><span class=lnt>20
-</span><span class=lnt>21
-</span><span class=lnt>22
-</span><span class=lnt>23
-</span><span class=lnt>24
-</span><span class=lnt>25
-</span><span class=lnt>26
-</span><span class=lnt>27
-</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-c++ data-lang=c++><span class=kt>int</span> <span class=nf>run</span><span class=p>()</span>
-<span class=p>{</span>
-    <span class=k>auto</span> <span class=n>connection</span> <span class=o>=</span> <span class=n>socket</span><span class=p>.</span><span class=n>accept</span><span class=p>();</span>
-    <span class=n>std</span><span class=o>::</span><span class=n>string</span> <span class=n>header</span> <span class=o>=</span> <span class=n>connection</span><span class=p>.</span><span class=n>read_header</span><span class=p>();</span>
-    <span class=k>if</span> <span class=p>(</span><span class=n>header</span><span class=p>.</span><span class=n>empty</span><span class=p>())</span>
-    <span class=p>{</span>
-        <span class=n>connection</span><span class=p>.</span><span class=n>close</span><span class=p>();</span>
-        <span class=k>return</span> <span class=n>INVALID_CONNECTION</span><span class=p>;</span>
-    <span class=p>}</span>
+<!doctype html><html lang=en itemscope itemtype=http://schema.org/WebPage><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><title>Scoped - ooknn</title><meta name=renderer content="webkit"><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><meta name=MobileOptimized content="width"><meta name=HandheldFriendly content="true"><meta name=applicable-device content="pc,mobile"><meta name=theme-color content="#f8f5ec"><meta name=msapplication-navbutton-color content="#f8f5ec"><meta name=apple-mobile-web-app-capable content="yes"><meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec"><meta name=mobile-web-app-capable content="yes"><meta name=author content="ooknn"><meta name=description content><meta name=generator content="Hugo 0.68.3"><link rel=canonical href=https://ooknn.github.io/post/scoped/><link rel=icon href=/favicon.ico><link rel=stylesheet href=/sass/jane.min.fa3d941d1d0e0ddc985804227feabffea55c89883eb0af34e0532a7ae9135151.css integrity="sha256-+j2UHR0ODdyYWAQif+q//qVciYg+sK804FMqeukTUVE=" media=screen crossorigin=anonymous><meta property="og:title" content="Scoped"><meta property="og:description" content><meta property="og:type" content="article"><meta property="og:url" content="https://ooknn.github.io/post/scoped/"><meta property="article:published_time" content="2020-04-06T20:12:56+08:00"><meta property="article:modified_time" content="2020-04-06T20:12:56+08:00"><meta itemprop=name content="Scoped"><meta itemprop=description content><meta itemprop=datePublished content="2020-04-06T20:12:56+08:00"><meta itemprop=dateModified content="2020-04-06T20:12:56+08:00"><meta itemprop=wordCount content="351"><meta itemprop=keywords content><meta name=twitter:card content="summary"><meta name=twitter:title content="Scoped"><meta name=twitter:description content><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script><script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]--></head><body><div id=mobile-navbar class=mobile-navbar><div class=mobile-header-logo><a href=/ class=logo>ooknn</a></div><div class=mobile-navbar-icon><span></span><span></span><span></span></div></div><nav id=mobile-menu class="mobile-menu slideout-menu"><ul class=mobile-menu-list><li class=mobile-menu-item><a class=menu-item-link href=https://ooknn.github.io/>首页</a></li><li class=mobile-menu-item><a class=menu-item-link href=https://ooknn.github.io/categories/>分类</a></li><li class=mobile-menu-item><a class=menu-item-link href=https://ooknn.github.io/about/>我</a></li></ul></nav><header id=header class="header container"><div class=logo-wrapper><a href=/ class=logo>ooknn</a></div><nav class=site-navbar><ul id=menu class=menu><li class=menu-item><a class=menu-item-link href=https://ooknn.github.io/>首页</a></li><li class=menu-item><a class=menu-item-link href=https://ooknn.github.io/categories/>分类</a></li><li class=menu-item><a class=menu-item-link href=https://ooknn.github.io/about/>我</a></li></ul></nav></header><div id=mobile-panel><main id=main class="main bg-llight"><div class=content-wrapper><div id=content class="content container"><article class="post bg-white"><header class=post-header><h1 class=post-title>Scoped</h1><div class=post-meta><time datetime=2020-04-06 class=post-time>2020-04-06</time></div></header><div class=post-content><p>一段有趣的代码</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c++ data-lang=c++><span style=color:#66d9ef>int</span> <span style=color:#a6e22e>run</span>()
+{
+    <span style=color:#66d9ef>auto</span> connection <span style=color:#f92672>=</span> socket.accept();
+    std<span style=color:#f92672>::</span>string header <span style=color:#f92672>=</span> connection.read_header();
+    <span style=color:#66d9ef>if</span> (header.empty())
+    {
+        connection.close();
+        <span style=color:#66d9ef>return</span> INVALID_CONNECTION;
+    }
 
-    <span class=n>std</span><span class=o>::</span><span class=n>string</span> <span class=n>body</span> <span class=o>=</span> <span class=n>connection</span><span class=p>.</span><span class=n>read_body</span><span class=p>();</span>
-    <span class=k>if</span> <span class=p>(</span><span class=n>body</span><span class=p>.</span><span class=n>empty</span><span class=p>())</span>
-    <span class=p>{</span>
-        <span class=n>connection</span><span class=p>.</span><span class=n>close</span><span class=p>();</span>
-        <span class=k>return</span> <span class=n>INVALID_CONNECTION</span><span class=p>;</span>
-    <span class=p>}</span>
-    <span class=n>std</span><span class=o>::</span><span class=n>string</span> <span class=n>response</span> <span class=o>=</span> <span class=n>process_request</span><span class=p>(</span><span class=n>header</span><span class=p>,</span> <span class=n>body</span><span class=p>);</span>
-    <span class=k>if</span> <span class=p>(</span><span class=n>response</span><span class=p>.</span><span class=n>empty</span><span class=p>())</span>
-    <span class=p>{</span>
-        <span class=n>connection</span><span class=p>.</span><span class=n>close</span><span class=p>();</span>
-        <span class=k>return</span> <span class=n>INVALID_CONNECTION</span><span class=p>;</span>
-    <span class=p>}</span>
-    <span class=n>connection</span><span class=p>.</span><span class=n>send</span><span class=p>(</span><span class=n>response</span><span class=p>);</span>
-    <span class=n>connection_list</span><span class=p>.</span><span class=n>push_back</span><span class=p>(</span><span class=n>connection</span><span class=p>);</span>
-    <span class=k>return</span> <span class=n>OK</span><span class=p>;</span>
-<span class=p>}</span>
+    std<span style=color:#f92672>::</span>string body <span style=color:#f92672>=</span> connection.read_body();
+    <span style=color:#66d9ef>if</span> (body.empty())
+    {
+        connection.close();
+        <span style=color:#66d9ef>return</span> INVALID_CONNECTION;
+    }
+    std<span style=color:#f92672>::</span>string response <span style=color:#f92672>=</span> process_request(header, body);
+    <span style=color:#66d9ef>if</span> (response.empty())
+    {
+        connection.close();
+        <span style=color:#66d9ef>return</span> INVALID_CONNECTION;
+    }
+    connection.send(response);
+    connection_list.push_back(connection);
+    <span style=color:#66d9ef>return</span> OK;
+}
 
-</code></pre></td></tr></table></div></div><p>上面的代码每个判断中都需要调用 connection 的 close 方法</p><p>利用 RAII 实现一个简单的 scoped_exit</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
-</span><span class=lnt> 2
-</span><span class=lnt> 3
-</span><span class=lnt> 4
-</span><span class=lnt> 5
-</span><span class=lnt> 6
-</span><span class=lnt> 7
-</span><span class=lnt> 8
-</span><span class=lnt> 9
-</span><span class=lnt>10
-</span><span class=lnt>11
-</span><span class=lnt>12
-</span><span class=lnt>13
-</span><span class=lnt>14
-</span><span class=lnt>15
-</span><span class=lnt>16
-</span><span class=lnt>17
-</span><span class=lnt>18
-</span><span class=lnt>19
-</span><span class=lnt>20
-</span><span class=lnt>21
-</span><span class=lnt>22
-</span><span class=lnt>23
-</span><span class=lnt>24
-</span><span class=lnt>25
-</span><span class=lnt>26
-</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-c++ data-lang=c++><span class=kt>int</span> <span class=nf>run</span><span class=p>()</span>
-<span class=p>{</span>
-    <span class=k>auto</span> <span class=n>connection</span> <span class=o>=</span> <span class=n>socket</span><span class=p>.</span><span class=n>accept</span><span class=p>();</span>
-    <span class=k>auto</span> <span class=n>clean_up</span> <span class=o>=</span> <span class=n>make_scoped_exit</span><span class=p>([</span><span class=n>conn</span><span class=o>=</span><span class=n>connection</span><span class=p>;](){</span><span class=n>conn</span><span class=p>.</span><span class=n>close</span><span class=p>();});</span>
-    <span class=n>std</span><span class=o>::</span><span class=n>string</span> <span class=n>header</span> <span class=o>=</span> <span class=n>connection</span><span class=p>.</span><span class=n>read_header</span><span class=p>();</span>
-    <span class=k>if</span> <span class=p>(</span><span class=n>header</span><span class=p>.</span><span class=n>empty</span><span class=p>())</span>
-    <span class=p>{</span>
-        <span class=k>return</span> <span class=n>INVALID_CONNECTION</span><span class=p>;</span>
-    <span class=p>}</span>
+</code></pre></div><p>上面的代码每个判断中都需要调用 connection 的 close 方法</p><p>利用 RAII 实现一个简单的 scoped_exit</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c++ data-lang=c++><span style=color:#66d9ef>int</span> <span style=color:#a6e22e>run</span>()
+{
+    <span style=color:#66d9ef>auto</span> connection <span style=color:#f92672>=</span> socket.accept();
+    <span style=color:#66d9ef>auto</span> clean_up <span style=color:#f92672>=</span> make_scoped_exit([conn<span style=color:#f92672>=</span>connection;](){conn.close();});
+    std<span style=color:#f92672>::</span>string header <span style=color:#f92672>=</span> connection.read_header();
+    <span style=color:#66d9ef>if</span> (header.empty())
+    {
+        <span style=color:#66d9ef>return</span> INVALID_CONNECTION;
+    }
 
-    <span class=n>std</span><span class=o>::</span><span class=n>string</span> <span class=n>body</span> <span class=o>=</span> <span class=n>connection</span><span class=p>.</span><span class=n>read_body</span><span class=p>();</span>
-    <span class=k>if</span> <span class=p>(</span><span class=n>body</span><span class=p>.</span><span class=n>empty</span><span class=p>())</span>
-    <span class=p>{</span>
-        <span class=k>return</span> <span class=n>INVALID_CONNECTION</span><span class=p>;</span>
-    <span class=p>}</span>
-    <span class=n>std</span><span class=o>::</span><span class=n>string</span> <span class=n>response</span> <span class=o>=</span> <span class=n>process_request</span><span class=p>(</span><span class=n>header</span><span class=p>,</span> <span class=n>body</span><span class=p>);</span>
-    <span class=k>if</span> <span class=p>(</span><span class=n>response</span><span class=p>.</span><span class=n>empty</span><span class=p>())</span>
-    <span class=p>{</span>
-        <span class=k>return</span> <span class=n>INVALID_REQUEST</span><span class=p>;</span>
-    <span class=p>}</span>
-    <span class=n>connection</span><span class=p>.</span><span class=n>send</span><span class=p>(</span><span class=n>response</span><span class=p>);</span>
-    <span class=n>connection_list</span><span class=p>.</span><span class=n>push_back</span><span class=p>(</span><span class=n>connection</span><span class=p>);</span>
-    <span class=n>clean_up</span><span class=p>.</span><span class=n>cancel</span><span class=p>();</span> <span class=c1>// cancel
-</span><span class=c1></span>    <span class=k>return</span> <span class=n>OK</span><span class=p>;</span>
-<span class=p>}</span>
+    std<span style=color:#f92672>::</span>string body <span style=color:#f92672>=</span> connection.read_body();
+    <span style=color:#66d9ef>if</span> (body.empty())
+    {
+        <span style=color:#66d9ef>return</span> INVALID_CONNECTION;
+    }
+    std<span style=color:#f92672>::</span>string response <span style=color:#f92672>=</span> process_request(header, body);
+    <span style=color:#66d9ef>if</span> (response.empty())
+    {
+        <span style=color:#66d9ef>return</span> INVALID_REQUEST;
+    }
+    connection.send(response);
+    connection_list.push_back(connection);
+    clean_up.cancel(); <span style=color:#75715e>// cancel
+</span><span style=color:#75715e></span>    <span style=color:#66d9ef>return</span> OK;
+}
 
-</code></pre></td></tr></table></div></div><p>通过 make_scoped_exit 注册一个清理函数，clean_up 是一个栈对象，超出作用域后会被自动析构，在析构的时候会调用注册的清理函数。所以下面的错误处理的代码直接 return 即可。正常情况通过 cancel 取消注册的清理函数。</p><p>scoped_exit 的实现也很简单</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
-</span><span class=lnt> 2
-</span><span class=lnt> 3
-</span><span class=lnt> 4
-</span><span class=lnt> 5
-</span><span class=lnt> 6
-</span><span class=lnt> 7
-</span><span class=lnt> 8
-</span><span class=lnt> 9
-</span><span class=lnt>10
-</span><span class=lnt>11
-</span><span class=lnt>12
-</span><span class=lnt>13
-</span><span class=lnt>14
-</span><span class=lnt>15
-</span><span class=lnt>16
-</span><span class=lnt>17
-</span><span class=lnt>18
-</span><span class=lnt>19
-</span><span class=lnt>20
-</span><span class=lnt>21
-</span><span class=lnt>22
-</span><span class=lnt>23
-</span><span class=lnt>24
-</span><span class=lnt>25
-</span><span class=lnt>26
-</span><span class=lnt>27
-</span><span class=lnt>28
-</span><span class=lnt>29
-</span><span class=lnt>30
-</span><span class=lnt>31
-</span><span class=lnt>32
-</span><span class=lnt>33
-</span><span class=lnt>34
-</span><span class=lnt>35
-</span><span class=lnt>36
-</span><span class=lnt>37
-</span><span class=lnt>38
-</span><span class=lnt>39
-</span><span class=lnt>40
-</span><span class=lnt>41
-</span><span class=lnt>42
-</span><span class=lnt>43
-</span><span class=lnt>44
-</span><span class=lnt>45
-</span><span class=lnt>46
-</span><span class=lnt>47
-</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-c++ data-lang=c++><span class=k>template</span><span class=o>&lt;</span><span class=k>typename</span> <span class=n>Callback</span><span class=o>&gt;</span>
-<span class=k>class</span> <span class=nc>scoped_exit</span> <span class=p>{</span>
-    <span class=k>public</span><span class=o>:</span>
-    <span class=k>template</span><span class=o>&lt;</span><span class=k>typename</span> <span class=n>C</span><span class=o>&gt;</span>
-    <span class=n>scoped_exit</span><span class=p>(</span> <span class=n>C</span><span class=o>&amp;&amp;</span> <span class=n>c</span> <span class=p>)</span><span class=o>:</span><span class=n>callback</span><span class=p>(</span> <span class=n>std</span><span class=o>::</span><span class=n>forward</span><span class=o>&lt;</span><span class=n>C</span><span class=o>&gt;</span><span class=p>(</span><span class=n>c</span><span class=p>)</span> <span class=p>){}</span>
+</code></pre></div><p>通过 make_scoped_exit 注册一个清理函数，clean_up 是一个栈对象，超出作用域后会被自动析构，在析构的时候会调用注册的清理函数。所以下面的错误处理的代码直接 return 即可。正常情况通过 cancel 取消注册的清理函数。</p><p>scoped_exit 的实现也很简单</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c++ data-lang=c++><span style=color:#66d9ef>template</span><span style=color:#f92672>&lt;</span><span style=color:#66d9ef>typename</span> Callback<span style=color:#f92672>&gt;</span>
+<span style=color:#66d9ef>class</span> <span style=color:#a6e22e>scoped_exit</span> {
+    <span style=color:#66d9ef>public</span><span style=color:#f92672>:</span>
+    <span style=color:#66d9ef>template</span><span style=color:#f92672>&lt;</span><span style=color:#66d9ef>typename</span> C<span style=color:#f92672>&gt;</span>
+    scoped_exit( C<span style=color:#f92672>&amp;&amp;</span> c )<span style=color:#f92672>:</span>callback( std<span style=color:#f92672>::</span>forward<span style=color:#f92672>&lt;</span>C<span style=color:#f92672>&gt;</span>(c) ){}
 
-    <span class=n>scoped_exit</span><span class=p>(</span> <span class=n>scoped_exit</span><span class=o>&amp;&amp;</span> <span class=n>mv</span> <span class=p>)</span>
-        <span class=o>:</span><span class=n>callback</span><span class=p>(</span> <span class=n>std</span><span class=o>::</span><span class=n>move</span><span class=p>(</span> <span class=n>mv</span><span class=p>.</span><span class=n>callback</span> <span class=p>)</span> <span class=p>),</span><span class=n>canceled</span><span class=p>(</span><span class=n>mv</span><span class=p>.</span><span class=n>canceled</span><span class=p>)</span>
-        <span class=p>{</span>
-            <span class=n>mv</span><span class=p>.</span><span class=n>canceled</span> <span class=o>=</span> <span class=nb>true</span><span class=p>;</span>
-        <span class=p>}</span>
+    scoped_exit( scoped_exit<span style=color:#f92672>&amp;&amp;</span> mv )
+        <span style=color:#f92672>:</span>callback( std<span style=color:#f92672>::</span>move( mv.callback ) ),canceled(mv.canceled)
+        {
+            mv.canceled <span style=color:#f92672>=</span> true;
+        }
 
-    <span class=n>scoped_exit</span><span class=p>(</span> <span class=k>const</span> <span class=n>scoped_exit</span><span class=o>&amp;</span> <span class=p>)</span> <span class=o>=</span> <span class=k>delete</span><span class=p>;</span>
-    <span class=n>scoped_exit</span><span class=o>&amp;</span> <span class=k>operator</span><span class=o>=</span><span class=p>(</span> <span class=k>const</span> <span class=n>scoped_exit</span><span class=o>&amp;</span> <span class=p>)</span> <span class=o>=</span> <span class=k>delete</span><span class=p>;</span>
+    scoped_exit( <span style=color:#66d9ef>const</span> scoped_exit<span style=color:#f92672>&amp;</span> ) <span style=color:#f92672>=</span> <span style=color:#66d9ef>delete</span>;
+    scoped_exit<span style=color:#f92672>&amp;</span> <span style=color:#66d9ef>operator</span><span style=color:#f92672>=</span>( <span style=color:#66d9ef>const</span> scoped_exit<span style=color:#f92672>&amp;</span> ) <span style=color:#f92672>=</span> <span style=color:#66d9ef>delete</span>;
 
-    <span class=o>~</span><span class=n>scoped_exit</span><span class=p>()</span>
-    <span class=p>{</span>
-        <span class=k>if</span> <span class=p>(</span><span class=o>!</span><span class=n>canceled</span><span class=p>)</span>
-            <span class=k>try</span> <span class=p>{</span> <span class=n>callback</span><span class=p>();</span> <span class=p>}</span> <span class=k>catch</span><span class=p>(</span> <span class=p>...</span> <span class=p>)</span> <span class=p>{}</span>
-    <span class=p>}</span>
+    <span style=color:#f92672>~</span>scoped_exit()
+    {
+        <span style=color:#66d9ef>if</span> (<span style=color:#f92672>!</span>canceled)
+            <span style=color:#66d9ef>try</span> { callback(); } <span style=color:#66d9ef>catch</span>( ... ) {}
+    }
 
-    <span class=n>scoped_exit</span><span class=o>&amp;</span> <span class=k>operator</span> <span class=o>=</span> <span class=p>(</span> <span class=n>scoped_exit</span><span class=o>&amp;&amp;</span> <span class=n>mv</span> <span class=p>)</span>
-    <span class=p>{</span>
-        <span class=k>if</span><span class=p>(</span> <span class=k>this</span> <span class=o>!=</span> <span class=o>&amp;</span><span class=n>mv</span> <span class=p>)</span>
-        <span class=p>{</span>
-            <span class=o>~</span><span class=n>scoped_exit</span><span class=p>();</span>
-            <span class=n>callback</span> <span class=o>=</span> <span class=n>std</span><span class=o>::</span><span class=n>move</span><span class=p>(</span><span class=n>mv</span><span class=p>.</span><span class=n>callback</span><span class=p>);</span>
-            <span class=n>canceled</span> <span class=o>=</span> <span class=n>mv</span><span class=p>.</span><span class=n>canceled</span><span class=p>;</span>
-            <span class=n>mv</span><span class=p>.</span><span class=n>canceled</span> <span class=o>=</span> <span class=nb>true</span><span class=p>;</span>
-        <span class=p>}</span>
-        <span class=k>return</span> <span class=o>*</span><span class=k>this</span><span class=p>;</span>
-    <span class=p>}</span>
+    scoped_exit<span style=color:#f92672>&amp;</span> <span style=color:#66d9ef>operator</span> <span style=color:#f92672>=</span> ( scoped_exit<span style=color:#f92672>&amp;&amp;</span> mv )
+    {
+        <span style=color:#66d9ef>if</span>( <span style=color:#66d9ef>this</span> <span style=color:#f92672>!=</span> <span style=color:#f92672>&amp;</span>mv )
+        {
+            <span style=color:#f92672>~</span>scoped_exit();
+            callback <span style=color:#f92672>=</span> std<span style=color:#f92672>::</span>move(mv.callback);
+            canceled <span style=color:#f92672>=</span> mv.canceled;
+            mv.canceled <span style=color:#f92672>=</span> true;
+        }
+        <span style=color:#66d9ef>return</span> <span style=color:#f92672>*</span><span style=color:#66d9ef>this</span>;
+    }
 
-    <span class=kt>void</span> <span class=nf>cancel</span><span class=p>()</span> <span class=p>{</span> <span class=n>canceled</span> <span class=o>=</span> <span class=nb>true</span><span class=p>;</span> <span class=p>}</span>
+    <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>cancel</span>() { canceled <span style=color:#f92672>=</span> true; }
 
-    <span class=k>private</span><span class=o>:</span>
-    <span class=n>Callback</span> <span class=n>callback</span><span class=p>;</span>
-    <span class=kt>bool</span> <span class=n>canceled</span> <span class=o>=</span> <span class=nb>false</span><span class=p>;</span>
-<span class=p>};</span>
+    <span style=color:#66d9ef>private</span><span style=color:#f92672>:</span>
+    Callback callback;
+    <span style=color:#66d9ef>bool</span> canceled <span style=color:#f92672>=</span> false;
+};
 
-<span class=k>template</span><span class=o>&lt;</span><span class=k>typename</span> <span class=n>Callback</span><span class=o>&gt;</span>
-<span class=n>scoped_exit</span><span class=o>&lt;</span><span class=n>Callback</span><span class=o>&gt;</span> <span class=n>make_scoped_exit</span><span class=p>(</span> <span class=n>Callback</span><span class=o>&amp;&amp;</span> <span class=n>c</span> <span class=p>)</span>
-<span class=p>{</span>
-    <span class=k>return</span> <span class=n>scoped_exit</span><span class=o>&lt;</span><span class=n>Callback</span><span class=o>&gt;</span><span class=p>(</span> <span class=n>std</span><span class=o>::</span><span class=n>forward</span><span class=o>&lt;</span><span class=n>Callback</span><span class=o>&gt;</span><span class=p>(</span><span class=n>c</span><span class=p>)</span> <span class=p>);</span>
-<span class=p>}</span>
+<span style=color:#66d9ef>template</span><span style=color:#f92672>&lt;</span><span style=color:#66d9ef>typename</span> Callback<span style=color:#f92672>&gt;</span>
+scoped_exit<span style=color:#f92672>&lt;</span>Callback<span style=color:#f92672>&gt;</span> make_scoped_exit( Callback<span style=color:#f92672>&amp;&amp;</span> c )
+{
+    <span style=color:#66d9ef>return</span> scoped_exit<span style=color:#f92672>&lt;</span>Callback<span style=color:#f92672>&gt;</span>( std<span style=color:#f92672>::</span>forward<span style=color:#f92672>&lt;</span>Callback<span style=color:#f92672>&gt;</span>(c) );
+}
 
 
-</code></pre></td></tr></table></div></div><h3 id=其他>其他</h3><p><a href=https://zh.cppreference.com/w/cpp/experimental/scope_exit>TS v3</a></p><p><a href=https://theboostcpplibraries.com/boost.scopeexit>boost</a></p><p><a href=https://stackoverflow.com/questions/3669833/c11-scope-exit-guard-a-good-idea>stackoverflow</a></p><p><a href=https://github.com/microsoft/GSL/blob/master/include/gsl/gsl_util>gsl.util</a></p></div><footer class=post-footer><nav class=post-nav><a class=prev href=/post/open_source/><i class=iconfont><svg class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="18" height="18"><path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417l277.93508-310.326815c11.338233-12.190647 11.035334-32.285311-.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"/></svg></i><span class="prev-text nav-default">Open_source</span>
+</code></pre></div><h3 id=其他>其他</h3><p><a href=https://zh.cppreference.com/w/cpp/experimental/scope_exit>TS v3</a></p><p><a href=https://theboostcpplibraries.com/boost.scopeexit>boost</a></p><p><a href=https://stackoverflow.com/questions/3669833/c11-scope-exit-guard-a-good-idea>stackoverflow</a></p><p><a href=https://github.com/microsoft/GSL/blob/master/include/gsl/gsl_util>gsl.util</a></p></div><footer class=post-footer><nav class=post-nav><a class=prev href=/post/open_source/><i class=iconfont><svg class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="18" height="18"><path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417l277.93508-310.326815c11.338233-12.190647 11.035334-32.285311-.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"/></svg></i><span class="prev-text nav-default">Open_source</span>
 <span class="prev-text nav-mobile">Prev</span></a>
 <a class=next href=/post/optional/><span class="next-text nav-default">Optional</span>
 <span class="prev-text nav-mobile">Next</span>
@@ -207,5 +107,5 @@
 <span class=theme-info>Theme - <a class=theme-link href=https://github.com/xianmin/hugo-theme-jane>Jane</a></span>
 <span class=copyright-year>&copy;
 2019 -
-2020
+2021
 <span class=heart><i class=iconfont><svg class="icon" viewBox="0 0 1025 1024" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14"><path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7.0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1.0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2.0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3.1-42.5-8-83.6-24-122.2z" fill="#8a8a8a"/></svg></i></span><span class=author>ooknn</span></span></div></footer><div class=back-to-top id=back-to-top><i class=iconfont><svg class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="35" height="35"><path d="M510.866688 227.694839 95.449397 629.218702h235.761562L329.15309 958.01517h362.40389L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777h894.052392v131.813095H63.840492V63.962777zm0 0"/></svg></i></div></div><script type=text/javascript src=/lib/jquery/jquery-3.2.1.min.js></script><script type=text/javascript src=/lib/slideout/slideout-1.0.1.min.js></script><script type=text/javascript src=/js/main.638251f4230630f0335d8c6748e53a96f94b72670920b60c09a56fdc8bece214.js integrity="sha256-Y4JR9CMGMPAzXYxnSOU6lvlLcmcJILYMCaVv3Ivs4hQ=" crossorigin=anonymous></script></body></html>

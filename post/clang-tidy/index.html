@@ -1,151 +1,78 @@
-<!doctype html><html lang=en itemscope itemtype=http://schema.org/WebPage><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><title>Clang Tidy - ooknn</title><meta name=renderer content="webkit"><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><meta name=MobileOptimized content="width"><meta name=HandheldFriendly content="true"><meta name=applicable-device content="pc,mobile"><meta name=theme-color content="#f8f5ec"><meta name=msapplication-navbutton-color content="#f8f5ec"><meta name=apple-mobile-web-app-capable content="yes"><meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec"><meta name=mobile-web-app-capable content="yes"><meta name=author content="ooknn"><meta name=description content><meta name=generator content="Hugo 0.68.3"><link rel=canonical href=https://ooknn.github.io/post/clang-tidy/><link rel=icon href=/favicon.ico><link rel=stylesheet href=/sass/jane.min.fa3d941d1d0e0ddc985804227feabffea55c89883eb0af34e0532a7ae9135151.css integrity="sha256-+j2UHR0ODdyYWAQif+q//qVciYg+sK804FMqeukTUVE=" media=screen crossorigin=anonymous><meta property="og:title" content="Clang Tidy"><meta property="og:description" content><meta property="og:type" content="article"><meta property="og:url" content="https://ooknn.github.io/post/clang-tidy/"><meta property="article:published_time" content="2020-04-30T15:09:36+08:00"><meta property="article:modified_time" content="2020-04-30T15:09:36+08:00"><meta itemprop=name content="Clang Tidy"><meta itemprop=description content><meta itemprop=datePublished content="2020-04-30T15:09:36+08:00"><meta itemprop=dateModified content="2020-04-30T15:09:36+08:00"><meta itemprop=wordCount content="579"><meta itemprop=keywords content><meta name=twitter:card content="summary"><meta name=twitter:title content="Clang Tidy"><meta name=twitter:description content><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script><script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]--></head><body><div id=mobile-navbar class=mobile-navbar><div class=mobile-header-logo><a href=/ class=logo>ooknn</a></div><div class=mobile-navbar-icon><span></span><span></span><span></span></div></div><nav id=mobile-menu class="mobile-menu slideout-menu"><ul class=mobile-menu-list><li class=mobile-menu-item><a class=menu-item-link href=https://ooknn.github.io/>首页</a></li><li class=mobile-menu-item><a class=menu-item-link href=https://ooknn.github.io/categories/>分类</a></li><li class=mobile-menu-item><a class=menu-item-link href=https://ooknn.github.io/about/>我</a></li></ul></nav><header id=header class="header container"><div class=logo-wrapper><a href=/ class=logo>ooknn</a></div><nav class=site-navbar><ul id=menu class=menu><li class=menu-item><a class=menu-item-link href=https://ooknn.github.io/>首页</a></li><li class=menu-item><a class=menu-item-link href=https://ooknn.github.io/categories/>分类</a></li><li class=menu-item><a class=menu-item-link href=https://ooknn.github.io/about/>我</a></li></ul></nav></header><div id=mobile-panel><main id=main class="main bg-llight"><div class=content-wrapper><div id=content class="content container"><article class="post bg-white"><header class=post-header><h1 class=post-title>Clang Tidy</h1><div class=post-meta><time datetime=2020-04-30 class=post-time>2020-04-30</time></div></header><div class=post-content><h3 id=1-命名风格readability-identifier-naming>1. 命名风格(readability-identifier-naming)</h3><h4 id=clang-tidy>.clang-tidy</h4><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
-</span><span class=lnt>2
-</span><span class=lnt>3
-</span><span class=lnt>4
-</span><span class=lnt>5
-</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash><span class=c1># clang-tidy</span>
-Checks: <span class=s1>&#39;-*,readability-identifier-naming &#39;</span> <span class=c1># 禁用所由检查，并开启命名检查</span>
+<!doctype html><html lang=en itemscope itemtype=http://schema.org/WebPage><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><title>Clang Tidy - ooknn</title><meta name=renderer content="webkit"><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><meta name=MobileOptimized content="width"><meta name=HandheldFriendly content="true"><meta name=applicable-device content="pc,mobile"><meta name=theme-color content="#f8f5ec"><meta name=msapplication-navbutton-color content="#f8f5ec"><meta name=apple-mobile-web-app-capable content="yes"><meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec"><meta name=mobile-web-app-capable content="yes"><meta name=author content="ooknn"><meta name=description content><meta name=generator content="Hugo 0.68.3"><link rel=canonical href=https://ooknn.github.io/post/clang-tidy/><link rel=icon href=/favicon.ico><link rel=stylesheet href=/sass/jane.min.fa3d941d1d0e0ddc985804227feabffea55c89883eb0af34e0532a7ae9135151.css integrity="sha256-+j2UHR0ODdyYWAQif+q//qVciYg+sK804FMqeukTUVE=" media=screen crossorigin=anonymous><meta property="og:title" content="Clang Tidy"><meta property="og:description" content><meta property="og:type" content="article"><meta property="og:url" content="https://ooknn.github.io/post/clang-tidy/"><meta property="article:published_time" content="2020-04-30T15:09:36+08:00"><meta property="article:modified_time" content="2020-04-30T15:09:36+08:00"><meta itemprop=name content="Clang Tidy"><meta itemprop=description content><meta itemprop=datePublished content="2020-04-30T15:09:36+08:00"><meta itemprop=dateModified content="2020-04-30T15:09:36+08:00"><meta itemprop=wordCount content="505"><meta itemprop=keywords content><meta name=twitter:card content="summary"><meta name=twitter:title content="Clang Tidy"><meta name=twitter:description content><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script><script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]--></head><body><div id=mobile-navbar class=mobile-navbar><div class=mobile-header-logo><a href=/ class=logo>ooknn</a></div><div class=mobile-navbar-icon><span></span><span></span><span></span></div></div><nav id=mobile-menu class="mobile-menu slideout-menu"><ul class=mobile-menu-list><li class=mobile-menu-item><a class=menu-item-link href=https://ooknn.github.io/>首页</a></li><li class=mobile-menu-item><a class=menu-item-link href=https://ooknn.github.io/categories/>分类</a></li><li class=mobile-menu-item><a class=menu-item-link href=https://ooknn.github.io/about/>我</a></li></ul></nav><header id=header class="header container"><div class=logo-wrapper><a href=/ class=logo>ooknn</a></div><nav class=site-navbar><ul id=menu class=menu><li class=menu-item><a class=menu-item-link href=https://ooknn.github.io/>首页</a></li><li class=menu-item><a class=menu-item-link href=https://ooknn.github.io/categories/>分类</a></li><li class=menu-item><a class=menu-item-link href=https://ooknn.github.io/about/>我</a></li></ul></nav></header><div id=mobile-panel><main id=main class="main bg-llight"><div class=content-wrapper><div id=content class="content container"><article class="post bg-white"><header class=post-header><h1 class=post-title>Clang Tidy</h1><div class=post-meta><time datetime=2020-04-30 class=post-time>2020-04-30</time></div></header><div class=post-content><h3 id=1-命名风格readability-identifier-naming>1. 命名风格(readability-identifier-naming)</h3><h4 id=clang-tidy>.clang-tidy</h4><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#75715e># clang-tidy</span>
+Checks: <span style=color:#e6db74>&#39;-*,readability-identifier-naming &#39;</span> <span style=color:#75715e># 禁用所由检查，并开启命名检查</span>
 CheckOptions:
-  - key:             readability-identifier-naming.ClassCase <span class=c1># 对 class 命名检查</span>
-    value:           lower_case <span class=c1># 指定命名风格</span>
-</code></pre></td></tr></table></div></div><h4 id=clang-tidy-文件内容格式>.clang-tidy 文件内容格式</h4><p><code>Checks</code> 指定开启检测项，多个选项之间已逗号隔开</p><p><code>CheckOptions</code> 根据需要针对 checks 使用的选项进行具体描述（非必须，省略按默认规则）</p><h4 id=示例代码>示例代码</h4><h5 id=maincc>main.cc</h5><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
-</span><span class=lnt> 2
-</span><span class=lnt> 3
-</span><span class=lnt> 4
-</span><span class=lnt> 5
-</span><span class=lnt> 6
-</span><span class=lnt> 7
-</span><span class=lnt> 8
-</span><span class=lnt> 9
-</span><span class=lnt>10
-</span><span class=lnt>11
-</span><span class=lnt>12
-</span><span class=lnt>13
-</span><span class=lnt>14
-</span><span class=lnt>15
-</span><span class=lnt>16
-</span><span class=lnt>17
-</span><span class=lnt>18
-</span><span class=lnt>19
-</span><span class=lnt>20
-</span><span class=lnt>21
-</span><span class=lnt>22
-</span><span class=lnt>23
-</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-c++ data-lang=c++><span class=c1>// main.cc 
-</span><span class=c1></span><span class=cp>#include</span> <span class=cpf>&lt;algorithm&gt;</span><span class=cp>
-</span><span class=cp>#include</span> <span class=cpf>&lt;iostream&gt;</span><span class=cp>
-</span><span class=cp>#include</span> <span class=cpf>&lt;string&gt;</span><span class=cp>
-</span><span class=cp>#include</span> <span class=cpf>&lt;vector&gt;</span><span class=cp>
-</span><span class=cp></span>
-<span class=k>class</span> <span class=nc>PipeLine</span> <span class=p>{</span>
- <span class=k>public</span><span class=o>:</span>
-  <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=n>std</span><span class=o>::</span><span class=n>string</span><span class=o>&gt;</span> <span class=n>cmds</span><span class=p>;</span>
-<span class=p>};</span>
+  - key:             readability-identifier-naming.ClassCase <span style=color:#75715e># 对 class 命名检查</span>
+    value:           lower_case <span style=color:#75715e># 指定命名风格</span>
+</code></pre></div><h4 id=clang-tidy-文件内容格式>.clang-tidy 文件内容格式</h4><p><code>Checks</code> 指定开启检测项，多个选项之间已逗号隔开</p><p><code>CheckOptions</code> 根据需要针对 checks 使用的选项进行具体描述（非必须，省略按默认规则）</p><h4 id=示例代码>示例代码</h4><h5 id=maincc>main.cc</h5><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c++ data-lang=c++><span style=color:#75715e>// main.cc 
+</span><span style=color:#75715e></span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;algorithm&gt;</span><span style=color:#75715e>
+</span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;iostream&gt;</span><span style=color:#75715e>
+</span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;string&gt;</span><span style=color:#75715e>
+</span><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;vector&gt;</span><span style=color:#75715e>
+</span><span style=color:#75715e></span>
+<span style=color:#66d9ef>class</span> <span style=color:#a6e22e>PipeLine</span> {
+ <span style=color:#66d9ef>public</span><span style=color:#f92672>:</span>
+  std<span style=color:#f92672>::</span>vector<span style=color:#f92672>&lt;</span>std<span style=color:#f92672>::</span>string<span style=color:#f92672>&gt;</span> cmds;
+};
 
-<span class=kt>int</span> <span class=nf>main</span><span class=p>(</span><span class=kt>int</span> <span class=n>argc</span><span class=p>,</span> <span class=kt>char</span> <span class=o>*</span><span class=n>argv</span><span class=p>[])</span> <span class=p>{</span>
-  <span class=p>(</span><span class=kt>void</span><span class=p>)</span><span class=n>argc</span><span class=p>;</span>
-  <span class=p>(</span><span class=kt>void</span><span class=p>)</span><span class=n>argv</span><span class=p>;</span>
-  <span class=n>PipeLine</span> <span class=n>pl</span><span class=p>;</span>
-  <span class=n>pl</span><span class=p>.</span><span class=n>cmds</span><span class=p>.</span><span class=n>push_back</span><span class=p>(</span><span class=s>&#34;ls&#34;</span><span class=p>);</span>
-  <span class=n>pl</span><span class=p>.</span><span class=n>cmds</span><span class=p>.</span><span class=n>push_back</span><span class=p>(</span><span class=s>&#34;grep&#34;</span><span class=p>);</span>
-  <span class=n>pl</span><span class=p>.</span><span class=n>cmds</span><span class=p>.</span><span class=n>push_back</span><span class=p>(</span><span class=s>&#34;*.cc&#34;</span><span class=p>);</span>
-  <span class=n>std</span><span class=o>::</span><span class=n>for_each</span><span class=p>(</span><span class=n>pl</span><span class=p>.</span><span class=n>cmds</span><span class=p>.</span><span class=n>begin</span><span class=p>(),</span> <span class=n>pl</span><span class=p>.</span><span class=n>cmds</span><span class=p>.</span><span class=n>end</span><span class=p>(),</span>
-                <span class=p>[](</span><span class=k>const</span> <span class=k>auto</span> <span class=o>&amp;</span><span class=n>item</span><span class=p>)</span> <span class=p>{</span> <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>item</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span> <span class=p>});</span>
-  <span class=k>return</span> <span class=mi>0</span><span class=p>;</span>
-<span class=p>}</span>
+<span style=color:#66d9ef>int</span> <span style=color:#a6e22e>main</span>(<span style=color:#66d9ef>int</span> argc, <span style=color:#66d9ef>char</span> <span style=color:#f92672>*</span>argv[]) {
+  (<span style=color:#66d9ef>void</span>)argc;
+  (<span style=color:#66d9ef>void</span>)argv;
+  PipeLine pl;
+  pl.cmds.push_back(<span style=color:#e6db74>&#34;ls&#34;</span>);
+  pl.cmds.push_back(<span style=color:#e6db74>&#34;grep&#34;</span>);
+  pl.cmds.push_back(<span style=color:#e6db74>&#34;*.cc&#34;</span>);
+  std<span style=color:#f92672>::</span>for_each(pl.cmds.begin(), pl.cmds.end(),
+                [](<span style=color:#66d9ef>const</span> <span style=color:#66d9ef>auto</span> <span style=color:#f92672>&amp;</span>item) { std<span style=color:#f92672>::</span>cout <span style=color:#f92672>&lt;&lt;</span> item <span style=color:#f92672>&lt;&lt;</span> std<span style=color:#f92672>::</span>endl; });
+  <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>0</span>;
+}
 
-</code></pre></td></tr></table></div></div><h5 id=cmakeliststxt>CMakeLists.txt</h5><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
-</span><span class=lnt> 2
-</span><span class=lnt> 3
-</span><span class=lnt> 4
-</span><span class=lnt> 5
-</span><span class=lnt> 6
-</span><span class=lnt> 7
-</span><span class=lnt> 8
-</span><span class=lnt> 9
-</span><span class=lnt>10
-</span><span class=lnt>11
-</span><span class=lnt>12
-</span><span class=lnt>13
-</span><span class=lnt>14
-</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-cmake data-lang=cmake><span class=c># CMakeLists.txt
-</span><span class=c></span><span class=nb>cmake_minimum_required</span><span class=p>(</span><span class=s>VERSION</span> <span class=s>3.8</span><span class=p>)</span><span class=err>
-</span><span class=err></span><span class=nb>project</span><span class=p>(</span><span class=s>tidy,LANGUAGES</span> <span class=s>CXX</span><span class=p>)</span><span class=err>
-</span><span class=err>
-</span><span class=err></span><span class=nb>add_executable</span><span class=p>(</span><span class=s>tidy</span> <span class=s2>&#34;&#34;</span><span class=p>)</span><span class=err>
-</span><span class=err></span><span class=nb>set_property</span><span class=p>(</span><span class=s>TARGET</span> <span class=s>tidy</span> <span class=s>PROPERTY</span> <span class=s>CXX_STANDARD</span> <span class=s>17</span><span class=p>)</span><span class=err>
-</span><span class=err></span><span class=nb>set_property</span><span class=p>(</span><span class=s>TARGET</span> <span class=s>tidy</span> <span class=s>PROPERTY</span> <span class=s>CXX_STANDARD_REQUIRED</span> <span class=s>ON</span><span class=p>)</span><span class=err>
-</span><span class=err></span><span class=nb>set_property</span><span class=p>(</span><span class=s>TARGET</span> <span class=s>tidy</span> <span class=s>PROPERTY</span> <span class=s>CXX_EXTENSIONS</span> <span class=s>OFF</span><span class=p>)</span><span class=err>
-</span><span class=err></span><span class=nb>set</span><span class=p>(</span><span class=s>CMAKE_EXPORT_COMPILE_COMMANDS</span> <span class=s2>&#34;ON&#34;</span><span class=p>)</span><span class=err>
-</span><span class=err></span><span class=nb>set</span><span class=p>(</span><span class=s>CMAKE_BUILD_TYPE</span> <span class=s>Debug</span><span class=p>)</span><span class=err>
-</span><span class=err></span><span class=nb>target_sources</span><span class=p>(</span><span class=s>tidy</span> <span class=s>PRIVATE</span> 
-    <span class=s>main.cc</span>
-    <span class=p>)</span><span class=err>
-</span><span class=err>
-</span></code></pre></td></tr></table></div></div><h5 id=build-script>build script</h5><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
-</span><span class=lnt>2
-</span><span class=lnt>3
-</span><span class=lnt>4
-</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash><span class=c1># build.sh</span>
+</code></pre></div><h5 id=cmakeliststxt>CMakeLists.txt</h5><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cmake data-lang=cmake><span style=color:#75715e># CMakeLists.txt
+</span><span style=color:#75715e></span>cmake_minimum_required(<span style=color:#e6db74>VERSION</span> <span style=color:#e6db74>3.8</span>)<span style=color:#960050;background-color:#1e0010>
+</span><span style=color:#960050;background-color:#1e0010></span>project(<span style=color:#e6db74>tidy,LANGUAGES</span> <span style=color:#e6db74>CXX</span>)<span style=color:#960050;background-color:#1e0010>
+</span><span style=color:#960050;background-color:#1e0010>
+</span><span style=color:#960050;background-color:#1e0010></span>add_executable(<span style=color:#e6db74>tidy</span> <span style=color:#e6db74>&#34;&#34;</span>)<span style=color:#960050;background-color:#1e0010>
+</span><span style=color:#960050;background-color:#1e0010></span>set_property(<span style=color:#e6db74>TARGET</span> <span style=color:#e6db74>tidy</span> <span style=color:#e6db74>PROPERTY</span> <span style=color:#e6db74>CXX_STANDARD</span> <span style=color:#e6db74>17</span>)<span style=color:#960050;background-color:#1e0010>
+</span><span style=color:#960050;background-color:#1e0010></span>set_property(<span style=color:#e6db74>TARGET</span> <span style=color:#e6db74>tidy</span> <span style=color:#e6db74>PROPERTY</span> <span style=color:#e6db74>CXX_STANDARD_REQUIRED</span> <span style=color:#e6db74>ON</span>)<span style=color:#960050;background-color:#1e0010>
+</span><span style=color:#960050;background-color:#1e0010></span>set_property(<span style=color:#e6db74>TARGET</span> <span style=color:#e6db74>tidy</span> <span style=color:#e6db74>PROPERTY</span> <span style=color:#e6db74>CXX_EXTENSIONS</span> <span style=color:#e6db74>OFF</span>)<span style=color:#960050;background-color:#1e0010>
+</span><span style=color:#960050;background-color:#1e0010></span>set(<span style=color:#e6db74>CMAKE_EXPORT_COMPILE_COMMANDS</span> <span style=color:#e6db74>&#34;ON&#34;</span>)<span style=color:#960050;background-color:#1e0010>
+</span><span style=color:#960050;background-color:#1e0010></span>set(<span style=color:#e6db74>CMAKE_BUILD_TYPE</span> <span style=color:#e6db74>Debug</span>)<span style=color:#960050;background-color:#1e0010>
+</span><span style=color:#960050;background-color:#1e0010></span>target_sources(<span style=color:#e6db74>tidy</span> <span style=color:#e6db74>PRIVATE</span> 
+    <span style=color:#e6db74>main.cc</span>
+    )<span style=color:#960050;background-color:#1e0010>
+</span><span style=color:#960050;background-color:#1e0010>
+</span></code></pre></div><h5 id=build-script>build script</h5><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#75715e># build.sh</span>
 cmake -H. -Bbuild
 cmake --bulid build
-ln -sf <span class=sb>`</span><span class=nb>pwd</span><span class=sb>`</span>/build/compile_commands.json
-</code></pre></td></tr></table></div></div><p><img src=/image-20200430141850579.png alt=image-20200430141850579></p><p>clang-tidy 依赖编译参数，执行build.sh脚本，生成编译参数
-<img src=/image-20200430152504873.png alt=image-20200430152504873></p><h4 id=运行-clang-tidy-对-maincc-进行检测>运行 clang-tidy 对 main.cc 进行检测</h4><p><img src=/image-20200430145409321.png alt=image-20200430145409321></p><p>可以看到 clang-tidy 检测到实际文件中 <code>class</code> 的命名风格 和 <code>.clang-tidy</code> 文件描述的 <code>class</code> 命名风格不一致，</p><p>通过 clang-tidy 提供的 <code>--fix</code> 选项进行自动修复</p><p><img src=/image-20200430145458700.png alt=image-20200430145458700></p><p>对 clang-tidy 中的命名规则稍作修改，再次运行 clang-tidy</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
-</span><span class=lnt>2
-</span><span class=lnt>3
-</span><span class=lnt>4
-</span><span class=lnt>5
-</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>Checks: <span class=s1>&#39;-*,readability-identifier-naming&#39;</span>
+ln -sf <span style=color:#e6db74>`</span>pwd<span style=color:#e6db74>`</span>/build/compile_commands.json
+</code></pre></div><p><img src=/image-20200430141850579.png alt=image-20200430141850579></p><p>clang-tidy 依赖编译参数，执行build.sh脚本，生成编译参数
+<img src=/image-20200430152504873.png alt=image-20200430152504873></p><h4 id=运行-clang-tidy-对-maincc-进行检测>运行 clang-tidy 对 main.cc 进行检测</h4><p><img src=/image-20200430145409321.png alt=image-20200430145409321></p><p>可以看到 clang-tidy 检测到实际文件中 <code>class</code> 的命名风格 和 <code>.clang-tidy</code> 文件描述的 <code>class</code> 命名风格不一致，</p><p>通过 clang-tidy 提供的 <code>--fix</code> 选项进行自动修复</p><p><img src=/image-20200430145458700.png alt=image-20200430145458700></p><p>对 clang-tidy 中的命名规则稍作修改，再次运行 clang-tidy</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>Checks: <span style=color:#e6db74>&#39;-*,readability-identifier-naming&#39;</span>
 CheckOptions:
   - key:             readability-identifier-naming.ClassCase
     value:           Camel_Snake_Case # 
 
-</code></pre></td></tr></table></div></div><p><img src=/image-20200430145620862.png alt=image-20200430145620862></p><p>再次修复</p><p><img src=/image-20200430145807008.png alt=image-20200430145807008></p><p><a href=https://clang.llvm.org/extra/clang-tidy/checks/readability-identifier-naming.html>更多 readability-identifier-naming 选项</a></p><h3 id=2-循环越界检查bugprone-too-small-loop-variable>2. 循环越界检查(bugprone-too-small-loop-variable)</h3><h4 id=clang-tidy-1>.clang-tidy</h4><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
-</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>Checks: <span class=s1>&#39;-*,bugprone-too-small-loop-variable&#39;</span>
-</code></pre></td></tr></table></div></div><h4 id=示例代码-1>示例代码</h4><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
-</span><span class=lnt> 2
-</span><span class=lnt> 3
-</span><span class=lnt> 4
-</span><span class=lnt> 5
-</span><span class=lnt> 6
-</span><span class=lnt> 7
-</span><span class=lnt> 8
-</span><span class=lnt> 9
-</span><span class=lnt>10
-</span><span class=lnt>11
-</span><span class=lnt>12
-</span><span class=lnt>13
-</span><span class=lnt>14
-</span><span class=lnt>15
-</span><span class=lnt>16
-</span><span class=lnt>17
-</span><span class=lnt>18
-</span><span class=lnt>19
-</span><span class=lnt>20
-</span><span class=lnt>21
-</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-c++ data-lang=c++><span class=cp>#include</span> <span class=cpf>&lt;vector&gt;</span><span class=cp>
-</span><span class=cp></span>
-<span class=kt>int</span> <span class=nf>bugprone_too_small_loop_variable</span><span class=p>()</span> <span class=p>{</span>
-  <span class=p>{</span>
-    <span class=kt>long</span> <span class=n>size</span> <span class=o>=</span> <span class=mi>294967296l</span><span class=p>;</span>
-    <span class=k>for</span> <span class=p>(</span><span class=kt>short</span> <span class=n>i</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=n>i</span> <span class=o>&lt;</span> <span class=n>size</span><span class=p>;</span> <span class=o>++</span><span class=n>i</span><span class=p>)</span> <span class=p>{</span>
-    <span class=p>}</span>
-  <span class=p>}</span>
-  <span class=p>{</span>
-    <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=n>items</span><span class=p>;</span>
-    <span class=k>for</span> <span class=p>(</span><span class=kt>short</span> <span class=n>i</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=n>i</span> <span class=o>&lt;</span> <span class=n>items</span><span class=p>.</span><span class=n>size</span><span class=p>();</span> <span class=o>++</span><span class=n>i</span><span class=p>)</span> <span class=p>{</span>
-    <span class=p>}</span>
-  <span class=p>}</span>
-  <span class=k>return</span> <span class=mi>0</span><span class=p>;</span>
-<span class=p>}</span>
+</code></pre></div><p><img src=/image-20200430145620862.png alt=image-20200430145620862></p><p>再次修复</p><p><img src=/image-20200430145807008.png alt=image-20200430145807008></p><p><a href=https://clang.llvm.org/extra/clang-tidy/checks/readability-identifier-naming.html>更多 readability-identifier-naming 选项</a></p><h3 id=2-循环越界检查bugprone-too-small-loop-variable>2. 循环越界检查(bugprone-too-small-loop-variable)</h3><h4 id=clang-tidy-1>.clang-tidy</h4><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>Checks: <span style=color:#e6db74>&#39;-*,bugprone-too-small-loop-variable&#39;</span>
+</code></pre></div><h4 id=示例代码-1>示例代码</h4><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c++ data-lang=c++><span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;vector&gt;</span><span style=color:#75715e>
+</span><span style=color:#75715e></span>
+<span style=color:#66d9ef>int</span> <span style=color:#a6e22e>bugprone_too_small_loop_variable</span>() {
+  {
+    <span style=color:#66d9ef>long</span> size <span style=color:#f92672>=</span> <span style=color:#ae81ff>294967296l</span>;
+    <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>short</span> i <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; i <span style=color:#f92672>&lt;</span> size; <span style=color:#f92672>++</span>i) {
+    }
+  }
+  {
+    std<span style=color:#f92672>::</span>vector<span style=color:#f92672>&lt;</span><span style=color:#66d9ef>int</span><span style=color:#f92672>&gt;</span> items;
+    <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>short</span> i <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; i <span style=color:#f92672>&lt;</span> items.size(); <span style=color:#f92672>++</span>i) {
+    }
+  }
+  <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>0</span>;
+}
 
-<span class=kt>int</span> <span class=nf>main</span><span class=p>(</span><span class=kt>int</span> <span class=n>argc</span><span class=p>,</span> <span class=kt>char</span><span class=o>*</span> <span class=n>argv</span><span class=p>[])</span> <span class=p>{</span>
-  <span class=p>(</span><span class=kt>void</span><span class=p>)</span><span class=n>argc</span><span class=p>;</span>
-  <span class=p>(</span><span class=kt>void</span><span class=p>)</span><span class=n>argv</span><span class=p>;</span>
-  <span class=k>return</span> <span class=mi>0</span><span class=p>;</span>
-<span class=p>}</span>
-</code></pre></td></tr></table></div></div><h4 id=运行-clang-tidy>运行 clang-tidy</h4><p><img src=/bugprone.png alt=bugprone></p><p><a href=https://clang.llvm.org/extra/clang-tidy/checks/bugprone-too-small-loop-variable.html>更多 bugprone-too-small-loop-variable 选项</a></p><h3 id=3-使用-c-11-基于范围的循环modernize-loop-convert>3. 使用 C++ 11 基于范围的循环(modernize-loop-convert)</h3><h4 id=代码示例>代码示例</h4><p><img src=/modern_loop.png alt=modern_loop></p><p>fix</p><p><img src=/modern_loop_fix.png alt=modern_loop_fix></p><p><a href=https://clang.llvm.org/extra/clang-tidy/checks/modernize-loop-convert.html>更多 modernize-loop-convert 选项</a></p><h3 id=4-使用-make_shared>4. 使用 make_shared</h3><p><img src=/modern_make_shared.png alt=modern_make_shared></p><p>fix
+<span style=color:#66d9ef>int</span> <span style=color:#a6e22e>main</span>(<span style=color:#66d9ef>int</span> argc, <span style=color:#66d9ef>char</span><span style=color:#f92672>*</span> argv[]) {
+  (<span style=color:#66d9ef>void</span>)argc;
+  (<span style=color:#66d9ef>void</span>)argv;
+  <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>0</span>;
+}
+</code></pre></div><h4 id=运行-clang-tidy>运行 clang-tidy</h4><p><img src=/bugprone.png alt=bugprone></p><p><a href=https://clang.llvm.org/extra/clang-tidy/checks/bugprone-too-small-loop-variable.html>更多 bugprone-too-small-loop-variable 选项</a></p><h3 id=3-使用-c-11-基于范围的循环modernize-loop-convert>3. 使用 C++ 11 基于范围的循环(modernize-loop-convert)</h3><h4 id=代码示例>代码示例</h4><p><img src=/modern_loop.png alt=modern_loop></p><p>fix</p><p><img src=/modern_loop_fix.png alt=modern_loop_fix></p><p><a href=https://clang.llvm.org/extra/clang-tidy/checks/modernize-loop-convert.html>更多 modernize-loop-convert 选项</a></p><h3 id=4-使用-make_shared>4. 使用 make_shared</h3><p><img src=/modern_make_shared.png alt=modern_make_shared></p><p>fix
 <img src=/modern_make_shared_fix.png alt=modern_make_shared_fix></p><h3 id=5-modernize-pass-by-value>5. modernize-pass-by-value</h3><p><img src=/pass_by_value.png alt=pass_by_value></p><p>fix
 <img src=/pass_by_value_fix.png alt=pass_by_value_fix></p><h3 id=6-modernize-raw-string-literal>6. modernize-raw-string-literal</h3><p><img src=/raw_string.png alt=raw_string></p><p>fix
 <img src=/raw_string_fix.png alt=raw_string_fix></p></div><footer class=post-footer><nav class=post-nav><a class=prev href=/post/fold/><i class=iconfont><svg class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="18" height="18"><path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417l277.93508-310.326815c11.338233-12.190647 11.035334-32.285311-.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"/></svg></i><span class="prev-text nav-default">Fold</span>
@@ -157,5 +84,5 @@ CheckOptions:
 <span class=theme-info>Theme - <a class=theme-link href=https://github.com/xianmin/hugo-theme-jane>Jane</a></span>
 <span class=copyright-year>&copy;
 2019 -
-2020
+2021
 <span class=heart><i class=iconfont><svg class="icon" viewBox="0 0 1025 1024" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14"><path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7.0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1.0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2.0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3.1-42.5-8-83.6-24-122.2z" fill="#8a8a8a"/></svg></i></span><span class=author>ooknn</span></span></div></footer><div class=back-to-top id=back-to-top><i class=iconfont><svg class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="35" height="35"><path d="M510.866688 227.694839 95.449397 629.218702h235.761562L329.15309 958.01517h362.40389L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777h894.052392v131.813095H63.840492V63.962777zm0 0"/></svg></i></div></div><script type=text/javascript src=/lib/jquery/jquery-3.2.1.min.js></script><script type=text/javascript src=/lib/slideout/slideout-1.0.1.min.js></script><script type=text/javascript src=/js/main.638251f4230630f0335d8c6748e53a96f94b72670920b60c09a56fdc8bece214.js integrity="sha256-Y4JR9CMGMPAzXYxnSOU6lvlLcmcJILYMCaVv3Ivs4hQ=" crossorigin=anonymous></script></body></html>
