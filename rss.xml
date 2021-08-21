@@ -1,0 +1,1146 @@
+<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>gaoyinlong</title><link>https://gaoyinlong.com/</link><description/><generator>Hugo 0.82.0 https://gohugo.io/</generator><language>zh-CN</language><managingEditor>im.ggyyll@gmail.com (gyl)</managingEditor><webMaster>im.ggyyll@gmail.com (gyl)</webMaster><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><lastBuildDate>Sat, 21 Aug 2021 16:25:48 +0000</lastBuildDate><atom:link rel="self" type="application/rss+xml" href="https://gaoyinlong.com/rss.xml"/><item><title>Bpf_opensnoop</title><link>https://gaoyinlong.com/posts/bpf_opensnoop/</link><guid isPermaLink="true">https://gaoyinlong.com/posts/bpf_opensnoop/</guid><pubDate>Fri, 23 Apr 2021 10:17:36 +0800</pubDate><author>im.ggyyll@gmail.com (gyl)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>我在 ubuntu 上使用 navicat,今天试用期结束了，想着怎么能继续使用,linux下一切皆文件，试用信息肯定放在一个文件中。遂跟踪 navicat 进程打开的文件,我用的是 btp 工具 opensnoop。传统linux工具strace一样可以&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-bash" data-lang="bash">••• ~ ➜ sudo /usr/share/bcc/tools/opensnoop &amp;gt; na.log
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>观察输出文件，发现 ~/.config 目录下有个 navicat 文件夹&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="m">23350&lt;/span> navicat -1 &lt;span class="m">2&lt;/span> ~/.config/navicat/Premium/lib/sqlite/tls/haswell/x86_64/libdl.so.2
+&lt;span class="m">23350&lt;/span> navicat -1 &lt;span class="m">2&lt;/span> ~/.config/navicat/Premium/lib/sqlite/tls/haswell/libdl.so.2
+&lt;span class="m">23350&lt;/span> navicat -1 &lt;span class="m">2&lt;/span> ~/.config/navicat/Premium/lib/sqlite/tls/x86_64/libdl.so.2
+&lt;span class="m">23350&lt;/span> navicat -1 &lt;span class="m">2&lt;/span> ~/.config/navicat/Premium/lib/sqlite/tls/libdl.so.2
+&lt;span class="m">23350&lt;/span> navicat -1 &lt;span class="m">2&lt;/span> ~/.config/navicat/Premium/lib/sqlite/haswell/x86_64/libdl.so.2
+&lt;span class="m">23350&lt;/span> navicat -1 &lt;span class="m">2&lt;/span> ~/.config/navicat/Premium/lib/sqlite/haswell/libdl.so.2
+&lt;span class="m">23350&lt;/span> navicat -1 &lt;span class="m">2&lt;/span> ~/.config/navicat/Premium/lib/sqlite/x86_64/libdl.so.2
+&lt;span class="m">23350&lt;/span> navicat -1 &lt;span class="m">2&lt;/span> ~/.config/navicat/Premium/lib/sqlite/libdl.so.2
+&lt;span class="m">23350&lt;/span> navicat -1 &lt;span class="m">2&lt;/span> ~/.config/navicat/Premium/lib/oci/tls/haswell/x86_64/libdl.so.2
+&lt;span class="m">23350&lt;/span> navicat -1 &lt;span class="m">2&lt;/span> ~/.config/navicat/Premium/lib/oci/tls/haswell/libdl.so.2
+&lt;span class="m">23350&lt;/span> navicat -1 &lt;span class="m">2&lt;/span> ~/.config/navicat/Premium/lib/oci/tls/x86_64/libdl.so.2
+&lt;span class="m">23350&lt;/span> navicat -1 &lt;span class="m">2&lt;/span> ~/.config/navicat/Premium/lib/oci/tls/libdl.so.2
+&lt;span class="m">23350&lt;/span> navicat -1 &lt;span class="m">2&lt;/span> ~/.config/navicat/Premium/lib/oci/haswell/x86_64/libdl.so.2
+&lt;span class="m">23350&lt;/span> navicat -1 &lt;span class="m">2&lt;/span> ~/.config/navicat/Premium/lib/oci/haswell/libdl.so.2
+&lt;span class="m">23350&lt;/span> navicat -1 &lt;span class="m">2&lt;/span> ~/.config/navicat/Premium/lib/oci/x86_64/libdl.so.2
+&lt;span class="m">23350&lt;/span> navicat -1 &lt;span class="m">2&lt;/span> ~/.config/navicat/Premium/lib/oci/libdl.so.2
+&lt;span class="m">23350&lt;/span> navicat -1 &lt;span class="m">2&lt;/span> ~/.config/navicat/Premium/ui_preferences.json
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>删除之后运行navicat发现还是提示试用结束,那就继续找,过滤掉 .config/navicat/ 文件夹之后，然后看在 .config 文件下还有哪些文件被打开&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-bash" data-lang="bash">••• ~ ➜ awk &lt;span class="s1">&amp;#39;$2==&amp;#34;navicat15-premi&amp;#34; || $2==&amp;#34;navicat&amp;#34; {print $0}&amp;#39;&lt;/span> na.log &lt;span class="p">|&lt;/span> grep -v &lt;span class="s2">&amp;#34;.config/navicat/&amp;#34;&lt;/span> &lt;span class="p">|&lt;/span> grep &lt;span class="s2">&amp;#34;/.config&amp;#34;&lt;/span>
+&lt;span class="m">23367&lt;/span> navicat &lt;span class="m">13&lt;/span> &lt;span class="m">0&lt;/span> ~/.config/fcitx/dbus/428cc79e9c4d4f8393591702ea85d60e-1
+&lt;span class="m">23350&lt;/span> navicat &lt;span class="m">13&lt;/span> &lt;span class="m">0&lt;/span> ~/.config/fcitx/dbus/428cc79e9c4d4f8393591702ea85d60e-1
+&lt;span class="m">23350&lt;/span> navicat &lt;span class="m">16&lt;/span> &lt;span class="m">0&lt;/span> ~/.config/dconf/user
+&lt;span class="m">23350&lt;/span> navicat &lt;span class="m">21&lt;/span> &lt;span class="m">0&lt;/span> ~/.config/dconf/user
+&lt;span class="m">23350&lt;/span> navicat &lt;span class="m">22&lt;/span> &lt;span class="m">0&lt;/span> ~/.config/dconf/user
+••• ~ ➜
+••• ~ ➜
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>发现就剩 ~/.config/dconf/user 文件被打开访问了,dconf 类似windows下的注册表,可以通过 dconf-editor 或者 gsettings 进行查看&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-bash" data-lang="bash">mv ~/.config/dconf/user ~
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>移动 ~/.config/dconf/user 后，再次打开 navicat，发现重新提示试用开始。那么 navicat 一定是在 dconf/user 文件中写入了注册信息,接下来就是查找 navicat 究竟在 dconf/user 中写入了哪些信息&lt;/p>
+&lt;p>将 ~/.config/dconf/user 中的数据 dump 出来&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-bash" data-lang="bash">••• ~ ➜
+••• ~ ➜
+••• ~ ➜ cp ~/.config/dconf/user /tmp/dconf/user
+••• ~ ➜ &lt;span class="nv">XDG_CONFIG_HOME&lt;/span>&lt;span class="o">=&lt;/span>/tmp dconf dump / &amp;gt; old-gsettings-data.txt
+••• ~ ➜
+••• ~ ➜ cat ~/old-gsettings-data.txt &lt;span class="p">|&lt;/span> head -n &lt;span class="m">18&lt;/span>
+&lt;span class="o">[&lt;/span>com/premiumsoft/navicat-premium&lt;span class="o">]&lt;/span>
+&lt;span class="nv">E3D5E9705B0E433B70AF42C8C9DF8F7E&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;4CD8D1423D9E2171BD1715CE9215C256&amp;#39;&lt;/span>
+auto-skip-version&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;15.0.25&amp;#39;&lt;/span>
+&lt;span class="nv">6DE6FDD7BF19602C9E8995F7B17C88F2&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;4CD8D1423D9E2171BD1715CE9215C256&amp;#39;&lt;/span>
+&lt;span class="nv">2473DBF2A67697804050315280DDB5E3&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;4CD8D1423D9E2171BD1715CE9215C256&amp;#39;&lt;/span>
+&lt;span class="nv">9DE25CCD8CBE96988FB193CD77B9E0F2&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;4CD8D1423D9E2171BD1715CE9215C256&amp;#39;&lt;/span>
+&lt;span class="nv">E99114BC353901E809AA3D8FA8C680B2&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;EA97CF880545701853656B180DAD2B5F&amp;#39;&lt;/span>
+&lt;span class="nv">B2C83CF8F3A60E559B3D7A08DEC27FE1&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;EA97CF880545701853656B180DAD2B5F&amp;#39;&lt;/span>
+&lt;span class="nv">AE97746E5899CE85E9A40B04263A2E0B&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;EA97CF880545701853656B180DAD2B5F&amp;#39;&lt;/span>
+&lt;span class="nv">FB8B18E33152196B70847CF46C707ABF&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;4CD8D1423D9E2171BD1715CE9215C256&amp;#39;&lt;/span>
+&lt;span class="nv">802293B9E142EA65CF8B55EA524E1641&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;EA97CF880545701853656B180DAD2B5F&amp;#39;&lt;/span>
+last-check-time&lt;span class="o">=&lt;/span>int64 &lt;span class="m">1619156150&lt;/span>
+&lt;span class="nv">57C0FF66F7556BCE286C2B8BB4FE1FD2&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;4CD8D1423D9E2171BD1715CE9215C256&amp;#39;&lt;/span>
+&lt;span class="nv">704430CD11D5C7E67DC8220E227182CE&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;4CD8D1423D9E2171BD1715CE9215C256&amp;#39;&lt;/span>
+&lt;span class="nv">0B33B7E1DA8F246120041A64393073AE&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;4CD8D1423D9E2171BD1715CE9215C256&amp;#39;&lt;/span>
+&lt;span class="nv">A41B8E2E173757C8CF829970728877D5&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;4CD8D1423D9E2171BD1715CE9215C256&amp;#39;&lt;/span>
+&lt;span class="nv">8842BD6065C20AB7CBCE15B6E098675A&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;EA97CF880545701853656B180DAD2B5F&amp;#39;&lt;/span>
+••• ~ ➜
+••• ~ ➜
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;blockquote>
+&lt;p>&lt;strong>last-check-time=int64 1619156150&lt;/strong> 就是时间啦,但是修改 last-check-time 是不行的,其他内容看样子是经过处理的，不知道具体方式，也没法修改。&lt;/p>
+&lt;/blockquote>
+&lt;blockquote>
+&lt;p>最后直接删除 com/premiumsoft/navicat-premium 和 .config/navicat/Premium 文件夹搞定&lt;/p>
+&lt;/blockquote>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-bash" data-lang="bash">••• ~ ➜
+••• ~ ➜ dconf reset -f &lt;span class="s2">&amp;#34;/com/premiumsoft/navicat-premium/&amp;#34;&lt;/span>
+••• ~ ➜
+••• ~ ➜
+••• ~ ➜ rm -rf ~/.config/navicat/Premium/
+••• ~ ➜
+••• ~ ➜
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>再次打开 navicat 会提示14天试用&lt;/p></description></item><item><title>Understand</title><link>https://gaoyinlong.com/posts/understand/</link><guid isPermaLink="true">https://gaoyinlong.com/posts/understand/</guid><pubDate>Fri, 07 Aug 2020 17:03:32 +0800</pubDate><author>im.ggyyll@gmail.com (gyl)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>Ubuntu&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-bash" data-lang="bash">apt-get install -y strace libnss3 libpci-dev libexpat1-dev &lt;span class="se">\
+&lt;/span>&lt;span class="se">&lt;/span>libfontconfig1-dev libx11-dev libx11-xcb-dev libxfixes-dev &lt;span class="se">\
+&lt;/span>&lt;span class="se">&lt;/span>libxcomposite-dev libxcursor-dev libxdamage-dev libxi-dev &lt;span class="se">\
+&lt;/span>&lt;span class="se">&lt;/span>libxtst-dev libasound2-dev libqt5widgets5 libqt5gui5 &lt;span class="se">\
+&lt;/span>&lt;span class="se">&lt;/span>libqt5dbus5 libqt5network5 libqt5core5a
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>CentOS&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-bash" data-lang="bash">yum install -y qt5-qtbase.x86_64 libxkbcommon libXrender &lt;span class="se">\
+&lt;/span>&lt;span class="se">&lt;/span>libXcomposite libXcursor libXtst alsa-lib-devel pciutils-libs
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></description></item><item><title>Fold</title><link>https://gaoyinlong.com/posts/fold/</link><guid isPermaLink="true">https://gaoyinlong.com/posts/fold/</guid><pubDate>Sat, 09 May 2020 13:42:48 +0800</pubDate><author>im.ggyyll@gmail.com (gyl)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>​&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-C++" data-lang="C++">&lt;span class="k">template&lt;/span> &lt;span class="o">&amp;lt;&lt;/span>&lt;span class="k">typename&lt;/span>&lt;span class="p">...&lt;/span> &lt;span class="n">Types&lt;/span>&lt;span class="o">&amp;gt;&lt;/span>
+&lt;span class="kt">void&lt;/span> &lt;span class="n">ignore_value&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Types&lt;/span>&lt;span class="p">...&lt;/span> &lt;span class="cm">/*unused*/&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{}&lt;/span>
+&lt;span class="k">template&lt;/span> &lt;span class="o">&amp;lt;&lt;/span>&lt;span class="k">typename&lt;/span>&lt;span class="p">...&lt;/span> &lt;span class="n">Types&lt;/span>&lt;span class="o">&amp;gt;&lt;/span>
+&lt;span class="kt">bool&lt;/span> &lt;span class="n">null_pointer&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Types&lt;/span>&lt;span class="p">...&lt;/span> &lt;span class="n">args&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;span class="k">return&lt;/span> &lt;span class="p">((&lt;/span>&lt;span class="n">args&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="k">nullptr&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> &lt;span class="p">...);&lt;/span>
+&lt;span class="p">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>使用也是非常简单&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-c++" data-lang="c++">&lt;span class="kt">int&lt;/span> &lt;span class="nf">main&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">int&lt;/span> &lt;span class="n">argc&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="kt">char&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="n">argv&lt;/span>&lt;span class="p">[])&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;span class="kt">uint64_t&lt;/span> &lt;span class="n">id&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="n">std&lt;/span>&lt;span class="o">::&lt;/span>&lt;span class="n">string&lt;/span> &lt;span class="n">msg&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="n">std&lt;/span>&lt;span class="o">::&lt;/span>&lt;span class="n">vector&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="kt">int&lt;/span>&lt;span class="o">&amp;gt;&lt;/span> &lt;span class="n">items&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="kt">uint64_t&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="n">id_ptr&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="o">&amp;amp;&lt;/span>&lt;span class="n">id&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="n">std&lt;/span>&lt;span class="o">::&lt;/span>&lt;span class="n">string&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="n">msg_ptr&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="o">&amp;amp;&lt;/span>&lt;span class="n">msg&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="n">std&lt;/span>&lt;span class="o">::&lt;/span>&lt;span class="n">vector&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="kt">int&lt;/span>&lt;span class="o">&amp;gt;&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="n">items_ptr&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="o">&amp;amp;&lt;/span>&lt;span class="n">items&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="n">ignore_value&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">argc&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">argv&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;span class="n">ignore_value&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">id&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">msg&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">items&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;span class="n">assert&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">null_pointer&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="k">nullptr&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="k">nullptr&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="k">nullptr&lt;/span>&lt;span class="p">));&lt;/span>
+&lt;span class="n">assert&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="o">!&lt;/span>&lt;span class="n">null_pointer&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">id_ptr&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">msg_ptr&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">items_ptr&lt;/span>&lt;span class="p">));&lt;/span>
+&lt;span class="k">return&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="p">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>编译期检查类型&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-c++" data-lang="c++">&lt;span class="k">template&lt;/span> &lt;span class="o">&amp;lt;&lt;/span>&lt;span class="k">typename&lt;/span>&lt;span class="p">...&lt;/span> &lt;span class="n">Types&lt;/span>&lt;span class="o">&amp;gt;&lt;/span>
+&lt;span class="k">auto&lt;/span> &lt;span class="n">null_pointer&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Types&lt;/span>&lt;span class="p">...&lt;/span> &lt;span class="n">args&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;span class="o">-&amp;gt;&lt;/span> &lt;span class="n">std&lt;/span>&lt;span class="o">::&lt;/span>&lt;span class="n">enable_if_t&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">std&lt;/span>&lt;span class="o">::&lt;/span>&lt;span class="n">is_pointer_v&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">Types&lt;/span>&lt;span class="o">&amp;gt;&lt;/span> &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> &lt;span class="p">...),&lt;/span> &lt;span class="kt">bool&lt;/span>&lt;span class="o">&amp;gt;&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;span class="k">return&lt;/span> &lt;span class="p">((&lt;/span>&lt;span class="n">args&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="k">nullptr&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> &lt;span class="p">...);&lt;/span>
+&lt;span class="p">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-c++" data-lang="c++">&lt;span class="kt">int&lt;/span> &lt;span class="nf">main&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">int&lt;/span> &lt;span class="n">argc&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="kt">char&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="n">argv&lt;/span>&lt;span class="p">[])&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;span class="kt">uint64_t&lt;/span> &lt;span class="n">id&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="n">std&lt;/span>&lt;span class="o">::&lt;/span>&lt;span class="n">string&lt;/span> &lt;span class="n">msg&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="n">std&lt;/span>&lt;span class="o">::&lt;/span>&lt;span class="n">vector&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="kt">int&lt;/span>&lt;span class="o">&amp;gt;&lt;/span> &lt;span class="n">items&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="kt">uint64_t&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="n">id_ptr&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="o">&amp;amp;&lt;/span>&lt;span class="n">id&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="n">std&lt;/span>&lt;span class="o">::&lt;/span>&lt;span class="n">string&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="n">msg_ptr&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="o">&amp;amp;&lt;/span>&lt;span class="n">msg&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="n">std&lt;/span>&lt;span class="o">::&lt;/span>&lt;span class="n">vector&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="kt">int&lt;/span>&lt;span class="o">&amp;gt;&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="n">items_ptr&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="o">&amp;amp;&lt;/span>&lt;span class="n">items&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="n">ignore_value&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">argc&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">argv&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;span class="n">ignore_value&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">id&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">msg&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">items&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;span class="c1">// nullptr --&amp;gt; std::nullptr_t
+&lt;/span>&lt;span class="c1">&lt;/span> &lt;span class="c1">//assert(null_pointer(nullptr, nullptr, nullptr)); // compile error
+&lt;/span>&lt;span class="c1">&lt;/span> &lt;span class="n">assert&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="o">!&lt;/span>&lt;span class="n">null_pointer&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">id_ptr&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">msg_ptr&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">items_ptr&lt;/span>&lt;span class="p">));&lt;/span>
+&lt;span class="k">return&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="p">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></description></item><item><title>Clang Tidy</title><link>https://gaoyinlong.com/posts/clang-tidy/</link><guid isPermaLink="true">https://gaoyinlong.com/posts/clang-tidy/</guid><pubDate>Thu, 30 Apr 2020 15:09:36 +0800</pubDate><author>im.ggyyll@gmail.com (gyl)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h3 id="1-命名风格readability-identifier-naming">1. 命名风格(readability-identifier-naming)&lt;/h3>
+&lt;h4 id="clang-tidy">.clang-tidy&lt;/h4>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="c1"># clang-tidy&lt;/span>
+Checks: &lt;span class="s1">&amp;#39;-*,readability-identifier-naming &amp;#39;&lt;/span> &lt;span class="c1"># 禁用所由检查，并开启命名检查&lt;/span>
+CheckOptions:
+- key: readability-identifier-naming.ClassCase &lt;span class="c1"># 对 class 命名检查&lt;/span>
+value: lower_case &lt;span class="c1"># 指定命名风格&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="clang-tidy-文件内容格式">.clang-tidy 文件内容格式&lt;/h4>
+&lt;p>&lt;code>Checks&lt;/code> 指定开启检测项，多个选项之间已逗号隔开&lt;/p>
+&lt;p>&lt;code>CheckOptions&lt;/code> 根据需要针对 checks 使用的选项进行具体描述（非必须，省略按默认规则）&lt;/p>
+&lt;h4 id="示例代码">示例代码&lt;/h4>
+&lt;h5 id="maincc">main.cc&lt;/h5>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-c++" data-lang="c++">&lt;span class="c1">// main.cc
+&lt;/span>&lt;span class="c1">&lt;/span>&lt;span class="cp">#include&lt;/span> &lt;span class="cpf">&amp;lt;algorithm&amp;gt;&lt;/span>&lt;span class="cp">
+&lt;/span>&lt;span class="cp">#include&lt;/span> &lt;span class="cpf">&amp;lt;iostream&amp;gt;&lt;/span>&lt;span class="cp">
+&lt;/span>&lt;span class="cp">#include&lt;/span> &lt;span class="cpf">&amp;lt;string&amp;gt;&lt;/span>&lt;span class="cp">
+&lt;/span>&lt;span class="cp">#include&lt;/span> &lt;span class="cpf">&amp;lt;vector&amp;gt;&lt;/span>&lt;span class="cp">
+&lt;/span>&lt;span class="cp">&lt;/span>
+&lt;span class="k">class&lt;/span> &lt;span class="nc">PipeLine&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;span class="k">public&lt;/span>&lt;span class="o">:&lt;/span>
+&lt;span class="n">std&lt;/span>&lt;span class="o">::&lt;/span>&lt;span class="n">vector&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">std&lt;/span>&lt;span class="o">::&lt;/span>&lt;span class="n">string&lt;/span>&lt;span class="o">&amp;gt;&lt;/span> &lt;span class="n">cmds&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="p">};&lt;/span>
+&lt;span class="kt">int&lt;/span> &lt;span class="nf">main&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">int&lt;/span> &lt;span class="n">argc&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="kt">char&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="n">argv&lt;/span>&lt;span class="p">[])&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;span class="p">(&lt;/span>&lt;span class="kt">void&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="n">argc&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="p">(&lt;/span>&lt;span class="kt">void&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="n">argv&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="n">PipeLine&lt;/span> &lt;span class="n">pl&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="n">pl&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">cmds&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">push_back&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;ls&amp;#34;&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;span class="n">pl&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">cmds&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">push_back&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;grep&amp;#34;&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;span class="n">pl&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">cmds&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">push_back&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;*.cc&amp;#34;&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;span class="n">std&lt;/span>&lt;span class="o">::&lt;/span>&lt;span class="n">for_each&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">pl&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">cmds&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">begin&lt;/span>&lt;span class="p">(),&lt;/span> &lt;span class="n">pl&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">cmds&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">end&lt;/span>&lt;span class="p">(),&lt;/span>
+&lt;span class="p">[](&lt;/span>&lt;span class="k">const&lt;/span> &lt;span class="k">auto&lt;/span> &lt;span class="o">&amp;amp;&lt;/span>&lt;span class="n">item&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span> &lt;span class="n">std&lt;/span>&lt;span class="o">::&lt;/span>&lt;span class="n">cout&lt;/span> &lt;span class="o">&amp;lt;&amp;lt;&lt;/span> &lt;span class="n">item&lt;/span> &lt;span class="o">&amp;lt;&amp;lt;&lt;/span> &lt;span class="n">std&lt;/span>&lt;span class="o">::&lt;/span>&lt;span class="n">endl&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="p">});&lt;/span>
+&lt;span class="k">return&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="p">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h5 id="cmakeliststxt">CMakeLists.txt&lt;/h5>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-cmake" data-lang="cmake">&lt;span class="c"># CMakeLists.txt
+&lt;/span>&lt;span class="c">&lt;/span>&lt;span class="nb">cmake_minimum_required&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">VERSION&lt;/span> &lt;span class="s">3.8&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="err">
+&lt;/span>&lt;span class="err">&lt;/span>&lt;span class="nb">project&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">tidy,LANGUAGES&lt;/span> &lt;span class="s">CXX&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="err">
+&lt;/span>&lt;span class="err">
+&lt;/span>&lt;span class="err">&lt;/span>&lt;span class="nb">add_executable&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">tidy&lt;/span> &lt;span class="s2">&amp;#34;&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="err">
+&lt;/span>&lt;span class="err">&lt;/span>&lt;span class="nb">set_property&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">TARGET&lt;/span> &lt;span class="s">tidy&lt;/span> &lt;span class="s">PROPERTY&lt;/span> &lt;span class="s">CXX_STANDARD&lt;/span> &lt;span class="s">17&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="err">
+&lt;/span>&lt;span class="err">&lt;/span>&lt;span class="nb">set_property&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">TARGET&lt;/span> &lt;span class="s">tidy&lt;/span> &lt;span class="s">PROPERTY&lt;/span> &lt;span class="s">CXX_STANDARD_REQUIRED&lt;/span> &lt;span class="s">ON&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="err">
+&lt;/span>&lt;span class="err">&lt;/span>&lt;span class="nb">set_property&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">TARGET&lt;/span> &lt;span class="s">tidy&lt;/span> &lt;span class="s">PROPERTY&lt;/span> &lt;span class="s">CXX_EXTENSIONS&lt;/span> &lt;span class="s">OFF&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="err">
+&lt;/span>&lt;span class="err">&lt;/span>&lt;span class="nb">set&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">CMAKE_EXPORT_COMPILE_COMMANDS&lt;/span> &lt;span class="s2">&amp;#34;ON&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="err">
+&lt;/span>&lt;span class="err">&lt;/span>&lt;span class="nb">set&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">CMAKE_BUILD_TYPE&lt;/span> &lt;span class="s">Debug&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="err">
+&lt;/span>&lt;span class="err">&lt;/span>&lt;span class="nb">target_sources&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">tidy&lt;/span> &lt;span class="s">PRIVATE&lt;/span>
+&lt;span class="s">main.cc&lt;/span>
+&lt;span class="p">)&lt;/span>&lt;span class="err">
+&lt;/span>&lt;span class="err">
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h5 id="build-script">build script&lt;/h5>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="c1"># build.sh&lt;/span>
+cmake -H. -Bbuild
+cmake --bulid build
+ln -sf &lt;span class="sb">`&lt;/span>&lt;span class="nb">pwd&lt;/span>&lt;span class="sb">`&lt;/span>/build/compile_commands.json
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;img src="https://gaoyinlong.com/image/image-20200430141850579.png" alt="image-20200430141850579">&lt;/p>
+&lt;p>clang-tidy 依赖编译参数，执行build.sh脚本，生成编译参数
+&lt;img src="https://gaoyinlong.com/image/image-20200430152504873.png" alt="image-20200430152504873">&lt;/p>
+&lt;h4 id="运行-clang-tidy-对-maincc-进行检测">运行 clang-tidy 对 main.cc 进行检测&lt;/h4>
+&lt;p>&lt;img src="https://gaoyinlong.com/image/image-20200430145409321.png" alt="image-20200430145409321">&lt;/p>
+&lt;p>可以看到 clang-tidy 检测到实际文件中 &lt;code>class&lt;/code> 的命名风格 和 &lt;code>.clang-tidy&lt;/code> 文件描述的 &lt;code>class&lt;/code> 命名风格不一致，&lt;/p>
+&lt;p>通过 clang-tidy 提供的 &lt;code>--fix&lt;/code> 选项进行自动修复&lt;/p>
+&lt;p>&lt;img src="https://gaoyinlong.com/image/image-20200430145458700.png" alt="image-20200430145458700">&lt;/p>
+&lt;p>对 clang-tidy 中的命名规则稍作修改，再次运行 clang-tidy&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-bash" data-lang="bash">Checks: &lt;span class="s1">&amp;#39;-*,readability-identifier-naming&amp;#39;&lt;/span>
+CheckOptions:
+- key: readability-identifier-naming.ClassCase
+value: Camel_Snake_Case &lt;span class="c1"># &lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;img src="https://gaoyinlong.com/image/image-20200430145620862.png" alt="image-20200430145620862">&lt;/p>
+&lt;p>再次修复&lt;/p>
+&lt;p>&lt;img src="https://gaoyinlong.com/image/image-20200430145807008.png" alt="image-20200430145807008">&lt;/p>
+&lt;p>&lt;a href="https://clang.llvm.org/extra/clang-tidy/checks/readability-identifier-naming.html">更多 readability-identifier-naming 选项&lt;/a>&lt;/p>
+&lt;h3 id="2-循环越界检查bugprone-too-small-loop-variable">2. 循环越界检查(bugprone-too-small-loop-variable)&lt;/h3>
+&lt;h4 id="clang-tidy-1">.clang-tidy&lt;/h4>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-bash" data-lang="bash">Checks: &lt;span class="s1">&amp;#39;-*,bugprone-too-small-loop-variable&amp;#39;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="示例代码-1">示例代码&lt;/h4>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-c++" data-lang="c++">&lt;span class="cp">#include&lt;/span> &lt;span class="cpf">&amp;lt;vector&amp;gt;&lt;/span>&lt;span class="cp">
+&lt;/span>&lt;span class="cp">&lt;/span>
+&lt;span class="kt">int&lt;/span> &lt;span class="nf">bugprone_too_small_loop_variable&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;span class="p">{&lt;/span>
+&lt;span class="kt">long&lt;/span> &lt;span class="n">size&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">294967296l&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="k">for&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="kt">short&lt;/span> &lt;span class="n">i&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="n">i&lt;/span> &lt;span class="o">&amp;lt;&lt;/span> &lt;span class="n">size&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="o">++&lt;/span>&lt;span class="n">i&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;span class="p">}&lt;/span>
+&lt;span class="p">}&lt;/span>
+&lt;span class="p">{&lt;/span>
+&lt;span class="n">std&lt;/span>&lt;span class="o">::&lt;/span>&lt;span class="n">vector&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="kt">int&lt;/span>&lt;span class="o">&amp;gt;&lt;/span> &lt;span class="n">items&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="k">for&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="kt">short&lt;/span> &lt;span class="n">i&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="n">i&lt;/span> &lt;span class="o">&amp;lt;&lt;/span> &lt;span class="n">items&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">size&lt;/span>&lt;span class="p">();&lt;/span> &lt;span class="o">++&lt;/span>&lt;span class="n">i&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;span class="p">}&lt;/span>
+&lt;span class="p">}&lt;/span>
+&lt;span class="k">return&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="p">}&lt;/span>
+&lt;span class="kt">int&lt;/span> &lt;span class="nf">main&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">int&lt;/span> &lt;span class="n">argc&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="kt">char&lt;/span>&lt;span class="o">*&lt;/span> &lt;span class="n">argv&lt;/span>&lt;span class="p">[])&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;span class="p">(&lt;/span>&lt;span class="kt">void&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="n">argc&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="p">(&lt;/span>&lt;span class="kt">void&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="n">argv&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="k">return&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="p">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="运行-clang-tidy">运行 clang-tidy&lt;/h4>
+&lt;p>&lt;img src="https://gaoyinlong.com/image/bugprone.png" alt="bugprone">&lt;/p>
+&lt;p>&lt;a href="https://clang.llvm.org/extra/clang-tidy/checks/bugprone-too-small-loop-variable.html">更多 bugprone-too-small-loop-variable 选项&lt;/a>&lt;/p>
+&lt;h3 id="3-使用-c-11-基于范围的循环modernize-loop-convert">3. 使用 C++ 11 基于范围的循环(modernize-loop-convert)&lt;/h3>
+&lt;h4 id="代码示例">代码示例&lt;/h4>
+&lt;p>&lt;img src="https://gaoyinlong.com/image/modern_loop.png" alt="modern_loop">&lt;/p>
+&lt;p>fix&lt;/p>
+&lt;p>&lt;img src="https://gaoyinlong.com/image/modern_loop_fix.png" alt="modern_loop_fix">&lt;/p>
+&lt;p>&lt;a href="https://clang.llvm.org/extra/clang-tidy/checks/modernize-loop-convert.html">更多 modernize-loop-convert 选项&lt;/a>&lt;/p>
+&lt;h3 id="4-使用-make_shared">4. 使用 make_shared&lt;/h3>
+&lt;p>&lt;img src="https://gaoyinlong.com/image/modern_make_shared.png" alt="modern_make_shared">&lt;/p>
+&lt;p>fix
+&lt;img src="https://gaoyinlong.com/image/modern_make_shared_fix.png" alt="modern_make_shared_fix">&lt;/p>
+&lt;h3 id="5-modernize-pass-by-value">5. modernize-pass-by-value&lt;/h3>
+&lt;p>&lt;img src="https://gaoyinlong.com/image/pass_by_value.png" alt="pass_by_value">&lt;/p>
+&lt;p>fix
+&lt;img src="https://gaoyinlong.com/image/pass_by_value_fix.png" alt="pass_by_value_fix">&lt;/p>
+&lt;h3 id="6-modernize-raw-string-literal">6. modernize-raw-string-literal&lt;/h3>
+&lt;p>&lt;img src="https://gaoyinlong.com/image/raw_string.png" alt="raw_string">&lt;/p>
+&lt;p>fix
+&lt;img src="https://gaoyinlong.com/image/raw_string_fix.png" alt="raw_string_fix">&lt;/p></description></item><item><title>Gitlab Ci</title><link>https://gaoyinlong.com/posts/gitlab-ci/</link><guid isPermaLink="true">https://gaoyinlong.com/posts/gitlab-ci/</guid><pubDate>Tue, 28 Apr 2020 23:01:45 +0800</pubDate><author>im.ggyyll@gmail.com (gyl)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>跑个 gitlab&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-bash" data-lang="bash">
+sudo docker run --detach --hostname 192.168.199.202 &lt;span class="se">\
+&lt;/span>&lt;span class="se">&lt;/span> --publish 8082:80 --name gitlab --restart always &lt;span class="se">\
+&lt;/span>&lt;span class="se">&lt;/span> docker.io/twang2218/gitlab-ce-zh
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>然后运行个 runner&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-bash" data-lang="bash">
+sudo docker run -d --name runner --restart always &lt;span class="se">\
+&lt;/span>&lt;span class="se">&lt;/span> -v /var/run/docker.sock:/var/run/docker.sock &lt;span class="se">\
+&lt;/span>&lt;span class="se">&lt;/span> gitlab/gitlab-runner:latest
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>gitlab 启动需要一段时间，稍等一会儿，进入 gitlab&lt;/p>
+&lt;p>在gitlab 上新建一个项目，并进入项目的：设置 -&amp;gt; CI/CD
+&lt;img src="https://gaoyinlong.com/image/image-20200517083210260.png" alt="image-20200517083210260.png">&lt;/p>
+&lt;p>注意图中的 url 和 令牌&lt;/p>
+&lt;p>将 runner 注册到 gitlab&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-bash" data-lang="bash">••• ~ ➜ docker &lt;span class="nb">exec&lt;/span> -it runner bash &lt;span class="c1"># 進入runner容器中&lt;/span>
+root@a6beb3b7c09f:/# gitlab-runner register &lt;span class="c1"># 執行註冊命令&lt;/span>
+Runtime platform &lt;span class="nv">arch&lt;/span>&lt;span class="o">=&lt;/span>amd64 &lt;span class="nv">os&lt;/span>&lt;span class="o">=&lt;/span>linux &lt;span class="nv">pid&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">30&lt;/span> &lt;span class="nv">revision&lt;/span>&lt;span class="o">=&lt;/span>ce065b93 &lt;span class="nv">version&lt;/span>&lt;span class="o">=&lt;/span>12.10.1
+Running in system-mode.
+Please enter the gitlab-ci coordinator URL &lt;span class="o">(&lt;/span>e.g. https://gitlab.com/&lt;span class="o">)&lt;/span>:
+http://192.168.199.213:8082/ &lt;span class="c1"># 輸入 gitlab 指定的 url&lt;/span>
+Please enter the gitlab-ci token &lt;span class="k">for&lt;/span> this runner: &lt;span class="c1"># gitlab 指定的 token&lt;/span>
+dgmw9QqULR7ofSCEYsXd
+Please enter the gitlab-ci description &lt;span class="k">for&lt;/span> this runner: &lt;span class="c1"># runner 描述&lt;/span>
+&lt;span class="o">[&lt;/span>a6beb3b7c09f&lt;span class="o">]&lt;/span>: &lt;span class="nb">test&lt;/span> runner
+Please enter the gitlab-ci tags &lt;span class="k">for&lt;/span> this runner &lt;span class="o">(&lt;/span>comma separated&lt;span class="o">)&lt;/span>: &lt;span class="c1"># 對 runner 打個 tag，只有任務的 tag 和 runner 的 tag 一致时，runner 才会运行相应的任务&lt;/span>
+test_build
+Registering runner... succeeded &lt;span class="nv">runner&lt;/span>&lt;span class="o">=&lt;/span>dgmw9QqU
+Please enter the executor: custom, docker, parallels, ssh, docker-ssh+machine, docker-ssh, shell, virtualbox, docker+machine, kubernetes: &lt;span class="c1"># 选择任务运行的方式&lt;/span>
+&lt;span class="o">[&lt;/span>docekr&lt;span class="o">]&lt;/span>: docker &lt;span class="c1"># 以 docker 运行任务&lt;/span>
+Please enter the default Docker image &lt;span class="o">(&lt;/span>e.g. ruby:2.6&lt;span class="o">)&lt;/span>: &lt;span class="c1"># 选择 docker 运行的基础镜像&lt;/span>
+ubuntu:latest &lt;span class="c1"># ubuntu 默认镜像&lt;/span>
+Runner registered successfully. Feel free to start it, but &lt;span class="k">if&lt;/span> it&lt;span class="err">&amp;#39;&lt;/span>s running already the config should be automatically reloaded!
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;img src="https://gaoyinlong.com/image/image-20200517084320669.png" alt="image-20200517084320669">&lt;/p>
+&lt;p>可以看到已经有一个有效可用的runner了&lt;/p>
+&lt;p>对仓库提交文件后，可以看到已经有作业在运行了，查看作业详情发现在 clone 仓库的时候失败了&lt;/p>
+&lt;p>&lt;img src="https://gaoyinlong.com/image/image-20200517090552142.png" alt="image-20200517090552142">&lt;/p>
+&lt;p>修改 gitlab-runner 的 config 文件&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-bash" data-lang="bash">root@a6beb3b7c09f:/# cat /etc/gitlab-runner/config.toml
+&lt;span class="nv">concurrent&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="m">1&lt;/span>
+&lt;span class="nv">check_interval&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="m">0&lt;/span>
+&lt;span class="o">[&lt;/span>session_server&lt;span class="o">]&lt;/span>
+&lt;span class="nv">session_timeout&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="m">1800&lt;/span>
+&lt;span class="o">[[&lt;/span>runners&lt;span class="o">]]&lt;/span>
+&lt;span class="nv">name&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;test runner&amp;#34;&lt;/span>
+&lt;span class="nv">url&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;http://192.168.199.213:8082/&amp;#34;&lt;/span>
+&lt;span class="nv">clone_url&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;http://192.168.199.213:8082/&amp;#34;&lt;/span> &lt;span class="c1"># 设置 clone 的url&lt;/span>
+&lt;span class="nv">token&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;6af0a4f06c38ee1e6bdc9c351c35b5&amp;#34;&lt;/span>
+&lt;span class="nv">executor&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;docker&amp;#34;&lt;/span>
+&lt;span class="o">[&lt;/span>runners.custom_build_dir&lt;span class="o">]&lt;/span>
+&lt;span class="o">[&lt;/span>runners.cache&lt;span class="o">]&lt;/span>
+&lt;span class="o">[&lt;/span>runners.cache.s3&lt;span class="o">]&lt;/span>
+&lt;span class="o">[&lt;/span>runners.cache.gcs&lt;span class="o">]&lt;/span>
+&lt;span class="o">[&lt;/span>runners.docker&lt;span class="o">]&lt;/span>
+&lt;span class="nv">tls_verify&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nb">false&lt;/span>
+&lt;span class="nv">image&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;ubuntu:latest&amp;#34;&lt;/span>
+&lt;span class="nv">privileged&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nb">false&lt;/span>
+&lt;span class="nv">disable_entrypoint_overwrite&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nb">false&lt;/span>
+&lt;span class="nv">oom_kill_disable&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nb">false&lt;/span>
+&lt;span class="nv">disable_cache&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nb">false&lt;/span>
+&lt;span class="nv">volumes&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="o">[&lt;/span>&lt;span class="s2">&amp;#34;/cache&amp;#34;&lt;/span>&lt;span class="o">]&lt;/span>
+&lt;span class="nv">shm_size&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="m">0&lt;/span>
+root@a6beb3b7c09f:/# gitlab-runner restart &lt;span class="c1">#重启 gitlab-runner&lt;/span>
+Runtime platform &lt;span class="nv">arch&lt;/span>&lt;span class="o">=&lt;/span>amd64 &lt;span class="nv">os&lt;/span>&lt;span class="o">=&lt;/span>linux &lt;span class="nv">pid&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">59&lt;/span> &lt;span class="nv">revision&lt;/span>&lt;span class="o">=&lt;/span>ce065b93 &lt;span class="nv">version&lt;/span>&lt;span class="o">=&lt;/span>12.10.1
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>重新运行作业&lt;/p>
+&lt;p>&lt;img src="https://gaoyinlong.com/image/image-20200517091233024.png" alt="image-20200517091233024">&lt;/p></description></item><item><title>Typelist</title><link>https://gaoyinlong.com/posts/typelist/</link><guid isPermaLink="true">https://gaoyinlong.com/posts/typelist/</guid><pubDate>Tue, 28 Apr 2020 22:54:55 +0800</pubDate><author>im.ggyyll@gmail.com (gyl)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;span class="lnt">30
+&lt;/span>&lt;span class="lnt">31
+&lt;/span>&lt;span class="lnt">32
+&lt;/span>&lt;span class="lnt">33
+&lt;/span>&lt;span class="lnt">34
+&lt;/span>&lt;span class="lnt">35
+&lt;/span>&lt;span class="lnt">36
+&lt;/span>&lt;span class="lnt">37
+&lt;/span>&lt;span class="lnt">38
+&lt;/span>&lt;span class="lnt">39
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-c++" data-lang="c++">&lt;span class="k">template&lt;/span> &lt;span class="o">&amp;lt;&lt;/span>&lt;span class="k">typename&lt;/span>&lt;span class="p">...&lt;/span> &lt;span class="n">T&lt;/span>&lt;span class="o">&amp;gt;&lt;/span>
+&lt;span class="k">struct&lt;/span> &lt;span class="nc">Typelist&lt;/span> &lt;span class="p">{};&lt;/span>
+&lt;span class="k">template&lt;/span> &lt;span class="o">&amp;lt;&lt;/span>&lt;span class="k">typename&lt;/span>&lt;span class="p">...&lt;/span> &lt;span class="n">List&lt;/span>&lt;span class="o">&amp;gt;&lt;/span>
+&lt;span class="k">struct&lt;/span> &lt;span class="nc">IsEmptyT&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;span class="k">static&lt;/span> &lt;span class="k">constexpr&lt;/span> &lt;span class="kt">bool&lt;/span> &lt;span class="n">value&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="k">sizeof&lt;/span>&lt;span class="p">...(&lt;/span>&lt;span class="n">List&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="mi">0&lt;/span> &lt;span class="o">?&lt;/span> &lt;span class="nb">true&lt;/span> &lt;span class="o">:&lt;/span> &lt;span class="nb">false&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="p">};&lt;/span>
+&lt;span class="k">template&lt;/span> &lt;span class="o">&amp;lt;&lt;/span>&lt;span class="k">typename&lt;/span> &lt;span class="n">T&lt;/span>&lt;span class="o">&amp;gt;&lt;/span>
+&lt;span class="k">struct&lt;/span> &lt;span class="nc">FrontT&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="k">template&lt;/span> &lt;span class="o">&amp;lt;&lt;/span>&lt;span class="k">typename&lt;/span> &lt;span class="n">Head&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="k">typename&lt;/span>&lt;span class="p">...&lt;/span> &lt;span class="n">Tail&lt;/span>&lt;span class="o">&amp;gt;&lt;/span>
+&lt;span class="k">struct&lt;/span> &lt;span class="nc">FrontT&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">Typelist&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">Head&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">Tail&lt;/span>&lt;span class="p">...&lt;/span>&lt;span class="o">&amp;gt;&amp;gt;&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;span class="k">using&lt;/span> &lt;span class="n">type&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">Head&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="p">};&lt;/span>
+&lt;span class="k">template&lt;/span> &lt;span class="o">&amp;lt;&lt;/span>&lt;span class="k">typename&lt;/span>&lt;span class="p">...&lt;/span> &lt;span class="n">TypeList&lt;/span>&lt;span class="o">&amp;gt;&lt;/span>
+&lt;span class="k">using&lt;/span> &lt;span class="n">TyepsFront&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="k">typename&lt;/span> &lt;span class="n">FrontT&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">TypeList&lt;/span>&lt;span class="p">...&lt;/span>&lt;span class="o">&amp;gt;::&lt;/span>&lt;span class="n">type&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="k">template&lt;/span> &lt;span class="o">&amp;lt;&lt;/span>&lt;span class="k">typename&lt;/span> &lt;span class="n">Head&lt;/span>&lt;span class="o">&amp;gt;&lt;/span>
+&lt;span class="k">struct&lt;/span> &lt;span class="nc">PopFrontT&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="k">template&lt;/span> &lt;span class="o">&amp;lt;&lt;/span>&lt;span class="k">typename&lt;/span> &lt;span class="n">Head&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="k">typename&lt;/span>&lt;span class="p">...&lt;/span> &lt;span class="n">Tail&lt;/span>&lt;span class="o">&amp;gt;&lt;/span>
+&lt;span class="k">struct&lt;/span> &lt;span class="nc">PopFrontT&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">Typelist&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">Head&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">Tail&lt;/span>&lt;span class="p">...&lt;/span>&lt;span class="o">&amp;gt;&amp;gt;&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;span class="k">using&lt;/span> &lt;span class="n">type&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">Typelist&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">Tail&lt;/span>&lt;span class="p">...&lt;/span>&lt;span class="o">&amp;gt;&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="p">};&lt;/span>
+&lt;span class="k">template&lt;/span> &lt;span class="o">&amp;lt;&lt;/span>&lt;span class="k">typename&lt;/span> &lt;span class="n">List&lt;/span>&lt;span class="o">&amp;gt;&lt;/span>
+&lt;span class="k">using&lt;/span> &lt;span class="n">PopFront&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="k">typename&lt;/span> &lt;span class="n">PopFrontT&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">List&lt;/span>&lt;span class="o">&amp;gt;::&lt;/span>&lt;span class="n">type&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="cp">#include&lt;/span> &lt;span class="cpf">&amp;lt;iostream&amp;gt;&lt;/span>&lt;span class="cp">
+&lt;/span>&lt;span class="cp">&lt;/span>
+&lt;span class="kt">int&lt;/span> &lt;span class="nf">main&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">void&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;span class="k">using&lt;/span> &lt;span class="n">Types&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">Typelist&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="kt">int&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="kt">char&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="kt">long&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="kt">float&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="kt">double&lt;/span>&lt;span class="o">&amp;gt;&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="k">using&lt;/span> &lt;span class="n">TypeT&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">PopFront&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">Types&lt;/span>&lt;span class="o">&amp;gt;&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="n">std&lt;/span>&lt;span class="o">::&lt;/span>&lt;span class="n">cout&lt;/span> &lt;span class="o">&amp;lt;&amp;lt;&lt;/span> &lt;span class="k">typeid&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Types&lt;/span>&lt;span class="p">).&lt;/span>&lt;span class="n">name&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="o">&amp;lt;&amp;lt;&lt;/span> &lt;span class="n">std&lt;/span>&lt;span class="o">::&lt;/span>&lt;span class="n">endl&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="c1">// 8TypelistIJiclfdEE
+&lt;/span>&lt;span class="c1">&lt;/span> &lt;span class="n">std&lt;/span>&lt;span class="o">::&lt;/span>&lt;span class="n">cout&lt;/span> &lt;span class="o">&amp;lt;&amp;lt;&lt;/span> &lt;span class="k">typeid&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">TypeT&lt;/span>&lt;span class="p">).&lt;/span>&lt;span class="n">name&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="o">&amp;lt;&amp;lt;&lt;/span> &lt;span class="n">std&lt;/span>&lt;span class="o">::&lt;/span>&lt;span class="n">endl&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="c1">// 8TypelistIJclfdEE
+&lt;/span>&lt;span class="c1">&lt;/span> &lt;span class="k">return&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="p">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></description></item><item><title>Shell_tools</title><link>https://gaoyinlong.com/posts/shell_tools/</link><guid isPermaLink="true">https://gaoyinlong.com/posts/shell_tools/</guid><pubDate>Tue, 28 Apr 2020 22:32:51 +0800</pubDate><author>im.ggyyll@gmail.com (gyl)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h4 id="终端工具">终端工具&lt;/h4>
+&lt;p>&lt;a href="https://github.com/neovim/neovim">neovim&lt;/a>&lt;br>
+&lt;a href="https://github.com/neoclide/coc.nvim">coc&lt;/a>&lt;br>
+&lt;a href="https://github.com/MaskRay/ccls">ccls&lt;/a>&lt;br>
+&lt;a href="https://github.com/skywind3000/z.lua">z.lua&lt;/a>&lt;br>
+&lt;a href="https://github.com/junegunn/fzf">fzf&lt;/a>&lt;br>
+&lt;a href="https://github.com/BurntSushi/ripgrep">rg&lt;/a>&lt;br>
+&lt;a href="https://github.com/sharkdp/fd">fd&lt;/a>&lt;br>
+&lt;a href="https://github.com/tmux/tmux">tmux&lt;/a>&lt;br>
+&lt;a href="https://github.com/jonas/tig">tig&lt;/a>&lt;/p>
+&lt;h4 id="代码格式化">代码格式化&lt;/h4>
+&lt;p>&lt;a href="https://clang.llvm.org/docs/ClangFormat.html">clang-format&lt;/a>&lt;/p>
+&lt;h4 id="静态代码检查">静态代码检查&lt;/h4>
+&lt;p>&lt;a href="http://cppcheck.sourceforge.net/">cppcheck&lt;/a>&lt;br>
+&lt;a href="https://clang.llvm.org/docs/ClangCheck.html">ClangCheck&lt;/a>&lt;br>
+&lt;a href="https://clang.llvm.org/docs/ClangStaticAnalyzer.html">Clang Static Analyzer&lt;/a>&lt;/p>
+&lt;h4 id="代码风格检查">代码风格检查&lt;/h4>
+&lt;p>&lt;a href="https://github.com/cpplint/cpplint">cpplint&lt;/a>&lt;/p>
+&lt;h4 id="编译期线程安全检查">编译期线程安全检查&lt;/h4>
+&lt;p>&lt;a href="https://clang.llvm.org/docs/ThreadSafetyAnalysis.html">Thread Safety Analysis&lt;/a>&lt;/p></description></item><item><title>Scoped</title><link>https://gaoyinlong.com/posts/scoped/</link><guid isPermaLink="true">https://gaoyinlong.com/posts/scoped/</guid><pubDate>Mon, 06 Apr 2020 20:12:56 +0800</pubDate><author>im.ggyyll@gmail.com (gyl)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>一段有趣的代码&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-c++" data-lang="c++">&lt;span class="kt">int&lt;/span> &lt;span class="nf">run&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;span class="p">{&lt;/span>
+&lt;span class="k">auto&lt;/span> &lt;span class="n">connection&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">socket&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">accept&lt;/span>&lt;span class="p">();&lt;/span>
+&lt;span class="n">std&lt;/span>&lt;span class="o">::&lt;/span>&lt;span class="n">string&lt;/span> &lt;span class="n">header&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">connection&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">read_header&lt;/span>&lt;span class="p">();&lt;/span>
+&lt;span class="k">if&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">header&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">empty&lt;/span>&lt;span class="p">())&lt;/span>
+&lt;span class="p">{&lt;/span>
+&lt;span class="n">connection&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">close&lt;/span>&lt;span class="p">();&lt;/span>
+&lt;span class="k">return&lt;/span> &lt;span class="n">INVALID_CONNECTION&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="p">}&lt;/span>
+&lt;span class="n">std&lt;/span>&lt;span class="o">::&lt;/span>&lt;span class="n">string&lt;/span> &lt;span class="n">body&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">connection&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">read_body&lt;/span>&lt;span class="p">();&lt;/span>
+&lt;span class="k">if&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">body&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">empty&lt;/span>&lt;span class="p">())&lt;/span>
+&lt;span class="p">{&lt;/span>
+&lt;span class="n">connection&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">close&lt;/span>&lt;span class="p">();&lt;/span>
+&lt;span class="k">return&lt;/span> &lt;span class="n">INVALID_CONNECTION&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="p">}&lt;/span>
+&lt;span class="n">std&lt;/span>&lt;span class="o">::&lt;/span>&lt;span class="n">string&lt;/span> &lt;span class="n">response&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">process_request&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">header&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">body&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;span class="k">if&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">response&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">empty&lt;/span>&lt;span class="p">())&lt;/span>
+&lt;span class="p">{&lt;/span>
+&lt;span class="n">connection&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">close&lt;/span>&lt;span class="p">();&lt;/span>
+&lt;span class="k">return&lt;/span> &lt;span class="n">INVALID_CONNECTION&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="p">}&lt;/span>
+&lt;span class="n">connection&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">send&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">response&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;span class="n">connection_list&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">push_back&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">connection&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;span class="k">return&lt;/span> &lt;span class="n">OK&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="p">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>上面的代码每个判断中都需要调用 connection 的 close 方法&lt;/p>
+&lt;p>利用 RAII 实现一个简单的 scoped_exit&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-c++" data-lang="c++">&lt;span class="kt">int&lt;/span> &lt;span class="nf">run&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;span class="p">{&lt;/span>
+&lt;span class="k">auto&lt;/span> &lt;span class="n">connection&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">socket&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">accept&lt;/span>&lt;span class="p">();&lt;/span>
+&lt;span class="k">auto&lt;/span> &lt;span class="n">clean_up&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">make_scoped_exit&lt;/span>&lt;span class="p">([&lt;/span>&lt;span class="n">conn&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="n">connection&lt;/span>&lt;span class="p">;](){&lt;/span>&lt;span class="n">conn&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">close&lt;/span>&lt;span class="p">();});&lt;/span>
+&lt;span class="n">std&lt;/span>&lt;span class="o">::&lt;/span>&lt;span class="n">string&lt;/span> &lt;span class="n">header&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">connection&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">read_header&lt;/span>&lt;span class="p">();&lt;/span>
+&lt;span class="k">if&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">header&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">empty&lt;/span>&lt;span class="p">())&lt;/span>
+&lt;span class="p">{&lt;/span>
+&lt;span class="k">return&lt;/span> &lt;span class="n">INVALID_CONNECTION&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="p">}&lt;/span>
+&lt;span class="n">std&lt;/span>&lt;span class="o">::&lt;/span>&lt;span class="n">string&lt;/span> &lt;span class="n">body&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">connection&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">read_body&lt;/span>&lt;span class="p">();&lt;/span>
+&lt;span class="k">if&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">body&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">empty&lt;/span>&lt;span class="p">())&lt;/span>
+&lt;span class="p">{&lt;/span>
+&lt;span class="k">return&lt;/span> &lt;span class="n">INVALID_CONNECTION&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="p">}&lt;/span>
+&lt;span class="n">std&lt;/span>&lt;span class="o">::&lt;/span>&lt;span class="n">string&lt;/span> &lt;span class="n">response&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">process_request&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">header&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">body&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;span class="k">if&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">response&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">empty&lt;/span>&lt;span class="p">())&lt;/span>
+&lt;span class="p">{&lt;/span>
+&lt;span class="k">return&lt;/span> &lt;span class="n">INVALID_REQUEST&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="p">}&lt;/span>
+&lt;span class="n">connection&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">send&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">response&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;span class="n">connection_list&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">push_back&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">connection&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;span class="n">clean_up&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">cancel&lt;/span>&lt;span class="p">();&lt;/span> &lt;span class="c1">// cancel
+&lt;/span>&lt;span class="c1">&lt;/span> &lt;span class="k">return&lt;/span> &lt;span class="n">OK&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="p">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>通过 make_scoped_exit 注册一个清理函数，clean_up 是一个栈对象，超出作用域后会被自动析构，在析构的时候会调用注册的清理函数。所以下面的错误处理的代码直接 return 即可。正常情况通过 cancel 取消注册的清理函数。&lt;/p>
+&lt;p>scoped_exit 的实现也很简单&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;span class="lnt">30
+&lt;/span>&lt;span class="lnt">31
+&lt;/span>&lt;span class="lnt">32
+&lt;/span>&lt;span class="lnt">33
+&lt;/span>&lt;span class="lnt">34
+&lt;/span>&lt;span class="lnt">35
+&lt;/span>&lt;span class="lnt">36
+&lt;/span>&lt;span class="lnt">37
+&lt;/span>&lt;span class="lnt">38
+&lt;/span>&lt;span class="lnt">39
+&lt;/span>&lt;span class="lnt">40
+&lt;/span>&lt;span class="lnt">41
+&lt;/span>&lt;span class="lnt">42
+&lt;/span>&lt;span class="lnt">43
+&lt;/span>&lt;span class="lnt">44
+&lt;/span>&lt;span class="lnt">45
+&lt;/span>&lt;span class="lnt">46
+&lt;/span>&lt;span class="lnt">47
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-c++" data-lang="c++">&lt;span class="k">template&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="k">typename&lt;/span> &lt;span class="n">Callback&lt;/span>&lt;span class="o">&amp;gt;&lt;/span>
+&lt;span class="k">class&lt;/span> &lt;span class="nc">scoped_exit&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;span class="k">public&lt;/span>&lt;span class="o">:&lt;/span>
+&lt;span class="k">template&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="k">typename&lt;/span> &lt;span class="n">C&lt;/span>&lt;span class="o">&amp;gt;&lt;/span>
+&lt;span class="n">scoped_exit&lt;/span>&lt;span class="p">(&lt;/span> &lt;span class="n">C&lt;/span>&lt;span class="o">&amp;amp;&amp;amp;&lt;/span> &lt;span class="n">c&lt;/span> &lt;span class="p">)&lt;/span>&lt;span class="o">:&lt;/span>&lt;span class="n">callback&lt;/span>&lt;span class="p">(&lt;/span> &lt;span class="n">std&lt;/span>&lt;span class="o">::&lt;/span>&lt;span class="n">forward&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">C&lt;/span>&lt;span class="o">&amp;gt;&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">c&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">){}&lt;/span>
+&lt;span class="n">scoped_exit&lt;/span>&lt;span class="p">(&lt;/span> &lt;span class="n">scoped_exit&lt;/span>&lt;span class="o">&amp;amp;&amp;amp;&lt;/span> &lt;span class="n">mv&lt;/span> &lt;span class="p">)&lt;/span>
+&lt;span class="o">:&lt;/span>&lt;span class="n">callback&lt;/span>&lt;span class="p">(&lt;/span> &lt;span class="n">std&lt;/span>&lt;span class="o">::&lt;/span>&lt;span class="n">move&lt;/span>&lt;span class="p">(&lt;/span> &lt;span class="n">mv&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">callback&lt;/span> &lt;span class="p">)&lt;/span> &lt;span class="p">),&lt;/span>&lt;span class="n">canceled&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">mv&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">canceled&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;span class="p">{&lt;/span>
+&lt;span class="n">mv&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">canceled&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nb">true&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="p">}&lt;/span>
+&lt;span class="n">scoped_exit&lt;/span>&lt;span class="p">(&lt;/span> &lt;span class="k">const&lt;/span> &lt;span class="n">scoped_exit&lt;/span>&lt;span class="o">&amp;amp;&lt;/span> &lt;span class="p">)&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="k">delete&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="n">scoped_exit&lt;/span>&lt;span class="o">&amp;amp;&lt;/span> &lt;span class="k">operator&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="p">(&lt;/span> &lt;span class="k">const&lt;/span> &lt;span class="n">scoped_exit&lt;/span>&lt;span class="o">&amp;amp;&lt;/span> &lt;span class="p">)&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="k">delete&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="o">~&lt;/span>&lt;span class="n">scoped_exit&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;span class="p">{&lt;/span>
+&lt;span class="k">if&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="o">!&lt;/span>&lt;span class="n">canceled&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;span class="k">try&lt;/span> &lt;span class="p">{&lt;/span> &lt;span class="n">callback&lt;/span>&lt;span class="p">();&lt;/span> &lt;span class="p">}&lt;/span> &lt;span class="k">catch&lt;/span>&lt;span class="p">(&lt;/span> &lt;span class="p">...&lt;/span> &lt;span class="p">)&lt;/span> &lt;span class="p">{}&lt;/span>
+&lt;span class="p">}&lt;/span>
+&lt;span class="n">scoped_exit&lt;/span>&lt;span class="o">&amp;amp;&lt;/span> &lt;span class="k">operator&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">(&lt;/span> &lt;span class="n">scoped_exit&lt;/span>&lt;span class="o">&amp;amp;&amp;amp;&lt;/span> &lt;span class="n">mv&lt;/span> &lt;span class="p">)&lt;/span>
+&lt;span class="p">{&lt;/span>
+&lt;span class="k">if&lt;/span>&lt;span class="p">(&lt;/span> &lt;span class="k">this&lt;/span> &lt;span class="o">!=&lt;/span> &lt;span class="o">&amp;amp;&lt;/span>&lt;span class="n">mv&lt;/span> &lt;span class="p">)&lt;/span>
+&lt;span class="p">{&lt;/span>
+&lt;span class="o">~&lt;/span>&lt;span class="n">scoped_exit&lt;/span>&lt;span class="p">();&lt;/span>
+&lt;span class="n">callback&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">std&lt;/span>&lt;span class="o">::&lt;/span>&lt;span class="n">move&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">mv&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">callback&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;span class="n">canceled&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">mv&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">canceled&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="n">mv&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">canceled&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nb">true&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="p">}&lt;/span>
+&lt;span class="k">return&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="k">this&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="p">}&lt;/span>
+&lt;span class="kt">void&lt;/span> &lt;span class="nf">cancel&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="p">{&lt;/span> &lt;span class="n">canceled&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nb">true&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="p">}&lt;/span>
+&lt;span class="k">private&lt;/span>&lt;span class="o">:&lt;/span>
+&lt;span class="n">Callback&lt;/span> &lt;span class="n">callback&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="kt">bool&lt;/span> &lt;span class="n">canceled&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nb">false&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="p">};&lt;/span>
+&lt;span class="k">template&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="k">typename&lt;/span> &lt;span class="n">Callback&lt;/span>&lt;span class="o">&amp;gt;&lt;/span>
+&lt;span class="n">scoped_exit&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">Callback&lt;/span>&lt;span class="o">&amp;gt;&lt;/span> &lt;span class="n">make_scoped_exit&lt;/span>&lt;span class="p">(&lt;/span> &lt;span class="n">Callback&lt;/span>&lt;span class="o">&amp;amp;&amp;amp;&lt;/span> &lt;span class="n">c&lt;/span> &lt;span class="p">)&lt;/span>
+&lt;span class="p">{&lt;/span>
+&lt;span class="k">return&lt;/span> &lt;span class="n">scoped_exit&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">Callback&lt;/span>&lt;span class="o">&amp;gt;&lt;/span>&lt;span class="p">(&lt;/span> &lt;span class="n">std&lt;/span>&lt;span class="o">::&lt;/span>&lt;span class="n">forward&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">Callback&lt;/span>&lt;span class="o">&amp;gt;&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">c&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">);&lt;/span>
+&lt;span class="p">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="其他">其他&lt;/h3>
+&lt;p>&lt;a href="https://zh.cppreference.com/w/cpp/experimental/scope_exit">TS v3&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://theboostcpplibraries.com/boost.scopeexit">boost&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://stackoverflow.com/questions/3669833/c11-scope-exit-guard-a-good-idea">stackoverflow&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://github.com/microsoft/GSL/blob/master/include/gsl/gsl_util">gsl.util&lt;/a>&lt;/p></description></item><item><title>Optional</title><link>https://gaoyinlong.com/posts/optional/</link><guid isPermaLink="true">https://gaoyinlong.com/posts/optional/</guid><pubDate>Mon, 06 Apr 2020 20:11:51 +0800</pubDate><author>im.ggyyll@gmail.com (gyl)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h3 id="stdoptional-使用">std::optional 使用&lt;/h3>
+&lt;p>定义一个简单的结构&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-c++" data-lang="c++">&lt;span class="k">class&lt;/span> &lt;span class="nc">Entity&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;span class="k">public&lt;/span>&lt;span class="o">:&lt;/span>
+&lt;span class="k">explicit&lt;/span> &lt;span class="n">Entity&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">uint64_t&lt;/span> &lt;span class="n">id&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;span class="o">:&lt;/span> &lt;span class="n">id_&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">id&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{};&lt;/span>
+&lt;span class="o">~&lt;/span>&lt;span class="n">Entity&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="k">default&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="k">private&lt;/span>&lt;span class="o">:&lt;/span>
+&lt;span class="na">[[maybe_unused]]&lt;/span> &lt;span class="kt">uint64_t&lt;/span> &lt;span class="n">id_&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="p">};&lt;/span>
+&lt;span class="n">std&lt;/span>&lt;span class="o">::&lt;/span>&lt;span class="n">map&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="kt">uint64_t&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">Entity&lt;/span>&lt;span class="o">&amp;gt;&lt;/span> &lt;span class="n">entitys&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>find_entity 根据 id 从 entitys 中查找&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;span class="lnt">9
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-c++" data-lang="c++">&lt;span class="n">Entity&lt;/span> &lt;span class="nf">find_entity&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">uint64_t&lt;/span> &lt;span class="n">id&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;span class="p">{&lt;/span>
+&lt;span class="k">auto&lt;/span> &lt;span class="n">it&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">entitys&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">find&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">id&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;span class="k">if&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">it&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="n">entitys&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">end&lt;/span>&lt;span class="p">())&lt;/span>
+&lt;span class="p">{&lt;/span>
+&lt;span class="k">return&lt;/span> &lt;span class="n">Entity&lt;/span>&lt;span class="p">{};&lt;/span> &lt;span class="c1">// error
+&lt;/span>&lt;span class="c1">&lt;/span> &lt;span class="p">}&lt;/span>
+&lt;span class="k">return&lt;/span> &lt;span class="n">it&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">second&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="p">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;code>编译错误&lt;/code>&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-c++" data-lang="c++">&lt;span class="n">main&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nl">cc&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="mi">22&lt;/span>&lt;span class="o">:&lt;/span>&lt;span class="mi">16&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="nl">error&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">no&lt;/span> &lt;span class="n">matching&lt;/span> &lt;span class="n">constructor&lt;/span> &lt;span class="k">for&lt;/span> &lt;span class="n">initialization&lt;/span> &lt;span class="n">of&lt;/span> &lt;span class="err">&amp;#39;&lt;/span>&lt;span class="n">Entity&lt;/span>&lt;span class="err">&amp;#39;&lt;/span>
+&lt;span class="k">return&lt;/span> &lt;span class="n">Entity&lt;/span>&lt;span class="p">{};&lt;/span>
+&lt;span class="o">^&lt;/span> &lt;span class="o">~~&lt;/span>
+&lt;span class="n">main&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nl">cc&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="mi">6&lt;/span>&lt;span class="o">:&lt;/span>&lt;span class="mi">14&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="nl">note&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">candidate&lt;/span> &lt;span class="n">constructor&lt;/span> &lt;span class="n">not&lt;/span> &lt;span class="nl">viable&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="k">requires&lt;/span> &lt;span class="n">single&lt;/span> &lt;span class="n">argument&lt;/span> &lt;span class="err">&amp;#39;&lt;/span>&lt;span class="n">id&lt;/span>&lt;span class="err">&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">but&lt;/span> &lt;span class="n">no&lt;/span> &lt;span class="n">arguments&lt;/span> &lt;span class="n">were&lt;/span> &lt;span class="n">provided&lt;/span>
+&lt;span class="k">explicit&lt;/span> &lt;span class="n">Entity&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">uint64_t&lt;/span> &lt;span class="n">id&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;span class="o">^&lt;/span>
+&lt;span class="n">main&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nl">cc&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="mi">4&lt;/span>&lt;span class="o">:&lt;/span>&lt;span class="mi">7&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="nl">note&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">candidate&lt;/span> &lt;span class="n">constructor&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">the&lt;/span> &lt;span class="n">implicit&lt;/span> &lt;span class="n">copy&lt;/span> &lt;span class="n">constructor&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="n">not&lt;/span> &lt;span class="nl">viable&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="k">requires&lt;/span> &lt;span class="mi">1&lt;/span> &lt;span class="n">argument&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">but&lt;/span> &lt;span class="mi">0&lt;/span> &lt;span class="n">were&lt;/span> &lt;span class="n">provided&lt;/span>
+&lt;span class="k">class&lt;/span> &lt;span class="nc">Entity&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;span class="o">^&lt;/span>
+&lt;span class="mi">1&lt;/span> &lt;span class="n">error&lt;/span> &lt;span class="n">generated&lt;/span>&lt;span class="p">.&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>使用 std::optional 作为 find_entity 的返回值&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-c++" data-lang="c++">&lt;span class="n">std&lt;/span>&lt;span class="o">::&lt;/span>&lt;span class="n">optional&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">Entity&lt;/span>&lt;span class="o">&amp;gt;&lt;/span> &lt;span class="n">find_entity&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">uint64_t&lt;/span> &lt;span class="n">id&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;span class="p">{&lt;/span>
+&lt;span class="k">auto&lt;/span> &lt;span class="n">it&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">entitys&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">find&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">id&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;span class="k">if&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">it&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="n">entitys&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">end&lt;/span>&lt;span class="p">())&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;span class="k">return&lt;/span> &lt;span class="p">{};&lt;/span>
+&lt;span class="p">}&lt;/span>
+&lt;span class="k">return&lt;/span> &lt;span class="n">it&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">second&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="p">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-c++" data-lang="c++">&lt;span class="k">auto&lt;/span> &lt;span class="n">op&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">find_entity&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">10&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;span class="k">if&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="o">!&lt;/span>&lt;span class="n">op&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;span class="c1">// not found
+&lt;/span>&lt;span class="c1">&lt;/span>&lt;span class="p">}&lt;/span>
+&lt;span class="c1">// do something
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>std::optional 需要需要编译器支持c++17，如果编译器不支持，可以使用 boost::optional 或者 absl::optional
+••• ~&lt;/p></description></item><item><title>Hello World</title><link>https://gaoyinlong.com/posts/hello/</link><guid isPermaLink="true">https://gaoyinlong.com/posts/hello/</guid><pubDate>Mon, 06 Apr 2020 19:53:12 +0800</pubDate><author>im.ggyyll@gmail.com (gyl)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-c++" data-lang="c++">&lt;span class="cp">#include&lt;/span> &lt;span class="cpf">&amp;lt;iostream&amp;gt;&lt;/span>&lt;span class="cp">
+&lt;/span>&lt;span class="cp">&lt;/span>
+&lt;span class="kt">int&lt;/span> &lt;span class="nf">main&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">int&lt;/span> &lt;span class="n">argc&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="k">const&lt;/span> &lt;span class="kt">char&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="n">argv&lt;/span>&lt;span class="p">[])&lt;/span>
+&lt;span class="p">{&lt;/span>
+&lt;span class="n">std&lt;/span>&lt;span class="o">::&lt;/span>&lt;span class="n">cout&lt;/span> &lt;span class="o">&amp;lt;&amp;lt;&lt;/span> &lt;span class="s">&amp;#34;Hello World!&amp;#34;&lt;/span> &lt;span class="o">&amp;lt;&amp;lt;&lt;/span> &lt;span class="n">std&lt;/span>&lt;span class="o">::&lt;/span>&lt;span class="n">endl&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="k">return&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="p">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></description></item></channel></rss>

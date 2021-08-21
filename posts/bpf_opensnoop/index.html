@@ -1,0 +1,127 @@
+<!doctype html><html lang=zh-cn><head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#"><meta charset=utf-8><meta name=generator content="Hugo 0.82.0"><meta name=theme-color content="#fff"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=format-detection content="telephone=no, date=no, address=no, email=no"><meta http-equiv=cache-control content="no-transform"><meta http-equiv=cache-control content="no-siteapp"><title>Bpf_opensnoop | gaoyinlong</title><link rel=stylesheet href=/css/meme.min.3f546df86ffaa523c0de7f9e0884b050a2491684511d9864de5d18a2c916ac4e.css><script src=/js/meme.min.8cbe976441b5181abfd3093c9beee209b19cdbb1fa77c48d225a83ba81fa3fb1.js></script><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link rel=stylesheet href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,700;1,400;1,700&family=Noto+Serif+SC:wght@400;500;700&family=Source+Code+Pro:ital,wght@0,400;0,700;1,400;1,700&display=swap" media=print onload="this.media='all'"><noscript><link rel=stylesheet href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,700;1,400;1,700&family=Noto+Serif+SC:wght@400;500;700&family=Source+Code+Pro:ital,wght@0,400;0,700;1,400;1,700&display=swap"></noscript><meta name=author content="gyl"><meta name=description content="……"><link rel="shortcut icon" href=/favicon.ico type=image/x-icon><link rel=mask-icon href=/icons/safari-pinned-tab.svg color=#2a6df4><link rel=apple-touch-icon sizes=180x180 href=/icons/apple-touch-icon.png><meta name=apple-mobile-web-app-capable content="yes"><meta name=apple-mobile-web-app-title content="gaoyinlong"><meta name=apple-mobile-web-app-status-bar-style content="black"><meta name=mobile-web-app-capable content="yes"><meta name=application-name content="gaoyinlong"><meta name=msapplication-starturl content="../../"><meta name=msapplication-TileColor content="#fff"><meta name=msapplication-TileImage content="../../icons/mstile-150x150.png"><link rel=manifest href=/manifest.json><link rel=canonical href=https://gaoyinlong.com/posts/bpf_opensnoop/><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","datePublished":"2021-04-23T10:17:36+08:00","dateModified":"2021-08-21T16:25:44+00:00","url":"https://gaoyinlong.com/posts/bpf_opensnoop/","headline":"Bpf_opensnoop","description":"……","inLanguage":"zh-CN","articleSection":"posts","wordCount":705,"author":{"@type":"Person","description":"simple","email":"im.ggyyll@gmail.com","url":"https://gaoyinlong.com","name":"gyl"},"license":"[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)","publisher":{"@type":"Organization","name":"gaoyinlong","url":"https://gaoyinlong.com/"},"mainEntityOfPage":{"@type":"WebSite","@id":"https://gaoyinlong.com/"}}</script><meta property="og:title" content="Bpf_opensnoop"><meta property="og:description" content="……"><meta property="og:url" content="https://gaoyinlong.com/posts/bpf_opensnoop/"><meta property="og:site_name" content="gaoyinlong"><meta property="og:locale" content="zh"><meta property="og:type" content="article"><meta property="article:published_time" content="2021-04-23T10:17:36+08:00"><meta property="article:modified_time" content="2021-08-21T16:25:44+00:00"><meta property="article:section" content="posts"></head><body><div class=container><header class=header><div class=header-wrapper><div class="header-inner single"><div class=site-brand><a href=/ class=brand>gaoyinlong</a></div><nav class=nav><ul class=menu id=menu><li class=menu-item><a href=/posts/><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon archive"><path d="M32 448c0 17.7 14.3 32 32 32h384c17.7.0 32-14.3 32-32V160H32v288zm160-212c0-6.6 5.4-12 12-12h104c6.6.0 12 5.4 12 12v8c0 6.6-5.4 12-12 12H204c-6.6.0-12-5.4-12-12v-8zM480 32H32C14.3 32 0 46.3.0 64v48c0 8.8 7.2 16 16 16h480c8.8.0 16-7.2 16-16V64c0-17.7-14.3-32-32-32z"/></svg><span class=menu-item-name>文章</span></a></li><li class=menu-item><a href=/about/><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" class="icon user-circle"><path d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm0 96c48.6.0 88 39.4 88 88s-39.4 88-88 88-88-39.4-88-88 39.4-88 88-88zm0 344c-58.7.0-111.3-26.6-146.5-68.2 18.8-35.4 55.6-59.8 98.5-59.8 2.4.0 4.8.4 7.1 1.1 13 4.2 26.6 6.9 40.9 6.9s28-2.7 40.9-6.9c2.3-.7 4.7-1.1 7.1-1.1 42.9.0 79.7 24.4 98.5 59.8C359.3 421.4 306.7 448 248 448z"/></svg><span class=menu-item-name>关于</span></a></li><li class=menu-item><a id=theme-switcher href=#><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon theme-icon-light"><path d="M193.2 104.5 242 7a18 18 0 0128 0l48.8 97.5L422.2 70A18 18 0 01442 89.8l-34.5 103.4L505 242a18 18 0 010 28l-97.5 48.8L442 422.2A18 18 0 01422.2 442l-103.4-34.5L270 505a18 18 0 01-28 0l-48.8-97.5L89.8 442A18 18 0 0170 422.2l34.5-103.4-97.5-48.8a18 18 0 010-28l97.5-48.8L70 89.8A18 18 0 0189.8 70zM256 128a128 128 0 10.01.0M256 160a96 96 0 10.01.0"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon theme-icon-dark"><path d="M27 412A256 256 0 10181 5a11.5 11.5.0 00-5 20A201.5 201.5.0 0142 399a11.5 11.5.0 00-15 13"/></svg></a></li><li class=menu-item><a href=/about/about/><span class=menu-item-name>我</span></a></li></ul></nav></div></div><input type=checkbox id=nav-toggle aria-hidden=true>
+<label for=nav-toggle class=nav-toggle></label><label for=nav-toggle class=nav-curtain></label></header><main class="main single" id=main><div class=main-inner><article class="content post h-entry" data-align=justify data-type=posts data-toc-num=true><h1 class="post-title p-name">Bpf_opensnoop</h1><div class=post-meta><time datetime=2021-04-23T10:17:36+08:00 class="post-meta-item published dt-published"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon post-meta-icon"><path d="M148 288h-40c-6.6.0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6.0 12 5.4 12 12v40c0 6.6-5.4 12-12 12zm108-12v-40c0-6.6-5.4-12-12-12h-40c-6.6.0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6.0 12-5.4 12-12zm96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6.0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6.0 12-5.4 12-12zm-96 96v-40c0-6.6-5.4-12-12-12h-40c-6.6.0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6.0 12-5.4 12-12zm-96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6.0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6.0 12-5.4 12-12zm192 0v-40c0-6.6-5.4-12-12-12h-40c-6.6.0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6.0 12-5.4 12-12zm96-260v352c0 26.5-21.5 48-48 48H48c-26.5.0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h48V12c0-6.6 5.4-12 12-12h40c6.6.0 12 5.4 12 12v52h128V12c0-6.6 5.4-12 12-12h40c6.6.0 12 5.4 12 12v52h48c26.5.0 48 21.5 48 48zm-48 346V160H48v298c0 3.3 2.7 6 6 6h340c3.3.0 6-2.7 6-6z"/></svg>&nbsp;2021.4.23</time>
+<time datetime=2021-08-21T16:25:44+00:00 class="post-meta-item modified dt-updated"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon post-meta-icon"><path d="M4e2 64h-48V12c0-6.627-5.373-12-12-12h-40c-6.627.0-12 5.373-12 12v52H160V12c0-6.627-5.373-12-12-12h-40c-6.627.0-12 5.373-12 12v52H48C21.49 64 0 85.49.0 112v352c0 26.51 21.49 48 48 48h352c26.51.0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 4e2H54a6 6 0 01-6-6V160h352v298a6 6 0 01-6 6zm-52.849-200.65L198.842 404.519c-4.705 4.667-12.303 4.637-16.971-.068l-75.091-75.699c-4.667-4.705-4.637-12.303.068-16.971l22.719-22.536c4.705-4.667 12.303-4.637 16.97.069l44.104 44.461 111.072-110.181c4.705-4.667 12.303-4.637 16.971.068l22.536 22.718c4.667 4.705 4.636 12.303-.069 16.97z"/></svg>&nbsp;2021.8.21</time>
+<span class="post-meta-item wordcount"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon post-meta-icon"><path d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3.0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9.0l60.1 60.1c18.8 18.7 18.8 49.1.0 67.9zM284.2 99.8 21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3.0-17l-111-111c-4.8-4.7-12.4-4.7-17.1.0zM124.1 339.9c-5.5-5.5-5.5-14.3.0-19.8l154-154c5.5-5.5 14.3-5.5 19.8.0s5.5 14.3.0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8.0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"/></svg>&nbsp;705</span>
+<span class="post-meta-item reading-time"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon post-meta-icon"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5.0-2e2-89.5-2e2-2e2S145.5 56 256 56s2e2 89.5 2e2 2e2-89.5 2e2-2e2 2e2zm61.8-104.4-84.9-61.7c-3.1-2.3-4.9-5.9-4.9-9.7V116c0-6.6 5.4-12 12-12h32c6.6.0 12 5.4 12 12v141.7l66.8 48.6c5.4 3.9 6.5 11.4 2.6 16.8L334.6 349c-3.9 5.3-11.4 6.5-16.8 2.6z"/></svg>&nbsp;2&nbsp;分钟</span></div><div class="post-body e-content"><p>我在 ubuntu 上使用 navicat,今天试用期结束了，想着怎么能继续使用,linux下一切皆文件，试用信息肯定放在一个文件中。遂跟踪 navicat 进程打开的文件,我用的是 btp 工具 opensnoop。传统linux工具strace一样可以</p><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>••• ~ ➜  sudo /usr/share/bcc/tools/opensnoop &gt; na.log
+</code></pre></td></tr></table></div></div></div><p>观察输出文件，发现 ~/.config 目录下有个 navicat 文件夹</p><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash><span class=m>23350</span>  navicat  -1   <span class=m>2</span> ~/.config/navicat/Premium/lib/sqlite/tls/haswell/x86_64/libdl.so.2
+<span class=m>23350</span>  navicat  -1   <span class=m>2</span> ~/.config/navicat/Premium/lib/sqlite/tls/haswell/libdl.so.2
+<span class=m>23350</span>  navicat  -1   <span class=m>2</span> ~/.config/navicat/Premium/lib/sqlite/tls/x86_64/libdl.so.2
+<span class=m>23350</span>  navicat  -1   <span class=m>2</span> ~/.config/navicat/Premium/lib/sqlite/tls/libdl.so.2
+<span class=m>23350</span>  navicat  -1   <span class=m>2</span> ~/.config/navicat/Premium/lib/sqlite/haswell/x86_64/libdl.so.2
+<span class=m>23350</span>  navicat  -1   <span class=m>2</span> ~/.config/navicat/Premium/lib/sqlite/haswell/libdl.so.2
+<span class=m>23350</span>  navicat  -1   <span class=m>2</span> ~/.config/navicat/Premium/lib/sqlite/x86_64/libdl.so.2
+<span class=m>23350</span>  navicat  -1   <span class=m>2</span> ~/.config/navicat/Premium/lib/sqlite/libdl.so.2
+<span class=m>23350</span>  navicat  -1   <span class=m>2</span> ~/.config/navicat/Premium/lib/oci/tls/haswell/x86_64/libdl.so.2
+<span class=m>23350</span>  navicat  -1   <span class=m>2</span> ~/.config/navicat/Premium/lib/oci/tls/haswell/libdl.so.2
+<span class=m>23350</span>  navicat  -1   <span class=m>2</span> ~/.config/navicat/Premium/lib/oci/tls/x86_64/libdl.so.2
+<span class=m>23350</span>  navicat  -1   <span class=m>2</span> ~/.config/navicat/Premium/lib/oci/tls/libdl.so.2
+<span class=m>23350</span>  navicat  -1   <span class=m>2</span> ~/.config/navicat/Premium/lib/oci/haswell/x86_64/libdl.so.2
+<span class=m>23350</span>  navicat  -1   <span class=m>2</span> ~/.config/navicat/Premium/lib/oci/haswell/libdl.so.2
+<span class=m>23350</span>  navicat  -1   <span class=m>2</span> ~/.config/navicat/Premium/lib/oci/x86_64/libdl.so.2
+<span class=m>23350</span>  navicat  -1   <span class=m>2</span> ~/.config/navicat/Premium/lib/oci/libdl.so.2
+<span class=m>23350</span>  navicat  -1   <span class=m>2</span> ~/.config/navicat/Premium/ui_preferences.json
+
+</code></pre></td></tr></table></div></div></div><p>删除之后运行navicat发现还是提示试用结束,那就继续找,过滤掉 .config/navicat/ 文件夹之后，然后看在 .config 文件下还有哪些文件被打开</p><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>••• ~ ➜ awk <span class=s1>&#39;$2==&#34;navicat15-premi&#34; || $2==&#34;navicat&#34; {print $0}&#39;</span> na.log <span class=p>|</span> grep -v <span class=s2>&#34;.config/navicat/&#34;</span> <span class=p>|</span> grep <span class=s2>&#34;/.config&#34;</span> 
+<span class=m>23367</span>  navicat <span class=m>13</span>   <span class=m>0</span> ~/.config/fcitx/dbus/428cc79e9c4d4f8393591702ea85d60e-1
+<span class=m>23350</span>  navicat <span class=m>13</span>   <span class=m>0</span> ~/.config/fcitx/dbus/428cc79e9c4d4f8393591702ea85d60e-1
+<span class=m>23350</span>  navicat <span class=m>16</span>   <span class=m>0</span> ~/.config/dconf/user
+<span class=m>23350</span>  navicat <span class=m>21</span>   <span class=m>0</span> ~/.config/dconf/user
+<span class=m>23350</span>  navicat <span class=m>22</span>   <span class=m>0</span> ~/.config/dconf/user
+••• ~ ➜ 
+••• ~ ➜ 
+</code></pre></td></tr></table></div></div></div><p>发现就剩 ~/.config/dconf/user 文件被打开访问了,dconf 类似windows下的注册表,可以通过 dconf-editor 或者 gsettings 进行查看</p><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>mv ~/.config/dconf/user ~
+</code></pre></td></tr></table></div></div></div><p>移动 ~/.config/dconf/user 后，再次打开 navicat，发现重新提示试用开始。那么 navicat 一定是在 dconf/user 文件中写入了注册信息,接下来就是查找 navicat 究竟在 dconf/user 中写入了哪些信息</p><p>将 ~/.config/dconf/user 中的数据 dump 出来</p><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>••• ~ ➜ 
+••• ~ ➜ 
+••• ~ ➜ cp ~/.config/dconf/user /tmp/dconf/user
+••• ~ ➜ <span class=nv>XDG_CONFIG_HOME</span><span class=o>=</span>/tmp dconf dump / &gt; old-gsettings-data.txt
+••• ~ ➜ 
+••• ~ ➜ cat ~/old-gsettings-data.txt <span class=p>|</span> head -n <span class=m>18</span>
+<span class=o>[</span>com/premiumsoft/navicat-premium<span class=o>]</span>
+<span class=nv>E3D5E9705B0E433B70AF42C8C9DF8F7E</span><span class=o>=</span><span class=s1>&#39;4CD8D1423D9E2171BD1715CE9215C256&#39;</span>
+auto-skip-version<span class=o>=</span><span class=s1>&#39;15.0.25&#39;</span>
+<span class=nv>6DE6FDD7BF19602C9E8995F7B17C88F2</span><span class=o>=</span><span class=s1>&#39;4CD8D1423D9E2171BD1715CE9215C256&#39;</span>
+<span class=nv>2473DBF2A67697804050315280DDB5E3</span><span class=o>=</span><span class=s1>&#39;4CD8D1423D9E2171BD1715CE9215C256&#39;</span>
+<span class=nv>9DE25CCD8CBE96988FB193CD77B9E0F2</span><span class=o>=</span><span class=s1>&#39;4CD8D1423D9E2171BD1715CE9215C256&#39;</span>
+<span class=nv>E99114BC353901E809AA3D8FA8C680B2</span><span class=o>=</span><span class=s1>&#39;EA97CF880545701853656B180DAD2B5F&#39;</span>
+<span class=nv>B2C83CF8F3A60E559B3D7A08DEC27FE1</span><span class=o>=</span><span class=s1>&#39;EA97CF880545701853656B180DAD2B5F&#39;</span>
+<span class=nv>AE97746E5899CE85E9A40B04263A2E0B</span><span class=o>=</span><span class=s1>&#39;EA97CF880545701853656B180DAD2B5F&#39;</span>
+<span class=nv>FB8B18E33152196B70847CF46C707ABF</span><span class=o>=</span><span class=s1>&#39;4CD8D1423D9E2171BD1715CE9215C256&#39;</span>
+<span class=nv>802293B9E142EA65CF8B55EA524E1641</span><span class=o>=</span><span class=s1>&#39;EA97CF880545701853656B180DAD2B5F&#39;</span>
+last-check-time<span class=o>=</span>int64 <span class=m>1619156150</span>
+<span class=nv>57C0FF66F7556BCE286C2B8BB4FE1FD2</span><span class=o>=</span><span class=s1>&#39;4CD8D1423D9E2171BD1715CE9215C256&#39;</span>
+<span class=nv>704430CD11D5C7E67DC8220E227182CE</span><span class=o>=</span><span class=s1>&#39;4CD8D1423D9E2171BD1715CE9215C256&#39;</span>
+<span class=nv>0B33B7E1DA8F246120041A64393073AE</span><span class=o>=</span><span class=s1>&#39;4CD8D1423D9E2171BD1715CE9215C256&#39;</span>
+<span class=nv>A41B8E2E173757C8CF829970728877D5</span><span class=o>=</span><span class=s1>&#39;4CD8D1423D9E2171BD1715CE9215C256&#39;</span>
+<span class=nv>8842BD6065C20AB7CBCE15B6E098675A</span><span class=o>=</span><span class=s1>&#39;EA97CF880545701853656B180DAD2B5F&#39;</span>
+
+••• ~ ➜ 
+••• ~ ➜ 
+</code></pre></td></tr></table></div></div></div><blockquote><p><strong>last-check-time=int64 1619156150</strong> 就是时间啦,但是修改 last-check-time 是不行的,其他内容看样子是经过处理的，不知道具体方式，也没法修改。</p></blockquote><blockquote><p>最后直接删除 com/premiumsoft/navicat-premium 和 .config/navicat/Premium 文件夹搞定</p></blockquote><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>••• ~ ➜ 
+••• ~ ➜ dconf reset -f <span class=s2>&#34;/com/premiumsoft/navicat-premium/&#34;</span>
+••• ~ ➜ 
+••• ~ ➜ 
+••• ~ ➜ rm -rf ~/.config/navicat/Premium/
+••• ~ ➜ 
+••• ~ ➜ 
+</code></pre></td></tr></table></div></div></div><p>再次打开 navicat 会提示14天试用</p></div></article><div class=post-share><div class=share-items></div></div><ul class=post-nav><li class=post-nav-next><a href=/posts/understand/ rel=next>Understand ></a></li></ul></div></main><div id=back-to-top class=back-to-top><a href=#><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon arrow-up"><path d="M34.9 289.5l-22.2-22.2c-9.4-9.4-9.4-24.6.0-33.9L207 39c9.4-9.4 24.6-9.4 33.9.0l194.3 194.3c9.4 9.4 9.4 24.6.0 33.9L413 289.4c-9.5 9.5-25 9.3-34.3-.4L264 168.6V456c0 13.3-10.7 24-24 24h-32c-13.3.0-24-10.7-24-24V168.6L69.2 289.1c-9.3 9.8-24.8 10-34.3.4z"/></svg></a></div></div><script src=https://cdn.jsdelivr.net/npm/medium-zoom@latest/dist/medium-zoom.min.js></script><script>mediumZoom(document.querySelectorAll('div.post-body img'),{background:'hsla(var(--color-bg-h), var(--color-bg-s), var(--color-bg-l), 0.95)'})</script><script src=https://cdn.jsdelivr.net/npm/instant.page@5.1.0/instantpage.min.js type=module defer></script></body></html>
