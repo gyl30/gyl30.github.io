@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>gaoyinlong</title><link>https://gaoyinlong.com/</link><description/><generator>Hugo 0.82.0 https://gohugo.io/</generator><language>zh-CN</language><managingEditor>im.ggyyll@gmail.com (gyl)</managingEditor><webMaster>im.ggyyll@gmail.com (gyl)</webMaster><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><lastBuildDate>Sat, 21 Aug 2021 16:55:38 +0000</lastBuildDate><atom:link rel="self" type="application/rss+xml" href="https://gaoyinlong.com/rss.xml"/><item><title>Bpf_opensnoop</title><link>https://gaoyinlong.com/posts/bpf_opensnoop/</link><guid isPermaLink="true">https://gaoyinlong.com/posts/bpf_opensnoop/</guid><pubDate>Fri, 23 Apr 2021 10:17:36 +0800</pubDate><author>im.ggyyll@gmail.com (gyl)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>我在 ubuntu 上使用 navicat,今天试用期结束了，想着怎么能继续使用,linux下一切皆文件，试用信息肯定放在一个文件中。遂跟踪 navicat 进程打开的文件,我用的是 btp 工具 opensnoop。传统linux工具strace一样可以&lt;/p>
+<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>gaoyinlong</title><link>https://gaoyinlong.com/</link><description/><generator>Hugo 0.82.0 https://gohugo.io/</generator><language>zh-CN</language><managingEditor>im.ggyyll@gmail.com (gyl)</managingEditor><webMaster>im.ggyyll@gmail.com (gyl)</webMaster><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><lastBuildDate>Sun, 22 Aug 2021 01:45:01 +0000</lastBuildDate><atom:link rel="self" type="application/rss+xml" href="https://gaoyinlong.com/rss.xml"/><item><title>Bpf_opensnoop</title><link>https://gaoyinlong.com/posts/bpf_opensnoop/</link><guid isPermaLink="true">https://gaoyinlong.com/posts/bpf_opensnoop/</guid><pubDate>Fri, 23 Apr 2021 10:17:36 +0800</pubDate><author>im.ggyyll@gmail.com (gyl)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>我在 ubuntu 上使用 navicat,今天试用期结束了，想着怎么能继续使用,linux下一切皆文件，试用信息肯定放在一个文件中。遂跟踪 navicat 进程打开的文件,我用的是 bpf 工具 opensnoop。传统linux工具strace一样可以&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
@@ -96,21 +96,6 @@
 &lt;/span>&lt;span class="lnt"> 9
 &lt;/span>&lt;span class="lnt">10
 &lt;/span>&lt;span class="lnt">11
-&lt;/span>&lt;span class="lnt">12
-&lt;/span>&lt;span class="lnt">13
-&lt;/span>&lt;span class="lnt">14
-&lt;/span>&lt;span class="lnt">15
-&lt;/span>&lt;span class="lnt">16
-&lt;/span>&lt;span class="lnt">17
-&lt;/span>&lt;span class="lnt">18
-&lt;/span>&lt;span class="lnt">19
-&lt;/span>&lt;span class="lnt">20
-&lt;/span>&lt;span class="lnt">21
-&lt;/span>&lt;span class="lnt">22
-&lt;/span>&lt;span class="lnt">23
-&lt;/span>&lt;span class="lnt">24
-&lt;/span>&lt;span class="lnt">25
-&lt;/span>&lt;span class="lnt">26
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td class="lntd">
 &lt;pre class="chroma">&lt;code class="language-bash" data-lang="bash">••• ~ ➜
@@ -120,31 +105,14 @@
 ••• ~ ➜
 ••• ~ ➜ cat ~/old-gsettings-data.txt &lt;span class="p">|&lt;/span> head -n &lt;span class="m">18&lt;/span>
 &lt;span class="o">[&lt;/span>com/premiumsoft/navicat-premium&lt;span class="o">]&lt;/span>
-&lt;span class="nv">E3D5E9705B0E433B70AF42C8C9DF8F7E&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;4CD8D1423D9E2171BD1715CE9215C256&amp;#39;&lt;/span>
-auto-skip-version&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;15.0.25&amp;#39;&lt;/span>
-&lt;span class="nv">6DE6FDD7BF19602C9E8995F7B17C88F2&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;4CD8D1423D9E2171BD1715CE9215C256&amp;#39;&lt;/span>
-&lt;span class="nv">2473DBF2A67697804050315280DDB5E3&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;4CD8D1423D9E2171BD1715CE9215C256&amp;#39;&lt;/span>
-&lt;span class="nv">9DE25CCD8CBE96988FB193CD77B9E0F2&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;4CD8D1423D9E2171BD1715CE9215C256&amp;#39;&lt;/span>
-&lt;span class="nv">E99114BC353901E809AA3D8FA8C680B2&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;EA97CF880545701853656B180DAD2B5F&amp;#39;&lt;/span>
-&lt;span class="nv">B2C83CF8F3A60E559B3D7A08DEC27FE1&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;EA97CF880545701853656B180DAD2B5F&amp;#39;&lt;/span>
-&lt;span class="nv">AE97746E5899CE85E9A40B04263A2E0B&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;EA97CF880545701853656B180DAD2B5F&amp;#39;&lt;/span>
-&lt;span class="nv">FB8B18E33152196B70847CF46C707ABF&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;4CD8D1423D9E2171BD1715CE9215C256&amp;#39;&lt;/span>
-&lt;span class="nv">802293B9E142EA65CF8B55EA524E1641&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;EA97CF880545701853656B180DAD2B5F&amp;#39;&lt;/span>
-last-check-time&lt;span class="o">=&lt;/span>int64 &lt;span class="m">1619156150&lt;/span>
-&lt;span class="nv">57C0FF66F7556BCE286C2B8BB4FE1FD2&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;4CD8D1423D9E2171BD1715CE9215C256&amp;#39;&lt;/span>
-&lt;span class="nv">704430CD11D5C7E67DC8220E227182CE&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;4CD8D1423D9E2171BD1715CE9215C256&amp;#39;&lt;/span>
-&lt;span class="nv">0B33B7E1DA8F246120041A64393073AE&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;4CD8D1423D9E2171BD1715CE9215C256&amp;#39;&lt;/span>
-&lt;span class="nv">A41B8E2E173757C8CF829970728877D5&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;4CD8D1423D9E2171BD1715CE9215C256&amp;#39;&lt;/span>
-&lt;span class="nv">8842BD6065C20AB7CBCE15B6E098675A&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;EA97CF880545701853656B180DAD2B5F&amp;#39;&lt;/span>
+&lt;span class="nv">E3D5E9705N0E433B70AF42C8C9DF9F7E&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;4CD8D1423D9E2171BD1715CE9215C256&amp;#39;&lt;/span>
+&lt;span class="nv">8842BH6165C20AB7CICE17B6E098675A&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;EA97CF88054570185S656B1L0DBD2B9F&amp;#39;&lt;/span>
 ••• ~ ➜
 ••• ~ ➜
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;blockquote>
-&lt;p>&lt;strong>last-check-time=int64 1619156150&lt;/strong> 就是时间啦,但是修改 last-check-time 是不行的,其他内容看样子是经过处理的，不知道具体方式，也没法修改。&lt;/p>
-&lt;/blockquote>
-&lt;blockquote>
-&lt;p>最后直接删除 com/premiumsoft/navicat-premium 和 .config/navicat/Premium 文件夹搞定&lt;/p>
+&lt;p>数据好像都是经过处理的，并不能直接看到有用的信息。暴力点，直接删除 com/premiumsoft/navicat-premium 和 .config/navicat/Premium 文件夹搞定&lt;/p>
 &lt;/blockquote>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
@@ -166,7 +134,7 @@ last-check-time&lt;span class="o">=&lt;/span>int64 &lt;span class="m">1619156150
 ••• ~ ➜
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>再次打开 navicat 会提示14天试用&lt;/p></description></item><item><title>Understand</title><link>https://gaoyinlong.com/posts/understand/</link><guid isPermaLink="true">https://gaoyinlong.com/posts/understand/</guid><pubDate>Fri, 07 Aug 2020 17:03:32 +0800</pubDate><author>im.ggyyll@gmail.com (gyl)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>Ubuntu&lt;/p>
+&lt;/div>&lt;p>再次打开 navicat 会提示继续试用&lt;/p></description></item><item><title>Understand</title><link>https://gaoyinlong.com/posts/understand/</link><guid isPermaLink="true">https://gaoyinlong.com/posts/understand/</guid><pubDate>Fri, 07 Aug 2020 17:03:32 +0800</pubDate><author>im.ggyyll@gmail.com (gyl)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>Ubuntu&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
