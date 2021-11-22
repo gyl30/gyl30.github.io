@@ -1,4 +1,33 @@
-<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>gaoyinlong</title><link>https://gaoyinlong.com/</link><description/><generator>Hugo 0.82.0 https://gohugo.io/</generator><language>zh-CN</language><managingEditor>im.ggyyll@gmail.com (gyl)</managingEditor><webMaster>im.ggyyll@gmail.com (gyl)</webMaster><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><lastBuildDate>Mon, 15 Nov 2021 13:31:12 +0000</lastBuildDate><atom:link rel="self" type="application/rss+xml" href="https://gaoyinlong.com/rss.xml"/><item><title>bash cheatsheets</title><link>https://gaoyinlong.com/posts/bash_shell/</link><guid isPermaLink="true">https://gaoyinlong.com/posts/bash_shell/</guid><pubDate>Mon, 15 Nov 2021 06:53:12 +0800</pubDate><author>im.ggyyll@gmail.com (gyl)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>比较文件大小&lt;/p>
+<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>gaoyinlong</title><link>https://gaoyinlong.com/</link><description/><generator>Hugo 0.82.0 https://gohugo.io/</generator><language>zh-CN</language><managingEditor>im.ggyyll@gmail.com (gyl)</managingEditor><webMaster>im.ggyyll@gmail.com (gyl)</webMaster><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><lastBuildDate>Mon, 22 Nov 2021 10:54:17 +0000</lastBuildDate><atom:link rel="self" type="application/rss+xml" href="https://gaoyinlong.com/rss.xml"/><item><title>Navicat</title><link>https://gaoyinlong.com/posts/navicat/</link><guid isPermaLink="true">https://gaoyinlong.com/posts/navicat/</guid><pubDate>Mon, 22 Nov 2021 18:51:48 +0800</pubDate><author>im.ggyyll@gmail.com (gyl)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>Ububtu&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-bash" data-lang="bash">
+dconf reset -f &lt;span class="s2">&amp;#34;/com/premiumsoft/navicat-premium/&amp;#34;&lt;/span>
+rm -rf ~/.config/navicat/Premium/
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Mac OS&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-bash" data-lang="bash">
+rm -rf ~/Library/Preferences/com.prect.NavicatPremium15.plist
+rm -rf ~/Library/Application&lt;span class="se">\ &lt;/span>Support/PremiumSoft&lt;span class="se">\ &lt;/span>CyberTech/Navicat&lt;span class="se">\ &lt;/span>CC/Navicat&lt;span class="se">\ &lt;/span>Premium/
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></description></item><item><title>bash cheatsheets</title><link>https://gaoyinlong.com/posts/bash_shell/</link><guid isPermaLink="true">https://gaoyinlong.com/posts/bash_shell/</guid><pubDate>Mon, 15 Nov 2021 06:53:12 +0800</pubDate><author>im.ggyyll@gmail.com (gyl)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>比较文件大小&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
@@ -69,143 +98,7 @@ find dir -mtime +1 -delete
 find dir -mtime -1 -delete
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></description></item><item><title>Bpf_opensnoop</title><link>https://gaoyinlong.com/posts/bpf_opensnoop/</link><guid isPermaLink="true">https://gaoyinlong.com/posts/bpf_opensnoop/</guid><pubDate>Fri, 23 Apr 2021 10:17:36 +0800</pubDate><author>im.ggyyll@gmail.com (gyl)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>我在 ubuntu 上使用 navicat,今天试用期结束了，想着怎么能继续使用,linux下一切皆文件，试用信息肯定放在一个文件中。遂跟踪 navicat 进程打开的文件,我用的是 bpf 工具 opensnoop。传统linux工具strace一样可以&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre class="chroma">&lt;code class="language-bash" data-lang="bash">••• ~ ➜ sudo /usr/share/bcc/tools/opensnoop &amp;gt; na.log
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>观察输出文件，发现 ~/.config 目录下有个 navicat 文件夹&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre class="chroma">&lt;code>&lt;span class="lnt"> 1
-&lt;/span>&lt;span class="lnt"> 2
-&lt;/span>&lt;span class="lnt"> 3
-&lt;/span>&lt;span class="lnt"> 4
-&lt;/span>&lt;span class="lnt"> 5
-&lt;/span>&lt;span class="lnt"> 6
-&lt;/span>&lt;span class="lnt"> 7
-&lt;/span>&lt;span class="lnt"> 8
-&lt;/span>&lt;span class="lnt"> 9
-&lt;/span>&lt;span class="lnt">10
-&lt;/span>&lt;span class="lnt">11
-&lt;/span>&lt;span class="lnt">12
-&lt;/span>&lt;span class="lnt">13
-&lt;/span>&lt;span class="lnt">14
-&lt;/span>&lt;span class="lnt">15
-&lt;/span>&lt;span class="lnt">16
-&lt;/span>&lt;span class="lnt">17
-&lt;/span>&lt;span class="lnt">18
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="m">23350&lt;/span> navicat -1 &lt;span class="m">2&lt;/span> ~/.config/navicat/Premium/lib/sqlite/tls/haswell/x86_64/libdl.so.2
-&lt;span class="m">23350&lt;/span> navicat -1 &lt;span class="m">2&lt;/span> ~/.config/navicat/Premium/lib/sqlite/tls/haswell/libdl.so.2
-&lt;span class="m">23350&lt;/span> navicat -1 &lt;span class="m">2&lt;/span> ~/.config/navicat/Premium/lib/sqlite/tls/x86_64/libdl.so.2
-&lt;span class="m">23350&lt;/span> navicat -1 &lt;span class="m">2&lt;/span> ~/.config/navicat/Premium/lib/sqlite/tls/libdl.so.2
-&lt;span class="m">23350&lt;/span> navicat -1 &lt;span class="m">2&lt;/span> ~/.config/navicat/Premium/lib/sqlite/haswell/x86_64/libdl.so.2
-&lt;span class="m">23350&lt;/span> navicat -1 &lt;span class="m">2&lt;/span> ~/.config/navicat/Premium/lib/sqlite/haswell/libdl.so.2
-&lt;span class="m">23350&lt;/span> navicat -1 &lt;span class="m">2&lt;/span> ~/.config/navicat/Premium/lib/sqlite/x86_64/libdl.so.2
-&lt;span class="m">23350&lt;/span> navicat -1 &lt;span class="m">2&lt;/span> ~/.config/navicat/Premium/lib/sqlite/libdl.so.2
-&lt;span class="m">23350&lt;/span> navicat -1 &lt;span class="m">2&lt;/span> ~/.config/navicat/Premium/lib/oci/tls/haswell/x86_64/libdl.so.2
-&lt;span class="m">23350&lt;/span> navicat -1 &lt;span class="m">2&lt;/span> ~/.config/navicat/Premium/lib/oci/tls/haswell/libdl.so.2
-&lt;span class="m">23350&lt;/span> navicat -1 &lt;span class="m">2&lt;/span> ~/.config/navicat/Premium/lib/oci/tls/x86_64/libdl.so.2
-&lt;span class="m">23350&lt;/span> navicat -1 &lt;span class="m">2&lt;/span> ~/.config/navicat/Premium/lib/oci/tls/libdl.so.2
-&lt;span class="m">23350&lt;/span> navicat -1 &lt;span class="m">2&lt;/span> ~/.config/navicat/Premium/lib/oci/haswell/x86_64/libdl.so.2
-&lt;span class="m">23350&lt;/span> navicat -1 &lt;span class="m">2&lt;/span> ~/.config/navicat/Premium/lib/oci/haswell/libdl.so.2
-&lt;span class="m">23350&lt;/span> navicat -1 &lt;span class="m">2&lt;/span> ~/.config/navicat/Premium/lib/oci/x86_64/libdl.so.2
-&lt;span class="m">23350&lt;/span> navicat -1 &lt;span class="m">2&lt;/span> ~/.config/navicat/Premium/lib/oci/libdl.so.2
-&lt;span class="m">23350&lt;/span> navicat -1 &lt;span class="m">2&lt;/span> ~/.config/navicat/Premium/ui_preferences.json
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>删除之后运行navicat发现还是提示试用结束,那就继续找,过滤掉 .config/navicat/ 文件夹之后，然后看在 .config 文件下还有哪些文件被打开&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;span class="lnt">4
-&lt;/span>&lt;span class="lnt">5
-&lt;/span>&lt;span class="lnt">6
-&lt;/span>&lt;span class="lnt">7
-&lt;/span>&lt;span class="lnt">8
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre class="chroma">&lt;code class="language-bash" data-lang="bash">••• ~ ➜ awk &lt;span class="s1">&amp;#39;$2==&amp;#34;navicat15-premi&amp;#34; || $2==&amp;#34;navicat&amp;#34; {print $0}&amp;#39;&lt;/span> na.log &lt;span class="p">|&lt;/span> grep -v &lt;span class="s2">&amp;#34;.config/navicat/&amp;#34;&lt;/span> &lt;span class="p">|&lt;/span> grep &lt;span class="s2">&amp;#34;/.config&amp;#34;&lt;/span>
-&lt;span class="m">23367&lt;/span> navicat &lt;span class="m">13&lt;/span> &lt;span class="m">0&lt;/span> ~/.config/fcitx/dbus/428cc79e9c4d4f8393591702ea85d60e-1
-&lt;span class="m">23350&lt;/span> navicat &lt;span class="m">13&lt;/span> &lt;span class="m">0&lt;/span> ~/.config/fcitx/dbus/428cc79e9c4d4f8393591702ea85d60e-1
-&lt;span class="m">23350&lt;/span> navicat &lt;span class="m">16&lt;/span> &lt;span class="m">0&lt;/span> ~/.config/dconf/user
-&lt;span class="m">23350&lt;/span> navicat &lt;span class="m">21&lt;/span> &lt;span class="m">0&lt;/span> ~/.config/dconf/user
-&lt;span class="m">23350&lt;/span> navicat &lt;span class="m">22&lt;/span> &lt;span class="m">0&lt;/span> ~/.config/dconf/user
-••• ~ ➜
-••• ~ ➜
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>发现就剩 ~/.config/dconf/user 文件被打开访问了,dconf 类似windows下的注册表,可以通过 dconf-editor 或者 gsettings 进行查看&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre class="chroma">&lt;code class="language-bash" data-lang="bash">mv ~/.config/dconf/user ~
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>移动 ~/.config/dconf/user 后，再次打开 navicat，发现重新提示试用开始。那么 navicat 一定是在 dconf/user 文件中写入了注册信息,接下来就是查找 navicat 究竟在 dconf/user 中写入了哪些信息&lt;/p>
-&lt;p>将 ~/.config/dconf/user 中的数据 dump 出来&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre class="chroma">&lt;code>&lt;span class="lnt"> 1
-&lt;/span>&lt;span class="lnt"> 2
-&lt;/span>&lt;span class="lnt"> 3
-&lt;/span>&lt;span class="lnt"> 4
-&lt;/span>&lt;span class="lnt"> 5
-&lt;/span>&lt;span class="lnt"> 6
-&lt;/span>&lt;span class="lnt"> 7
-&lt;/span>&lt;span class="lnt"> 8
-&lt;/span>&lt;span class="lnt"> 9
-&lt;/span>&lt;span class="lnt">10
-&lt;/span>&lt;span class="lnt">11
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre class="chroma">&lt;code class="language-bash" data-lang="bash">••• ~ ➜
-••• ~ ➜
-••• ~ ➜ cp ~/.config/dconf/user /tmp/dconf/user
-••• ~ ➜ &lt;span class="nv">XDG_CONFIG_HOME&lt;/span>&lt;span class="o">=&lt;/span>/tmp dconf dump / &amp;gt; old-gsettings-data.txt
-••• ~ ➜
-••• ~ ➜ cat ~/old-gsettings-data.txt &lt;span class="p">|&lt;/span> head -n &lt;span class="m">18&lt;/span>
-&lt;span class="o">[&lt;/span>com/premiumsoft/navicat-premium&lt;span class="o">]&lt;/span>
-&lt;span class="nv">E3D5E9705N0E433B70AF42C8C9DF9F7E&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;4CD8D1423D9E2171BD1715CE9215C256&amp;#39;&lt;/span>
-&lt;span class="nv">8842BH6165C20AB7CICE17B6E098675A&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;EA97CF88054570185S656B1L0DBD2B9F&amp;#39;&lt;/span>
-••• ~ ➜
-••• ~ ➜
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;blockquote>
-&lt;p>数据好像都是经过处理的，并不能直接看到有用的信息。暴力点，直接删除 com/premiumsoft/navicat-premium 和 .config/navicat/Premium 文件夹搞定&lt;/p>
-&lt;/blockquote>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;span class="lnt">4
-&lt;/span>&lt;span class="lnt">5
-&lt;/span>&lt;span class="lnt">6
-&lt;/span>&lt;span class="lnt">7
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre class="chroma">&lt;code class="language-bash" data-lang="bash">••• ~ ➜
-••• ~ ➜ dconf reset -f &lt;span class="s2">&amp;#34;/com/premiumsoft/navicat-premium/&amp;#34;&lt;/span>
-••• ~ ➜
-••• ~ ➜
-••• ~ ➜ rm -rf ~/.config/navicat/Premium/
-••• ~ ➜
-••• ~ ➜
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>再次打开 navicat 会提示继续试用&lt;/p></description></item><item><title>Understand</title><link>https://gaoyinlong.com/posts/understand/</link><guid isPermaLink="true">https://gaoyinlong.com/posts/understand/</guid><pubDate>Fri, 07 Aug 2020 17:03:32 +0800</pubDate><author>im.ggyyll@gmail.com (gyl)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>Ubuntu&lt;/p>
+&lt;/div></description></item><item><title>Understand</title><link>https://gaoyinlong.com/posts/understand/</link><guid isPermaLink="true">https://gaoyinlong.com/posts/understand/</guid><pubDate>Fri, 07 Aug 2020 17:03:32 +0800</pubDate><author>im.ggyyll@gmail.com (gyl)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>Ubuntu&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
