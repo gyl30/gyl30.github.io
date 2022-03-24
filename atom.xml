@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN"><title type="text">gaoyinlong</title><subtitle type="html"/><updated>2022-03-24T12:11:07+00:00</updated><id>https://gaoyinlong.com/</id><link rel="alternate" type="text/html" href="https://gaoyinlong.com/"/><link rel="self" type="application/atom+xml" href="https://gaoyinlong.com/atom.xml"/><author><name>gyl</name><uri>https://gaoyinlong.com/</uri><email>im.ggyyll@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><generator uri="https://gohugo.io/" version="0.82.0">Hugo</generator><entry><title type="text">Docker</title><link rel="alternate" type="text/html" href="https://gaoyinlong.com/posts/docker/"/><id>https://gaoyinlong.com/posts/docker/</id><updated>2022-03-24T12:11:04+00:00</updated><published>2022-03-24T19:53:31+08:00</published><author><name>gyl</name><uri>https://gaoyinlong.com</uri><email>im.ggyyll@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">……</summary><content type="html">&lt;p>迁移 docker 容器存储目录&lt;/p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN"><title type="text">gaoyinlong</title><subtitle type="html"/><updated>2022-03-24T12:26:04+00:00</updated><id>https://gaoyinlong.com/</id><link rel="alternate" type="text/html" href="https://gaoyinlong.com/"/><link rel="self" type="application/atom+xml" href="https://gaoyinlong.com/atom.xml"/><author><name>gyl</name><uri>https://gaoyinlong.com/</uri><email>im.ggyyll@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><generator uri="https://gohugo.io/" version="0.82.0">Hugo</generator><entry><title type="text">Docker</title><link rel="alternate" type="text/html" href="https://gaoyinlong.com/posts/docker/"/><id>https://gaoyinlong.com/posts/docker/</id><updated>2022-03-24T12:26:01+00:00</updated><published>2022-03-24T19:53:31+08:00</published><author><name>gyl</name><uri>https://gaoyinlong.com</uri><email>im.ggyyll@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">……</summary><content type="html">&lt;p>迁移 docker 容器存储目录&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre class="chroma">&lt;code>&lt;span class="lnt"> 1
@@ -31,7 +31,7 @@ mv /var/lib/docker /fs/docker/docker
 systemctl restart docker
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></content></entry><entry><title type="text">dev container</title><link rel="alternate" type="text/html" href="https://gaoyinlong.com/posts/docker_dev/"/><id>https://gaoyinlong.com/posts/docker_dev/</id><updated>2022-03-24T12:11:04+00:00</updated><published>2022-03-24T19:11:48+08:00</published><author><name>gyl</name><uri>https://gaoyinlong.com</uri><email>im.ggyyll@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html"/><content type="html">&lt;p>Docker&lt;/p>
+&lt;/div></content></entry><entry><title type="text">dev container</title><link rel="alternate" type="text/html" href="https://gaoyinlong.com/posts/docker_dev/"/><id>https://gaoyinlong.com/posts/docker_dev/</id><updated>2022-03-24T12:26:01+00:00</updated><published>2022-03-24T19:11:48+08:00</published><author><name>gyl</name><uri>https://gaoyinlong.com</uri><email>im.ggyyll@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html"/><content type="html">&lt;p>Docker&lt;/p>
 &lt;pre>&lt;code>
 docker run -tid --name dev --restart=always -v $HOME/fs/dev/svn:/svn -v /etc/timezone:/etc/timezone -v /etc/localtime:/etc/localtime centos:7 bash
 &lt;/code>&lt;/pre>&lt;p>Install&lt;/p>
@@ -145,10 +145,13 @@ git clone https://github.com/skywind3000/z.lua.git ~/.z.lua
 &lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
 &lt;/span>&lt;span class="lnt">2
 &lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td class="lntd">
 &lt;pre class="chroma">&lt;code class="language-bash" data-lang="bash">
-wget -c https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.tar.gz
+wget -c -O nvim-linux.tar.gz https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.tar.gz
+mkdir nvim-linux &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> tar -xzf nvim-linux.tar.gz -C nvim-linux --strip-components &lt;span class="m">1&lt;/span>
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;p>&lt;a href="https://github.com/BurntSushi/ripgrep/releases/download/13.0.0/ripgrep-13.0.0-x86_64-unknown-linux-musl.tar.gz">rg&lt;/a>&lt;/p>
@@ -157,10 +160,13 @@ wget -c https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.
 &lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
 &lt;/span>&lt;span class="lnt">2
 &lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td class="lntd">
 &lt;pre class="chroma">&lt;code class="language-bash" data-lang="bash">
-wget -c https://github.com/BurntSushi/ripgrep/releases/download/13.0.0/ripgrep-13.0.0-x86_64-unknown-linux-musl.tar.gz
+wget -c -O rg.tar.gz https://github.com/BurntSushi/ripgrep/releases/download/13.0.0/ripgrep-13.0.0-x86_64-unknown-linux-musl.tar.gz
+mkdir rg &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> tar -xzf rg.tar.gz -C rg --strip-components &lt;span class="m">1&lt;/span> &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> mv rg/rg &lt;span class="nv">$HOME&lt;/span>/bin/
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;p>&lt;a href="https://github.com/sharkdp/fd/releases/download/v8.3.2/fd-v8.3.2-x86_64-unknown-linux-musl.tar.gz">fd&lt;/a>&lt;/p>
@@ -169,10 +175,13 @@ wget -c https://github.com/BurntSushi/ripgrep/releases/download/13.0.0/ripgrep-1
 &lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
 &lt;/span>&lt;span class="lnt">2
 &lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td class="lntd">
 &lt;pre class="chroma">&lt;code class="language-bash" data-lang="bash">
-wget -c https://github.com/sharkdp/fd/releases/download/v8.3.2/fd-v8.3.2-x86_64-unknown-linux-musl.tar.gz
+wget -c -O fd.tar.gz https://github.com/sharkdp/fd/releases/download/v8.3.2/fd-v8.3.2-x86_64-unknown-linux-musl.tar.gz
+mkdir fd &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> tar -xzf fd.tar.gz -C fd --strip-components &lt;span class="m">1&lt;/span> &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> mv fd/fd &lt;span class="nv">$HOME&lt;/span>/bin/
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;p>&lt;a href="https://github.com/sharkdp/bat/releases/download/v0.20.0/bat-v0.20.0-x86_64-unknown-linux-musl.tar.gz">bat&lt;/a>&lt;/p>
@@ -181,13 +190,16 @@ wget -c https://github.com/sharkdp/fd/releases/download/v8.3.2/fd-v8.3.2-x86_64-
 &lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
 &lt;/span>&lt;span class="lnt">2
 &lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td class="lntd">
 &lt;pre class="chroma">&lt;code class="language-bash" data-lang="bash">
-wget -c https://github.com/sharkdp/bat/releases/download/v0.20.0/bat-v0.20.0-x86_64-unknown-linux-musl.tar.gz
+wget -c -O bat.tar.gz https://github.com/sharkdp/bat/releases/download/v0.20.0/bat-v0.20.0-x86_64-unknown-linux-musl.tar.gz
+mkdir bat &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> tar -xzf bat.tar.gz -C bat --strip-components &lt;span class="m">1&lt;/span> &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> mv bat/bat &lt;span class="nv">$HOME&lt;/span>/bin/
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></content></entry><entry><title type="text">Navicat</title><link rel="alternate" type="text/html" href="https://gaoyinlong.com/posts/navicat/"/><id>https://gaoyinlong.com/posts/navicat/</id><updated>2022-03-24T12:11:04+00:00</updated><published>2021-11-22T18:51:48+08:00</published><author><name>gyl</name><uri>https://gaoyinlong.com</uri><email>im.ggyyll@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html"/><content type="html">&lt;p>Ububtu&lt;/p>
+&lt;/div></content></entry><entry><title type="text">Navicat</title><link rel="alternate" type="text/html" href="https://gaoyinlong.com/posts/navicat/"/><id>https://gaoyinlong.com/posts/navicat/</id><updated>2022-03-24T12:26:01+00:00</updated><published>2021-11-22T18:51:48+08:00</published><author><name>gyl</name><uri>https://gaoyinlong.com</uri><email>im.ggyyll@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html"/><content type="html">&lt;p>Ububtu&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
@@ -216,7 +228,7 @@ rm -rf ~/Library/Preferences/com.prect.NavicatPremium15.plist
 rm -rf ~/Library/Application&lt;span class="se">\ &lt;/span>Support/PremiumSoft&lt;span class="se">\ &lt;/span>CyberTech/Navicat&lt;span class="se">\ &lt;/span>CC/Navicat&lt;span class="se">\ &lt;/span>Premium/
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></content></entry><entry><title type="text">bash cheatsheets</title><link rel="alternate" type="text/html" href="https://gaoyinlong.com/posts/bash_shell/"/><id>https://gaoyinlong.com/posts/bash_shell/</id><updated>2022-03-24T12:11:04+00:00</updated><published>2021-11-15T06:53:12+08:00</published><author><name>gyl</name><uri>https://gaoyinlong.com</uri><email>im.ggyyll@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">……</summary><content type="html">&lt;p>比较文件大小&lt;/p>
+&lt;/div></content></entry><entry><title type="text">bash cheatsheets</title><link rel="alternate" type="text/html" href="https://gaoyinlong.com/posts/bash_shell/"/><id>https://gaoyinlong.com/posts/bash_shell/</id><updated>2022-03-24T12:26:01+00:00</updated><published>2021-11-15T06:53:12+08:00</published><author><name>gyl</name><uri>https://gaoyinlong.com</uri><email>im.ggyyll@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">……</summary><content type="html">&lt;p>比较文件大小&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
@@ -287,7 +299,7 @@ find dir -mtime +1 -delete
 find dir -mtime -1 -delete
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></content></entry><entry><title type="text">Understand</title><link rel="alternate" type="text/html" href="https://gaoyinlong.com/posts/understand/"/><id>https://gaoyinlong.com/posts/understand/</id><updated>2022-03-24T12:11:04+00:00</updated><published>2020-08-07T17:03:32+08:00</published><author><name>gyl</name><uri>https://gaoyinlong.com</uri><email>im.ggyyll@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html"/><content type="html">&lt;p>Ubuntu&lt;/p>
+&lt;/div></content></entry><entry><title type="text">Understand</title><link rel="alternate" type="text/html" href="https://gaoyinlong.com/posts/understand/"/><id>https://gaoyinlong.com/posts/understand/</id><updated>2022-03-24T12:26:01+00:00</updated><published>2020-08-07T17:03:32+08:00</published><author><name>gyl</name><uri>https://gaoyinlong.com</uri><email>im.ggyyll@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html"/><content type="html">&lt;p>Ubuntu&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
@@ -315,7 +327,7 @@ find dir -mtime -1 -delete
 &lt;/span>&lt;span class="se">&lt;/span>libXcomposite libXcursor libXtst alsa-lib-devel pciutils-libs
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></content></entry><entry><title type="text">Hello World</title><link rel="alternate" type="text/html" href="https://gaoyinlong.com/posts/hello/"/><id>https://gaoyinlong.com/posts/hello/</id><updated>2022-03-24T12:11:04+00:00</updated><published>2020-04-06T19:53:12+08:00</published><author><name>gyl</name><uri>https://gaoyinlong.com</uri><email>im.ggyyll@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html"/><content type="html">&lt;div class="highlight">&lt;div class="chroma">
+&lt;/div></content></entry><entry><title type="text">Hello World</title><link rel="alternate" type="text/html" href="https://gaoyinlong.com/posts/hello/"/><id>https://gaoyinlong.com/posts/hello/</id><updated>2022-03-24T12:26:01+00:00</updated><published>2020-04-06T19:53:12+08:00</published><author><name>gyl</name><uri>https://gaoyinlong.com</uri><email>im.ggyyll@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html"/><content type="html">&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre class="chroma">&lt;code>&lt;span class="lnt"> 1
 &lt;/span>&lt;span class="lnt"> 2
