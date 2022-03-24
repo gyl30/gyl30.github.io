@@ -1,4 +1,37 @@
-<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>gaoyinlong</title><link>https://gaoyinlong.com/</link><description/><generator>Hugo 0.82.0 https://gohugo.io/</generator><language>zh-CN</language><managingEditor>im.ggyyll@gmail.com (gyl)</managingEditor><webMaster>im.ggyyll@gmail.com (gyl)</webMaster><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><lastBuildDate>Thu, 24 Mar 2022 11:51:33 +0000</lastBuildDate><atom:link rel="self" type="application/rss+xml" href="https://gaoyinlong.com/rss.xml"/><item><title>dev container</title><link>https://gaoyinlong.com/posts/docker_dev/</link><guid isPermaLink="true">https://gaoyinlong.com/posts/docker_dev/</guid><pubDate>Thu, 24 Mar 2022 19:11:48 +0800</pubDate><author>im.ggyyll@gmail.com (gyl)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>Install&lt;/p>
+<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>gaoyinlong</title><link>https://gaoyinlong.com/</link><description/><generator>Hugo 0.82.0 https://gohugo.io/</generator><language>zh-CN</language><managingEditor>im.ggyyll@gmail.com (gyl)</managingEditor><webMaster>im.ggyyll@gmail.com (gyl)</webMaster><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><lastBuildDate>Thu, 24 Mar 2022 11:58:09 +0000</lastBuildDate><atom:link rel="self" type="application/rss+xml" href="https://gaoyinlong.com/rss.xml"/><item><title>Docker</title><link>https://gaoyinlong.com/posts/docker/</link><guid isPermaLink="true">https://gaoyinlong.com/posts/docker/</guid><pubDate>Thu, 24 Mar 2022 19:53:31 +0800</pubDate><author>im.ggyyll@gmail.com (gyl)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>迁移 docker 容器存储目录&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-shell" data-lang="shell">
+docker info &lt;span class="p">|&lt;/span> grep &lt;span class="s2">&amp;#34;Docker Root Dir&amp;#34;&lt;/span>
+sudo docker info &lt;span class="p">|&lt;/span> grep &lt;span class="s2">&amp;#34;Docker Root Dir&amp;#34;&lt;/span>
+systemctl stop docker
+mv /var/lib/docker /fs/docker/docker
+• • • ~ ➜ cat /etc/docker/daemon.json
+&lt;span class="o">{&lt;/span>
+&lt;span class="s2">&amp;#34;data-root&amp;#34;&lt;/span>: &lt;span class="s2">&amp;#34;/fs/docker/docker&amp;#34;&lt;/span>
+&lt;span class="o">}&lt;/span>
+systemctl restart docker
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></description></item><item><title>dev container</title><link>https://gaoyinlong.com/posts/docker_dev/</link><guid isPermaLink="true">https://gaoyinlong.com/posts/docker_dev/</guid><pubDate>Thu, 24 Mar 2022 19:11:48 +0800</pubDate><author>im.ggyyll@gmail.com (gyl)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>Install&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre class="chroma">&lt;code>&lt;span class="lnt"> 1
