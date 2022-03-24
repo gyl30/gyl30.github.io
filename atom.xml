@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN"><title type="text">gaoyinlong</title><subtitle type="html"/><updated>2022-03-24T11:46:31+00:00</updated><id>https://gaoyinlong.com/</id><link rel="alternate" type="text/html" href="https://gaoyinlong.com/"/><link rel="self" type="application/atom+xml" href="https://gaoyinlong.com/atom.xml"/><author><name>gyl</name><uri>https://gaoyinlong.com/</uri><email>im.ggyyll@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><generator uri="https://gohugo.io/" version="0.82.0">Hugo</generator><entry><title type="text">dev container</title><link rel="alternate" type="text/html" href="https://gaoyinlong.com/posts/docker_dev/"/><id>https://gaoyinlong.com/posts/docker_dev/</id><updated>2022-03-24T11:46:26+00:00</updated><published>2022-03-24T19:11:48+08:00</published><author><name>gyl</name><uri>https://gaoyinlong.com</uri><email>im.ggyyll@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html"/><content type="html">&lt;p>Install&lt;/p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN"><title type="text">gaoyinlong</title><subtitle type="html"/><updated>2022-03-24T11:51:33+00:00</updated><id>https://gaoyinlong.com/</id><link rel="alternate" type="text/html" href="https://gaoyinlong.com/"/><link rel="self" type="application/atom+xml" href="https://gaoyinlong.com/atom.xml"/><author><name>gyl</name><uri>https://gaoyinlong.com/</uri><email>im.ggyyll@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><generator uri="https://gohugo.io/" version="0.82.0">Hugo</generator><entry><title type="text">dev container</title><link rel="alternate" type="text/html" href="https://gaoyinlong.com/posts/docker_dev/"/><id>https://gaoyinlong.com/posts/docker_dev/</id><updated>2022-03-24T11:51:31+00:00</updated><published>2022-03-24T19:11:48+08:00</published><author><name>gyl</name><uri>https://gaoyinlong.com</uri><email>im.ggyyll@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html"/><content type="html">&lt;p>Install&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre class="chroma">&lt;code>&lt;span class="lnt"> 1
@@ -16,12 +16,15 @@
 &lt;/span>&lt;span class="lnt">13
 &lt;/span>&lt;span class="lnt">14
 &lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td class="lntd">
 &lt;pre class="chroma">&lt;code class="language-bash" data-lang="bash">
 yum install -y epel-release centos-release-scl
 yum groupinstall -y Development Tools
-yum install -y cmake3 zlib-devel libuuid-devel devtoolset-11 curl wget git python3.x86_64 python3-devel.x86_64
+yum install -y cmake3 rubygems zlib-devel libuuid-devel devtoolset-11 curl wget git python3.x86_64 python3-devel.x86_64
+gem install rouge coderay
 &lt;span class="nb">source&lt;/span> scl_source &lt;span class="nb">enable&lt;/span> devtoolset-11
 curl -sL install-node.vercel.app/lts &lt;span class="p">|&lt;/span> bash
 localedef -c -f UTF-8 -i zh_CN zh_CN.utf8
@@ -148,7 +151,7 @@ wget -c https://github.com/sharkdp/fd/releases/download/v8.3.2/fd-v8.3.2-x86_64-
 wget -c https://github.com/sharkdp/bat/releases/download/v0.20.0/bat-v0.20.0-x86_64-unknown-linux-musl.tar.gz
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></content></entry><entry><title type="text">Navicat</title><link rel="alternate" type="text/html" href="https://gaoyinlong.com/posts/navicat/"/><id>https://gaoyinlong.com/posts/navicat/</id><updated>2022-03-24T11:46:26+00:00</updated><published>2021-11-22T18:51:48+08:00</published><author><name>gyl</name><uri>https://gaoyinlong.com</uri><email>im.ggyyll@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html"/><content type="html">&lt;p>Ububtu&lt;/p>
+&lt;/div></content></entry><entry><title type="text">Navicat</title><link rel="alternate" type="text/html" href="https://gaoyinlong.com/posts/navicat/"/><id>https://gaoyinlong.com/posts/navicat/</id><updated>2022-03-24T11:51:31+00:00</updated><published>2021-11-22T18:51:48+08:00</published><author><name>gyl</name><uri>https://gaoyinlong.com</uri><email>im.ggyyll@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html"/><content type="html">&lt;p>Ububtu&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
@@ -177,7 +180,7 @@ rm -rf ~/Library/Preferences/com.prect.NavicatPremium15.plist
 rm -rf ~/Library/Application&lt;span class="se">\ &lt;/span>Support/PremiumSoft&lt;span class="se">\ &lt;/span>CyberTech/Navicat&lt;span class="se">\ &lt;/span>CC/Navicat&lt;span class="se">\ &lt;/span>Premium/
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></content></entry><entry><title type="text">bash cheatsheets</title><link rel="alternate" type="text/html" href="https://gaoyinlong.com/posts/bash_shell/"/><id>https://gaoyinlong.com/posts/bash_shell/</id><updated>2022-03-24T11:46:26+00:00</updated><published>2021-11-15T06:53:12+08:00</published><author><name>gyl</name><uri>https://gaoyinlong.com</uri><email>im.ggyyll@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">……</summary><content type="html">&lt;p>比较文件大小&lt;/p>
+&lt;/div></content></entry><entry><title type="text">bash cheatsheets</title><link rel="alternate" type="text/html" href="https://gaoyinlong.com/posts/bash_shell/"/><id>https://gaoyinlong.com/posts/bash_shell/</id><updated>2022-03-24T11:51:31+00:00</updated><published>2021-11-15T06:53:12+08:00</published><author><name>gyl</name><uri>https://gaoyinlong.com</uri><email>im.ggyyll@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">……</summary><content type="html">&lt;p>比较文件大小&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
@@ -248,7 +251,7 @@ find dir -mtime +1 -delete
 find dir -mtime -1 -delete
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></content></entry><entry><title type="text">Understand</title><link rel="alternate" type="text/html" href="https://gaoyinlong.com/posts/understand/"/><id>https://gaoyinlong.com/posts/understand/</id><updated>2022-03-24T11:46:26+00:00</updated><published>2020-08-07T17:03:32+08:00</published><author><name>gyl</name><uri>https://gaoyinlong.com</uri><email>im.ggyyll@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html"/><content type="html">&lt;p>Ubuntu&lt;/p>
+&lt;/div></content></entry><entry><title type="text">Understand</title><link rel="alternate" type="text/html" href="https://gaoyinlong.com/posts/understand/"/><id>https://gaoyinlong.com/posts/understand/</id><updated>2022-03-24T11:51:31+00:00</updated><published>2020-08-07T17:03:32+08:00</published><author><name>gyl</name><uri>https://gaoyinlong.com</uri><email>im.ggyyll@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html"/><content type="html">&lt;p>Ubuntu&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
@@ -276,7 +279,7 @@ find dir -mtime -1 -delete
 &lt;/span>&lt;span class="se">&lt;/span>libXcomposite libXcursor libXtst alsa-lib-devel pciutils-libs
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></content></entry><entry><title type="text">Hello World</title><link rel="alternate" type="text/html" href="https://gaoyinlong.com/posts/hello/"/><id>https://gaoyinlong.com/posts/hello/</id><updated>2022-03-24T11:46:26+00:00</updated><published>2020-04-06T19:53:12+08:00</published><author><name>gyl</name><uri>https://gaoyinlong.com</uri><email>im.ggyyll@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html"/><content type="html">&lt;div class="highlight">&lt;div class="chroma">
+&lt;/div></content></entry><entry><title type="text">Hello World</title><link rel="alternate" type="text/html" href="https://gaoyinlong.com/posts/hello/"/><id>https://gaoyinlong.com/posts/hello/</id><updated>2022-03-24T11:51:31+00:00</updated><published>2020-04-06T19:53:12+08:00</published><author><name>gyl</name><uri>https://gaoyinlong.com</uri><email>im.ggyyll@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html"/><content type="html">&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre class="chroma">&lt;code>&lt;span class="lnt"> 1
 &lt;/span>&lt;span class="lnt"> 2
