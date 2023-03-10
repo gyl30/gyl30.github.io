@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>gaoyinlong</title><link>https://gaoyinlong.com/</link><description/><generator>Hugo 0.82.0 https://gohugo.io/</generator><language>zh-CN</language><managingEditor>im.ggyyll@gmail.com (gyl)</managingEditor><webMaster>im.ggyyll@gmail.com (gyl)</webMaster><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><lastBuildDate>Fri, 10 Mar 2023 01:32:03 +0000</lastBuildDate><atom:link rel="self" type="application/rss+xml" href="https://gaoyinlong.com/rss.xml"/><item><title>GPG</title><link>https://gaoyinlong.com/posts/gpg/</link><guid isPermaLink="true">https://gaoyinlong.com/posts/gpg/</guid><pubDate>Fri, 10 Mar 2023 09:26:04 +0800</pubDate><author>im.ggyyll@gmail.com (gyl)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;div class="highlight">&lt;div class="chroma">
+<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>gaoyinlong</title><link>https://gaoyinlong.com/</link><description/><generator>Hugo 0.82.0 https://gohugo.io/</generator><language>zh-CN</language><managingEditor>im.ggyyll@gmail.com (gyl)</managingEditor><webMaster>im.ggyyll@gmail.com (gyl)</webMaster><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><lastBuildDate>Fri, 10 Mar 2023 01:32:22 +0000</lastBuildDate><atom:link rel="self" type="application/rss+xml" href="https://gaoyinlong.com/rss.xml"/><item><title>GPG</title><link>https://gaoyinlong.com/posts/gpg/</link><guid isPermaLink="true">https://gaoyinlong.com/posts/gpg/</guid><pubDate>Fri, 10 Mar 2023 09:26:04 +0800</pubDate><author>im.ggyyll@gmail.com (gyl)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre class="chroma">&lt;code>&lt;span class="lnt"> 1
 &lt;/span>&lt;span class="lnt"> 2
@@ -260,16 +260,28 @@ static_configs:
 &lt;/div>&lt;p>在 grafana 中添加 prometheus 数据源，导入 dashboard 即可&lt;/p></description></item><item><title>Git_Cheatsheets</title><link>https://gaoyinlong.com/posts/git_cheatsheets/</link><guid isPermaLink="true">https://gaoyinlong.com/posts/git_cheatsheets/</guid><pubDate>Fri, 25 Nov 2022 09:57:15 +0800</pubDate><author>im.ggyyll@gmail.com (gyl)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>漂亮的 git log&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;span class="lnt">4
-&lt;/span>&lt;span class="lnt">5
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td class="lntd">
 &lt;pre class="chroma">&lt;code class="language-bash" data-lang="bash">
 git log --graph --pretty&lt;span class="o">=&lt;/span>format:&lt;span class="s1">&amp;#39;%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen%ai(%cr) %C(bold blue)&amp;lt;%an&amp;gt;%Creset&amp;#39;&lt;/span> --abbrev-commit
 git log --graph --all --relative-date --abbrev-commit --format&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;%x09 %h %Cgreen%cd%Creset [%Cblue%cn%Creset] %C(auto)%d%Creset %s&amp;#34;&lt;/span>
+git log --graph --all --pretty&lt;span class="o">=&lt;/span>format:&lt;span class="s1">&amp;#39;%C(auto)%h%d %s %C(green)(%ar)%Creset %C(blue)&amp;lt;%an&amp;gt;%Creset&amp;#39;&lt;/span> --abbrev-commit --date&lt;span class="o">=&lt;/span>relative
+git log --stat --decorate --source -p
+git log -8 --graph --oneline --decorate
+git log -8 --graph --pretty&lt;span class="o">=&lt;/span>format:&lt;span class="s1">&amp;#39;%C(yellow)%h%C(bold black white)%d%Creset %s %C(bold green)%cr %Creset%C(white)%an&amp;#39;&lt;/span> --abbrev-commit --date&lt;span class="o">=&lt;/span>relative
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;p>git config&lt;/p>
