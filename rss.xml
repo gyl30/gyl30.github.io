@@ -1,4 +1,107 @@
-<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>gaoyinlong</title><link>https://gaoyinlong.com/</link><description/><generator>Hugo 0.82.0 https://gohugo.io/</generator><language>zh-CN</language><managingEditor>im.ggyyll@gmail.com (gyl)</managingEditor><webMaster>im.ggyyll@gmail.com (gyl)</webMaster><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><lastBuildDate>Sun, 27 Nov 2022 13:21:16 +0000</lastBuildDate><atom:link rel="self" type="application/rss+xml" href="https://gaoyinlong.com/rss.xml"/><item><title>FlameGraph</title><link>https://gaoyinlong.com/posts/flamegraph/</link><guid isPermaLink="true">https://gaoyinlong.com/posts/flamegraph/</guid><pubDate>Sun, 27 Nov 2022 21:02:36 +0800</pubDate><author>im.ggyyll@gmail.com (gyl)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>on-cpu 火焰图&lt;/p>
+<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>gaoyinlong</title><link>https://gaoyinlong.com/</link><description/><generator>Hugo 0.82.0 https://gohugo.io/</generator><language>zh-CN</language><managingEditor>im.ggyyll@gmail.com (gyl)</managingEditor><webMaster>im.ggyyll@gmail.com (gyl)</webMaster><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><lastBuildDate>Fri, 10 Mar 2023 01:32:03 +0000</lastBuildDate><atom:link rel="self" type="application/rss+xml" href="https://gaoyinlong.com/rss.xml"/><item><title>GPG</title><link>https://gaoyinlong.com/posts/gpg/</link><guid isPermaLink="true">https://gaoyinlong.com/posts/gpg/</guid><pubDate>Fri, 10 Mar 2023 09:26:04 +0800</pubDate><author>im.ggyyll@gmail.com (gyl)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;span class="lnt">30
+&lt;/span>&lt;span class="lnt">31
+&lt;/span>&lt;span class="lnt">32
+&lt;/span>&lt;span class="lnt">33
+&lt;/span>&lt;span class="lnt">34
+&lt;/span>&lt;span class="lnt">35
+&lt;/span>&lt;span class="lnt">36
+&lt;/span>&lt;span class="lnt">37
+&lt;/span>&lt;span class="lnt">38
+&lt;/span>&lt;span class="lnt">39
+&lt;/span>&lt;span class="lnt">40
+&lt;/span>&lt;span class="lnt">41
+&lt;/span>&lt;span class="lnt">42
+&lt;/span>&lt;span class="lnt">43
+&lt;/span>&lt;span class="lnt">44
+&lt;/span>&lt;span class="lnt">45
+&lt;/span>&lt;span class="lnt">46
+&lt;/span>&lt;span class="lnt">47
+&lt;/span>&lt;span class="lnt">48
+&lt;/span>&lt;span class="lnt">49
+&lt;/span>&lt;span class="lnt">50
+&lt;/span>&lt;span class="lnt">51
+&lt;/span>&lt;span class="lnt">52
+&lt;/span>&lt;span class="lnt">53
+&lt;/span>&lt;span class="lnt">54
+&lt;/span>&lt;span class="lnt">55
+&lt;/span>&lt;span class="lnt">56
+&lt;/span>&lt;span class="lnt">57
+&lt;/span>&lt;span class="lnt">58
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-bash" data-lang="bash">
+&lt;span class="c1"># 生成 gpg 密钥&lt;/span>
+gpg --gen-key
+&lt;span class="c1"># 生成吊销证书&lt;/span>
+gpg --gen-revoke &lt;span class="m">0102030405060708&lt;/span>
+&lt;span class="c1"># 列出所有 gpg 公钥&lt;/span>
+gpg --list-keys
+&lt;span class="c1"># 列出所有 gpg 私钥&lt;/span>
+gpg --list-secret-keys
+&lt;span class="c1"># 删除 gpg 公钥&lt;/span>
+gpg --delete-keys &lt;span class="m">0102030405060708&lt;/span>
+&lt;span class="c1"># 删除 gpg 私钥&lt;/span>
+gpg --delete-secret-keys &lt;span class="m">0102030405060708&lt;/span>
+&lt;span class="c1"># 输出 gpg 公钥 ascii&lt;/span>
+gpg --armor --output public.key --export &lt;span class="m">0102030405060708&lt;/span>
+&lt;span class="c1"># 输出 gpg 私钥 ascii&lt;/span>
+gpg --armor --output private.key --export-secret-keys &lt;span class="m">0102030405060708&lt;/span>
+&lt;span class="c1"># 上传 gpg 公钥&lt;/span>
+gpg --send-keys &lt;span class="m">0102030405060708&lt;/span> --keyserver
+&lt;span class="c1"># 查看 gpg 公钥指纹&lt;/span>
+gpg --fingerprint &lt;span class="m">0102030405060708&lt;/span>
+&lt;span class="c1"># 导入 gpg 密钥(导入私钥时会自动导入公钥)&lt;/span>
+gpg --import private.key
+&lt;span class="c1"># 加密文件&lt;/span>
+gpg --recipient &lt;span class="m">0102030405060708&lt;/span> --output encrypt.file --encrypt origin.file
+&lt;span class="c1"># 解密文件&lt;/span>
+gpg --output origin.file --decrypt encrypt.file
+&lt;span class="c1"># 文件签名，生成二进制的 gpg 文件&lt;/span>
+gpg --sign plaintext_file
+&lt;span class="c1"># 文件签名，生成文本末尾追加 ASCII 签名的 asc 文件&lt;/span>
+gpg --clearsign plaintext_file
+&lt;span class="c1"># 文件签名，生成二进制的 sig 文件&lt;/span>
+gpg --detach-sign plaintext_file
+&lt;span class="c1"># 文件签名，生成 ASCII 格式的 asc 文件&lt;/span>
+gpg --detach-sign plaintext_file
+&lt;span class="c1"># 签名并加密&lt;/span>
+gpg --local-user &lt;span class="m">0102030405060708&lt;/span> --recipient &lt;span class="m">0102030405060708&lt;/span> --armor --sign --encrypt plaintext_file
+&lt;span class="c1"># 验证签名&lt;/span>
+gpg --verify plaintext_file.asc plaintext_file
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></description></item><item><title>FlameGraph</title><link>https://gaoyinlong.com/posts/flamegraph/</link><guid isPermaLink="true">https://gaoyinlong.com/posts/flamegraph/</guid><pubDate>Sun, 27 Nov 2022 21:02:36 +0800</pubDate><author>im.ggyyll@gmail.com (gyl)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>on-cpu 火焰图&lt;/p>
 &lt;h3 id="install-flamegraph">install FlameGraph&lt;/h3>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
