@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>gaoyinlong</title><link>https://gaoyinlong.com/</link><description/><generator>Hugo 0.82.0 https://gohugo.io/</generator><language>zh-CN</language><managingEditor>im.ggyyll@gmail.com (gyl)</managingEditor><webMaster>im.ggyyll@gmail.com (gyl)</webMaster><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><lastBuildDate>Fri, 10 Mar 2023 01:58:59 +0000</lastBuildDate><atom:link rel="self" type="application/rss+xml" href="https://gaoyinlong.com/rss.xml"/><item><title>Sed</title><link>https://gaoyinlong.com/posts/sed/</link><guid isPermaLink="true">https://gaoyinlong.com/posts/sed/</guid><pubDate>Fri, 10 Mar 2023 09:38:05 +0800</pubDate><author>im.ggyyll@gmail.com (gyl)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h1 id="sed">SED&lt;/h1>
+<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>gaoyinlong</title><link>https://gaoyinlong.com/</link><description/><generator>Hugo 0.82.0 https://gohugo.io/</generator><language>zh-CN</language><managingEditor>im.ggyyll@gmail.com (gyl)</managingEditor><webMaster>im.ggyyll@gmail.com (gyl)</webMaster><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><lastBuildDate>Wed, 15 Mar 2023 06:18:16 +0000</lastBuildDate><atom:link rel="self" type="application/rss+xml" href="https://gaoyinlong.com/rss.xml"/><item><title>Sed</title><link>https://gaoyinlong.com/posts/sed/</link><guid isPermaLink="true">https://gaoyinlong.com/posts/sed/</guid><pubDate>Fri, 10 Mar 2023 09:38:05 +0800</pubDate><author>im.ggyyll@gmail.com (gyl)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h1 id="sed">SED&lt;/h1>
 &lt;p>SED单行脚本快速参考（Unix 流编辑器） 2005年12月29日&lt;/p>
 &lt;p>英文标题：USEFUL ONE-LINE SCRIPTS FOR SED (Unix stream editor)
 原标题：HANDY ONE-LINERS FOR SED (Unix stream editor)&lt;/p>
@@ -1075,6 +1075,28 @@ git stash pop &lt;span class="c1"># 恢复暂存的修改&lt;/span>
 &lt;pre class="chroma">&lt;code class="language-bash" data-lang="bash">
 git submodule update --remote &lt;span class="c1"># 更新 submodule&lt;/span>
 git submodule foreach git pull &lt;span class="c1"># 子模块更新&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>删除 branch&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;span class="lnt">9
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="c1"># 本地分支&lt;/span>
+git branch --delete local_branch_name
+&lt;span class="c1"># 强制删除&lt;/span>
+git branch --delete --force local_branch_name
+&lt;span class="c1"># 远程分支&lt;/span>
+git push remote_name -delete remote_branch_name
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div></description></item><item><title>迁移 docker 容器存储目录</title><link>https://gaoyinlong.com/posts/docker/</link><guid isPermaLink="true">https://gaoyinlong.com/posts/docker/</guid><pubDate>Thu, 24 Mar 2022 19:53:31 +0800</pubDate><author>im.ggyyll@gmail.com (gyl)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>迁移 docker 容器存储目录&lt;/p>

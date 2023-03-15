@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN"><title type="text">gaoyinlong</title><subtitle type="html"/><updated>2023-03-10T01:58:59+00:00</updated><id>https://gaoyinlong.com/</id><link rel="alternate" type="text/html" href="https://gaoyinlong.com/"/><link rel="self" type="application/atom+xml" href="https://gaoyinlong.com/atom.xml"/><author><name>gyl</name><uri>https://gaoyinlong.com/</uri><email>im.ggyyll@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><generator uri="https://gohugo.io/" version="0.82.0">Hugo</generator><entry><title type="text">Sed</title><link rel="alternate" type="text/html" href="https://gaoyinlong.com/posts/sed/"/><id>https://gaoyinlong.com/posts/sed/</id><updated>2023-03-10T01:58:57+00:00</updated><published>2023-03-10T09:38:05+08:00</published><author><name>gyl</name><uri>https://gaoyinlong.com</uri><email>im.ggyyll@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">SED SED单行脚本快速参考（Unix 流编辑器） 2005年12月29日 英文标题：USEF……</summary><content type="html">&lt;h1 id="sed">SED&lt;/h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN"><title type="text">gaoyinlong</title><subtitle type="html"/><updated>2023-03-15T06:18:16+00:00</updated><id>https://gaoyinlong.com/</id><link rel="alternate" type="text/html" href="https://gaoyinlong.com/"/><link rel="self" type="application/atom+xml" href="https://gaoyinlong.com/atom.xml"/><author><name>gyl</name><uri>https://gaoyinlong.com/</uri><email>im.ggyyll@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><generator uri="https://gohugo.io/" version="0.82.0">Hugo</generator><entry><title type="text">Sed</title><link rel="alternate" type="text/html" href="https://gaoyinlong.com/posts/sed/"/><id>https://gaoyinlong.com/posts/sed/</id><updated>2023-03-15T06:18:13+00:00</updated><published>2023-03-10T09:38:05+08:00</published><author><name>gyl</name><uri>https://gaoyinlong.com</uri><email>im.ggyyll@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">SED SED单行脚本快速参考（Unix 流编辑器） 2005年12月29日 英文标题：USEF……</summary><content type="html">&lt;h1 id="sed">SED&lt;/h1>
 &lt;p>SED单行脚本快速参考（Unix 流编辑器） 2005年12月29日&lt;/p>
 &lt;p>英文标题：USEFUL ONE-LINE SCRIPTS FOR SED (Unix stream editor)
 原标题：HANDY ONE-LINERS FOR SED (Unix stream editor)&lt;/p>
@@ -676,7 +676,7 @@ echo @echo off &amp;gt;zipup.bat
 dir /b *.txt | sed &amp;#34;s/^\(.*\)\.TXT/pkzip -mo \1 \1.TXT/&amp;#34; &amp;gt;&amp;gt;zipup.bat
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></content></entry><entry><title type="text">GPG</title><link rel="alternate" type="text/html" href="https://gaoyinlong.com/posts/gpg/"/><id>https://gaoyinlong.com/posts/gpg/</id><updated>2023-03-10T01:58:57+00:00</updated><published>2023-03-10T09:26:04+08:00</published><author><name>gyl</name><uri>https://gaoyinlong.com</uri><email>im.ggyyll@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">GPG 常用命令 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37……</summary><content type="html">&lt;h1 id="gpg">GPG&lt;/h1>
+&lt;/div></content></entry><entry><title type="text">GPG</title><link rel="alternate" type="text/html" href="https://gaoyinlong.com/posts/gpg/"/><id>https://gaoyinlong.com/posts/gpg/</id><updated>2023-03-15T06:18:13+00:00</updated><published>2023-03-10T09:26:04+08:00</published><author><name>gyl</name><uri>https://gaoyinlong.com</uri><email>im.ggyyll@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">GPG 常用命令 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37……</summary><content type="html">&lt;h1 id="gpg">GPG&lt;/h1>
 &lt;h2 id="常用命令">常用命令&lt;/h2>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
@@ -823,7 +823,7 @@ tar -zcf - *.file &lt;span class="p">|&lt;/span> gpg -r xxyyzz -e &lt;span class
 cat outputfile.tar.gz.gpg.* &lt;span class="p">|&lt;/span> gpg -d -r xxyyzz &lt;span class="p">|&lt;/span> tar -zxf -
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></content></entry><entry><title type="text">FlameGraph</title><link rel="alternate" type="text/html" href="https://gaoyinlong.com/posts/flamegraph/"/><id>https://gaoyinlong.com/posts/flamegraph/</id><updated>2023-03-10T01:58:57+00:00</updated><published>2022-11-27T21:02:36+08:00</published><author><name>gyl</name><uri>https://gaoyinlong.com</uri><email>im.ggyyll@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">on-cpu 火焰图 install FlameGraph 1 2 3 4 5 6 git clone --depth 1 https://github.com/brendangregg/FlameGraph.git export PATH=$PWD/FlameGraph:$PATH perf 1 2 3 4 5 6 7 8 9 10 11 12 13 PID=100 perf record -F 99 -p $PID -g --……</summary><content type="html">&lt;p>on-cpu 火焰图&lt;/p>
+&lt;/div></content></entry><entry><title type="text">FlameGraph</title><link rel="alternate" type="text/html" href="https://gaoyinlong.com/posts/flamegraph/"/><id>https://gaoyinlong.com/posts/flamegraph/</id><updated>2023-03-15T06:18:13+00:00</updated><published>2022-11-27T21:02:36+08:00</published><author><name>gyl</name><uri>https://gaoyinlong.com</uri><email>im.ggyyll@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">on-cpu 火焰图 install FlameGraph 1 2 3 4 5 6 git clone --depth 1 https://github.com/brendangregg/FlameGraph.git export PATH=$PWD/FlameGraph:$PATH perf 1 2 3 4 5 6 7 8 9 10 11 12 13 PID=100 perf record -F 99 -p $PID -g --……</summary><content type="html">&lt;p>on-cpu 火焰图&lt;/p>
 &lt;h3 id="install-flamegraph">install FlameGraph&lt;/h3>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
@@ -885,7 +885,7 @@ profile -adf -p &lt;span class="nv">$PID&lt;/span> &lt;span class="m">10&lt;/spa
 flamegraph.pl &amp;lt; out.profile &amp;gt; out.svg
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></content></entry><entry><title type="text">Node_Exporter</title><link rel="alternate" type="text/html" href="https://gaoyinlong.com/posts/node_exporter/"/><id>https://gaoyinlong.com/posts/node_exporter/</id><updated>2023-03-10T01:58:57+00:00</updated><published>2022-11-25T14:42:46+08:00</published><author><name>gyl</name><uri>https://gaoyinlong.com</uri><email>im.ggyyll@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">安装 node-exporter 1 2 3 apt install prometheus-node-exporter 通过 docker 部署 prometheus 和 grafana docker-compose.yml 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 version: &amp;#39;2&amp;#39; services: prometheus:……</summary><content type="html">&lt;p>安装 node-exporter&lt;/p>
+&lt;/div></content></entry><entry><title type="text">Node_Exporter</title><link rel="alternate" type="text/html" href="https://gaoyinlong.com/posts/node_exporter/"/><id>https://gaoyinlong.com/posts/node_exporter/</id><updated>2023-03-15T06:18:13+00:00</updated><published>2022-11-25T14:42:46+08:00</published><author><name>gyl</name><uri>https://gaoyinlong.com</uri><email>im.ggyyll@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">安装 node-exporter 1 2 3 apt install prometheus-node-exporter 通过 docker 部署 prometheus 和 grafana docker-compose.yml 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 version: &amp;#39;2&amp;#39; services: prometheus:……</summary><content type="html">&lt;p>安装 node-exporter&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
@@ -979,7 +979,7 @@ static_configs:
 - &lt;span class="s1">&amp;#39;localhost:9100&amp;#39;&lt;/span>
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>在 grafana 中添加 prometheus 数据源，导入 dashboard 即可&lt;/p></content></entry><entry><title type="text">Git_Cheatsheets</title><link rel="alternate" type="text/html" href="https://gaoyinlong.com/posts/git_cheatsheets/"/><id>https://gaoyinlong.com/posts/git_cheatsheets/</id><updated>2023-03-10T01:58:57+00:00</updated><published>2022-11-25T09:57:15+08:00</published><author><name>gyl</name><uri>https://gaoyinlong.com</uri><email>im.ggyyll@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">漂亮的 git log 1 2 3 4 5 6 7 8 9 10 11 12 13 git log --graph --pretty=format:&amp;#39;%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen%ai(%cr) %C(bold blue)&amp;lt;%an&amp;gt;%Creset&amp;#39; --abbrev-commit git log --graph --all --relative-date --abbrev-commit --format=&amp;#34;%x09 %h %Cgreen%cd%Creset [%Cblue%cn%Creset] %C(auto)%d%Creset %s&amp;#34; git log……</summary><content type="html">&lt;p>漂亮的 git log&lt;/p>
+&lt;/div>&lt;p>在 grafana 中添加 prometheus 数据源，导入 dashboard 即可&lt;/p></content></entry><entry><title type="text">Git_Cheatsheets</title><link rel="alternate" type="text/html" href="https://gaoyinlong.com/posts/git_cheatsheets/"/><id>https://gaoyinlong.com/posts/git_cheatsheets/</id><updated>2023-03-15T06:18:13+00:00</updated><published>2022-11-25T09:57:15+08:00</published><author><name>gyl</name><uri>https://gaoyinlong.com</uri><email>im.ggyyll@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">漂亮的 git log 1 2 3 4 5 6 7 8 9 10 11 12 13 git log --graph --pretty=format:&amp;#39;%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen%ai(%cr) %C(bold blue)&amp;lt;%an&amp;gt;%Creset&amp;#39; --abbrev-commit git log --graph --all --relative-date --abbrev-commit --format=&amp;#34;%x09 %h %Cgreen%cd%Creset [%Cblue%cn%Creset] %C(auto)%d%Creset %s&amp;#34; git log……</summary><content type="html">&lt;p>漂亮的 git log&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre class="chroma">&lt;code>&lt;span class="lnt"> 1
@@ -1077,7 +1077,29 @@ git submodule update --remote &lt;span class="c1"># 更新 submodule&lt;/span>
 git submodule foreach git pull &lt;span class="c1"># 子模块更新&lt;/span>
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></content></entry><entry><title type="text">迁移 docker 容器存储目录</title><link rel="alternate" type="text/html" href="https://gaoyinlong.com/posts/docker/"/><id>https://gaoyinlong.com/posts/docker/</id><updated>2023-03-10T01:58:57+00:00</updated><published>2022-03-24T19:53:31+08:00</published><author><name>gyl</name><uri>https://gaoyinlong.com</uri><email>im.ggyyll@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">……</summary><content type="html">&lt;p>迁移 docker 容器存储目录&lt;/p>
+&lt;/div>&lt;p>删除 branch&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;span class="lnt">9
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="c1"># 本地分支&lt;/span>
+git branch --delete local_branch_name
+&lt;span class="c1"># 强制删除&lt;/span>
+git branch --delete --force local_branch_name
+&lt;span class="c1"># 远程分支&lt;/span>
+git push remote_name -delete remote_branch_name
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></content></entry><entry><title type="text">迁移 docker 容器存储目录</title><link rel="alternate" type="text/html" href="https://gaoyinlong.com/posts/docker/"/><id>https://gaoyinlong.com/posts/docker/</id><updated>2023-03-15T06:18:13+00:00</updated><published>2022-03-24T19:53:31+08:00</published><author><name>gyl</name><uri>https://gaoyinlong.com</uri><email>im.ggyyll@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">……</summary><content type="html">&lt;p>迁移 docker 容器存储目录&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre class="chroma">&lt;code>&lt;span class="lnt"> 1
@@ -1137,7 +1159,7 @@ systemctl restart docker
 &lt;span class="o">}&lt;/span>
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></content></entry><entry><title type="text">dev container</title><link rel="alternate" type="text/html" href="https://gaoyinlong.com/posts/docker_dev/"/><id>https://gaoyinlong.com/posts/docker_dev/</id><updated>2023-03-10T01:58:57+00:00</updated><published>2022-03-24T19:11:48+08:00</published><author><name>gyl</name><uri>https://gaoyinlong.com</uri><email>im.ggyyll@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html"/><content type="html">&lt;p>Docker&lt;/p>
+&lt;/div></content></entry><entry><title type="text">dev container</title><link rel="alternate" type="text/html" href="https://gaoyinlong.com/posts/docker_dev/"/><id>https://gaoyinlong.com/posts/docker_dev/</id><updated>2023-03-15T06:18:13+00:00</updated><published>2022-03-24T19:11:48+08:00</published><author><name>gyl</name><uri>https://gaoyinlong.com</uri><email>im.ggyyll@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html"/><content type="html">&lt;p>Docker&lt;/p>
 &lt;pre>&lt;code>
 docker run -tid --name dev --restart=always -v $HOME/fs/dev/svn:/svn -v /etc/timezone:/etc/timezone -v /etc/localtime:/etc/localtime centos:7 bash
 &lt;/code>&lt;/pre>&lt;p>Install&lt;/p>
@@ -1305,7 +1327,7 @@ wget -c -O bat.tar.gz https://github.com/sharkdp/bat/releases/download/v0.20.0/b
 mkdir bat &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> tar -xzf bat.tar.gz -C bat --strip-components &lt;span class="m">1&lt;/span> &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> mv bat/bat &lt;span class="nv">$HOME&lt;/span>/bin/
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></content></entry><entry><title type="text">Navicat</title><link rel="alternate" type="text/html" href="https://gaoyinlong.com/posts/navicat/"/><id>https://gaoyinlong.com/posts/navicat/</id><updated>2023-03-10T01:58:57+00:00</updated><published>2021-11-22T18:51:48+08:00</published><author><name>gyl</name><uri>https://gaoyinlong.com</uri><email>im.ggyyll@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html"/><content type="html">&lt;p>Ububtu&lt;/p>
+&lt;/div></content></entry><entry><title type="text">Navicat</title><link rel="alternate" type="text/html" href="https://gaoyinlong.com/posts/navicat/"/><id>https://gaoyinlong.com/posts/navicat/</id><updated>2023-03-15T06:18:13+00:00</updated><published>2021-11-22T18:51:48+08:00</published><author><name>gyl</name><uri>https://gaoyinlong.com</uri><email>im.ggyyll@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html"/><content type="html">&lt;p>Ububtu&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
@@ -1334,7 +1356,7 @@ rm -rf ~/Library/Preferences/com.prect.NavicatPremium15.plist
 rm -rf ~/Library/Application&lt;span class="se">\ &lt;/span>Support/PremiumSoft&lt;span class="se">\ &lt;/span>CyberTech/Navicat&lt;span class="se">\ &lt;/span>CC/Navicat&lt;span class="se">\ &lt;/span>Premium/
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></content></entry><entry><title type="text">bash cheatsheets</title><link rel="alternate" type="text/html" href="https://gaoyinlong.com/posts/bash_shell/"/><id>https://gaoyinlong.com/posts/bash_shell/</id><updated>2023-03-10T01:58:57+00:00</updated><published>2021-11-15T06:53:12+08:00</published><author><name>gyl</name><uri>https://gaoyinlong.com</uri><email>im.ggyyll@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">……</summary><content type="html">&lt;p>比较文件大小&lt;/p>
+&lt;/div></content></entry><entry><title type="text">bash cheatsheets</title><link rel="alternate" type="text/html" href="https://gaoyinlong.com/posts/bash_shell/"/><id>https://gaoyinlong.com/posts/bash_shell/</id><updated>2023-03-15T06:18:13+00:00</updated><published>2021-11-15T06:53:12+08:00</published><author><name>gyl</name><uri>https://gaoyinlong.com</uri><email>im.ggyyll@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">……</summary><content type="html">&lt;p>比较文件大小&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
@@ -1417,7 +1439,7 @@ find dir -mtime -1 -delete
 ffmpeg -f concat -safe &lt;span class="m">0&lt;/span> -i &amp;lt;&lt;span class="o">(&lt;/span>&lt;span class="k">for&lt;/span> f in *.mp4&lt;span class="p">;&lt;/span> &lt;span class="k">do&lt;/span> &lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;file &amp;#39;&lt;/span>&lt;span class="nv">$PWD&lt;/span>&lt;span class="s2">/&lt;/span>&lt;span class="nv">$f&lt;/span>&lt;span class="s2">&amp;#39;&amp;#34;&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="k">done&lt;/span>&lt;span class="o">)&lt;/span> -c copy output.mp4
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></content></entry><entry><title type="text">Understand</title><link rel="alternate" type="text/html" href="https://gaoyinlong.com/posts/understand/"/><id>https://gaoyinlong.com/posts/understand/</id><updated>2023-03-10T01:58:57+00:00</updated><published>2020-08-07T17:03:32+08:00</published><author><name>gyl</name><uri>https://gaoyinlong.com</uri><email>im.ggyyll@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html"/><content type="html">&lt;p>Ubuntu&lt;/p>
+&lt;/div></content></entry><entry><title type="text">Understand</title><link rel="alternate" type="text/html" href="https://gaoyinlong.com/posts/understand/"/><id>https://gaoyinlong.com/posts/understand/</id><updated>2023-03-15T06:18:13+00:00</updated><published>2020-08-07T17:03:32+08:00</published><author><name>gyl</name><uri>https://gaoyinlong.com</uri><email>im.ggyyll@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html"/><content type="html">&lt;p>Ubuntu&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
@@ -1445,7 +1467,7 @@ ffmpeg -f concat -safe &lt;span class="m">0&lt;/span> -i &amp;lt;&lt;span class=
 &lt;/span>&lt;span class="se">&lt;/span>libXcomposite libXcursor libXtst alsa-lib-devel pciutils-libs
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></content></entry><entry><title type="text">Hello World</title><link rel="alternate" type="text/html" href="https://gaoyinlong.com/posts/hello/"/><id>https://gaoyinlong.com/posts/hello/</id><updated>2023-03-10T01:58:57+00:00</updated><published>2020-04-06T19:53:12+08:00</published><author><name>gyl</name><uri>https://gaoyinlong.com</uri><email>im.ggyyll@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html"/><content type="html">&lt;div class="highlight">&lt;div class="chroma">
+&lt;/div></content></entry><entry><title type="text">Hello World</title><link rel="alternate" type="text/html" href="https://gaoyinlong.com/posts/hello/"/><id>https://gaoyinlong.com/posts/hello/</id><updated>2023-03-15T06:18:13+00:00</updated><published>2020-04-06T19:53:12+08:00</published><author><name>gyl</name><uri>https://gaoyinlong.com</uri><email>im.ggyyll@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html"/><content type="html">&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre class="chroma">&lt;code>&lt;span class="lnt"> 1
 &lt;/span>&lt;span class="lnt"> 2
