@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>gaoyinlong</title><link>https://gaoyinlong.com/</link><description/><generator>Hugo 0.82.0 https://gohugo.io/</generator><language>zh-CN</language><managingEditor>im.ggyyll@gmail.com (gyl)</managingEditor><webMaster>im.ggyyll@gmail.com (gyl)</webMaster><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><lastBuildDate>Wed, 15 Mar 2023 06:18:16 +0000</lastBuildDate><atom:link rel="self" type="application/rss+xml" href="https://gaoyinlong.com/rss.xml"/><item><title>Sed</title><link>https://gaoyinlong.com/posts/sed/</link><guid isPermaLink="true">https://gaoyinlong.com/posts/sed/</guid><pubDate>Fri, 10 Mar 2023 09:38:05 +0800</pubDate><author>im.ggyyll@gmail.com (gyl)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h1 id="sed">SED&lt;/h1>
+<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>gaoyinlong</title><link>https://gaoyinlong.com/</link><description/><generator>Hugo 0.82.0 https://gohugo.io/</generator><language>zh-CN</language><managingEditor>im.ggyyll@gmail.com (gyl)</managingEditor><webMaster>im.ggyyll@gmail.com (gyl)</webMaster><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><lastBuildDate>Sun, 28 May 2023 01:51:10 +0000</lastBuildDate><atom:link rel="self" type="application/rss+xml" href="https://gaoyinlong.com/rss.xml"/><item><title>Sed</title><link>https://gaoyinlong.com/posts/sed/</link><guid isPermaLink="true">https://gaoyinlong.com/posts/sed/</guid><pubDate>Fri, 10 Mar 2023 09:38:05 +0800</pubDate><author>im.ggyyll@gmail.com (gyl)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h1 id="sed">SED&lt;/h1>
 &lt;p>SED单行脚本快速参考（Unix 流编辑器） 2005年12月29日&lt;/p>
 &lt;p>英文标题：USEFUL ONE-LINE SCRIPTS FOR SED (Unix stream editor)
 原标题：HANDY ONE-LINERS FOR SED (Unix stream editor)&lt;/p>
@@ -1356,7 +1356,19 @@ rm -rf ~/Library/Preferences/com.prect.NavicatPremium15.plist
 rm -rf ~/Library/Application&lt;span class="se">\ &lt;/span>Support/PremiumSoft&lt;span class="se">\ &lt;/span>CyberTech/Navicat&lt;span class="se">\ &lt;/span>CC/Navicat&lt;span class="se">\ &lt;/span>Premium/
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></description></item><item><title>bash cheatsheets</title><link>https://gaoyinlong.com/posts/bash_shell/</link><guid isPermaLink="true">https://gaoyinlong.com/posts/bash_shell/</guid><pubDate>Mon, 15 Nov 2021 06:53:12 +0800</pubDate><author>im.ggyyll@gmail.com (gyl)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>比较文件大小&lt;/p>
+&lt;/div></description></item><item><title>bash cheatsheets</title><link>https://gaoyinlong.com/posts/bash_shell/</link><guid isPermaLink="true">https://gaoyinlong.com/posts/bash_shell/</guid><pubDate>Mon, 15 Nov 2021 06:53:12 +0800</pubDate><author>im.ggyyll@gmail.com (gyl)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>ssh socks5 proxy&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-bash" data-lang="bash">
+ssh -o &lt;span class="nv">ProxyCommand&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;nc -x 127.0.0.1:1080 %h %p&amp;#39;&lt;/span> user@host
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>比较文件大小&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
