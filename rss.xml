@@ -1,4 +1,197 @@
-<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>gaoyinlong</title><link>https://gaoyinlong.com/</link><description/><generator>Hugo 0.82.0 https://gohugo.io/</generator><language>zh-CN</language><managingEditor>im.ggyyll@gmail.com (gyl)</managingEditor><webMaster>im.ggyyll@gmail.com (gyl)</webMaster><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><lastBuildDate>Sun, 28 May 2023 01:51:10 +0000</lastBuildDate><atom:link rel="self" type="application/rss+xml" href="https://gaoyinlong.com/rss.xml"/><item><title>Sed</title><link>https://gaoyinlong.com/posts/sed/</link><guid isPermaLink="true">https://gaoyinlong.com/posts/sed/</guid><pubDate>Fri, 10 Mar 2023 09:38:05 +0800</pubDate><author>im.ggyyll@gmail.com (gyl)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h1 id="sed">SED&lt;/h1>
+<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>gaoyinlong</title><link>https://gaoyinlong.com/</link><description/><generator>Hugo 0.82.0 https://gohugo.io/</generator><language>zh-CN</language><managingEditor>im.ggyyll@gmail.com (gyl)</managingEditor><webMaster>im.ggyyll@gmail.com (gyl)</webMaster><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><lastBuildDate>Fri, 08 Sep 2023 06:52:36 +0000</lastBuildDate><atom:link rel="self" type="application/rss+xml" href="https://gaoyinlong.com/rss.xml"/><item><title>Ubuntu 22.04 安装 Kuberenetes</title><link>https://gaoyinlong.com/posts/ubuntu_2204_kuberenetes/</link><guid isPermaLink="true">https://gaoyinlong.com/posts/ubuntu_2204_kuberenetes/</guid><pubDate>Fri, 08 Sep 2023 14:09:53 +0800</pubDate><author>im.ggyyll@gmail.com (gyl)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h3 id="install-docker">install docker&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-bash" data-lang="bash">
+curl -fsSL https://test.docker.com -o test-docker.sh
+sudo sh test-docker.sh
+sudo gpasswd -a &lt;span class="nv">$USER&lt;/span> docker
+newgrp docker
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="安装-kubectl">安装 kubectl&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-bash" data-lang="bash">
+curl https://mirrors.aliyun.com/kubernetes/apt/doc/apt-key.gpg &lt;span class="p">|&lt;/span> sudo apt-key add -
+&lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;deb https://mirrors.aliyun.com/kubernetes/apt/ kubernetes-&lt;/span>&lt;span class="k">$(&lt;/span>lsb_release -cs&lt;span class="k">)&lt;/span>&lt;span class="s2"> main&amp;#34;&lt;/span> &lt;span class="p">|&lt;/span> sudo tee /etc/apt/sources.list.d/kubernetes.list
+sudo apt-get update
+sudo apt-get install -y kubelet kubeadm kubectl
+&lt;span class="c1"># 禁止自动更新&lt;/span>
+sudo apt-mark hold kubelet kubeadm kubectl
+sudo systemctl &lt;span class="nb">enable&lt;/span> --now kubelet
+&lt;span class="c1"># 检查版本信息&lt;/span>
+kubectl version --client --output&lt;span class="o">=&lt;/span>yaml
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="安装-containerd">安装 containerd&lt;/h3>
+&lt;p>&lt;a href="https://github.com/containerd/containerd/blob/main/docs/getting-started.md#option-2-from-apt-get-or-dnf">通过 apt 安装 containerd&lt;/a>&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-bash" data-lang="bash">
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg &lt;span class="p">|&lt;/span> sudo gpg --dearmour -o /etc/apt/trusted.gpg.d/docker.gpg
+sudo add-apt-repository &lt;span class="s2">&amp;#34;deb [arch=amd64] https://download.docker.com/linux/ubuntu &lt;/span>&lt;span class="k">$(&lt;/span>lsb_release -cs&lt;span class="k">)&lt;/span>&lt;span class="s2"> stable&amp;#34;&lt;/span>
+sudo apt update
+sudo apt install -y containerd.io
+containerd config default &lt;span class="p">|&lt;/span> sudo tee /etc/containerd/config.toml &amp;gt;/dev/null 2&amp;gt;&lt;span class="p">&amp;amp;&lt;/span>&lt;span class="m">1&lt;/span>
+sudo sed -i &lt;span class="s1">&amp;#39;s/SystemdCgroup \= false/SystemdCgroup \= true/g&amp;#39;&lt;/span> /etc/containerd/config.toml
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>配置 containerd，使它使用 systemd 作为 cgroup&lt;/p>
+&lt;ul>
+&lt;li>在 Linux 上，控制组（CGroup）用于限制分配给进程的资源。&lt;/li>
+&lt;li>kubelet 和底层容器运行时都需要对接控制组来强制执行 为 Pod 和容器管理资源并为诸如 CPU、内存这类资源设置请求和限制。若要对接控制组，kubelet 和容器运行时需要使用一个 cgroup 驱动。 关键的一点是 kubelet 和容器运行时需使用相同的 cgroup 驱动并且采用相同的配置。&lt;/li>
+&lt;li>可用的 cgroup 驱动有两个：cgroupfs systemd&lt;/li>
+&lt;li>cgroupfs 驱动是 kubelet 中默认的 cgroup 驱动。当使用 cgroupfs 驱动时， kubelet 和容器运行时将直接对接 cgroup 文件系统来配置 cgroup。&lt;/li>
+&lt;li>systemd cgroup 驱动：当某个 Linux 系统发行版使用 systemd作为其初始化系统时，初始化进程会生成并使用一个 root 控制组（cgroup），并充当 cgroup 管理器。&lt;/li>
+&lt;/ul>
+&lt;p>&lt;code>systemd 与 cgroup 集成紧密，并将为每个 systemd 单元分配一个 cgroup。 因此，如果你 systemd 用作初始化系统，同时使用 cgroupfs 驱动，则系统中会存在两个不同的 cgroup 管理器。 同时存在两个 cgroup 管理器将造成系统中针对可用的资源和使用中的资源出现两个视图。某些情况下， 将 kubelet 和容器运行时配置为使用 cgroupfs、但为剩余的进程使用 systemd 的那些节点将在资源压力增大时变得不稳定。 当 systemd 是选定的初始化系统时，缓解这个不稳定问题的方法是针对 kubelet 和容器运行时将 systemd 用作 cgroup 驱动&lt;/code>&lt;/p>
+&lt;pre>&lt;code>
+containerd config default | sudo tee /etc/containerd/config.toml &amp;gt;/dev/null 2&amp;gt;&amp;amp;1
+sudo sed -i 's/SystemdCgroup \= false/SystemdCgroup \= true/g' /etc/containerd/config.toml
+sudo systemctl restart containerd
+sudo systemctl enable containerd
+&lt;/code>&lt;/pre>&lt;h3 id="设置系统参数">设置系统参数&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-bash" data-lang="bash">
+swapoff -a
+cat &lt;span class="s">&amp;lt;&amp;lt;EOF | sudo tee /etc/modules-load.d/k8s.conf
+&lt;/span>&lt;span class="s">overlay
+&lt;/span>&lt;span class="s">br_netfilter
+&lt;/span>&lt;span class="s">EOF&lt;/span>
+sudo modprobe overlay
+sudo modprobe br_netfilter
+&lt;span class="c1"># 设置所需的 sysctl 参数，参数在重新启动后保持不变&lt;/span>
+cat &lt;span class="s">&amp;lt;&amp;lt;EOF | sudo tee /etc/sysctl.d/k8s.conf
+&lt;/span>&lt;span class="s">net.bridge.bridge-nf-call-iptables = 1
+&lt;/span>&lt;span class="s">net.bridge.bridge-nf-call-ip6tables = 1
+&lt;/span>&lt;span class="s">net.ipv4.ip_forward = 1
+&lt;/span>&lt;span class="s">EOF&lt;/span>
+&lt;span class="c1"># 应用 sysctl 参数而不重新启动&lt;/span>
+sudo sysctl --system
+&lt;span class="c1"># 确认模块加载&lt;/span>
+lsmod &lt;span class="p">|&lt;/span> grep br_netfilter
+lsmod &lt;span class="p">|&lt;/span> grep overlay
+sudo sysctl net.bridge.bridge-nf-call-iptables net.bridge.bridge-nf-call-ip6tables net.ipv4.ip_forward
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="安装">安装&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-bash" data-lang="bash">
+sudo systemctl daemon-reload
+sudo systemctl restart containerd.service
+sudo systemctl restart docker
+sudo systemctl restart kubelet
+sudo kubeadm init --image-repository registry.aliyuncs.com/google_containers --v&lt;span class="o">=&lt;/span>&lt;span class="m">6&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>如果执行初始化指令报错了一次，执行reset指令重新再来否则会提示k8s所需的配置文件已经存在无法初始化&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-bash" data-lang="bash">
+&lt;span class="c1"># --cert-dir string 删除证书的参数建议加上&lt;/span>
+sudo kubeadm reset --cert-dir string
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>出现错误通过系统日志排查问题&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre class="chroma">&lt;code class="language-bash" data-lang="bash">
+journalctl -xeu kubelet
+journalctl -xeu containerd
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></description></item><item><title>Sed</title><link>https://gaoyinlong.com/posts/sed/</link><guid isPermaLink="true">https://gaoyinlong.com/posts/sed/</guid><pubDate>Fri, 10 Mar 2023 09:38:05 +0800</pubDate><author>im.ggyyll@gmail.com (gyl)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h1 id="sed">SED&lt;/h1>
 &lt;p>SED单行脚本快速参考（Unix 流编辑器） 2005年12月29日&lt;/p>
 &lt;p>英文标题：USEFUL ONE-LINE SCRIPTS FOR SED (Unix stream editor)
 原标题：HANDY ONE-LINERS FOR SED (Unix stream editor)&lt;/p>
